@@ -337,27 +337,7 @@
   /* FOOTER */
   footer{background:var(--dark);color:#666;padding:48px 8vw;font-family:var(--mono);font-size:12px;border-top:3px solid var(--primary)}
 
-  /* PDF EXPORT BUTTON */
-  .pdf-btn{
-    position:fixed;bottom:24px;right:24px;
-    background:var(--primary);color:var(--dark);
-    font-family:var(--display);font-weight:900;font-size:13px;
-    text-transform:uppercase;letter-spacing:0.5px;
-    padding:14px 22px;border:none;border-radius:8px;
-    cursor:pointer;
-    box-shadow:0 6px 24px rgba(0,0,0,0.3),0 0 0 2px rgba(0,0,0,0.4);
-    z-index:1000;
-    display:flex;align-items:center;gap:8px;
-    transition:transform 0.15s,box-shadow 0.15s;
-  }
-  .pdf-btn:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(0,0,0,0.4),0 0 0 2px rgba(0,0,0,0.5)}
-  .pdf-btn:disabled{opacity:0.7;cursor:wait;transform:none}
-  .pdf-btn .icon{font-size:16px}
-  @media print{.pdf-btn,nav{display:none !important}}
-  .pdf-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:999;display:none;align-items:center;justify-content:center;color:var(--light);font-family:var(--display);font-weight:700;font-size:20px;text-align:center;padding:40px}
-  .pdf-overlay.show{display:flex}
-  .pdf-overlay .spinner{display:block;width:48px;height:48px;border:4px solid rgba(220,255,0,0.2);border-top-color:var(--primary);border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 20px}
-  @keyframes spin{to{transform:rotate(360deg)}}
+  @media print{nav{display:none !important}}
   footer a{color:var(--primary);text-decoration:none}
   footer .row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px}
 
@@ -1223,19 +1203,6 @@
   </div>
 </footer>
 
-<!-- PDF EXPORT BUTTON & OVERLAY -->
-<button id="export-pdf-btn" class="pdf-btn" type="button" title="Exportar brandbook como PDF">
-  <span class="icon">⬇</span>
-  <span class="label-text">Exportar PDF</span>
-</button>
-<div id="pdf-overlay" class="pdf-overlay">
-  <div>
-    <div class="spinner"></div>
-    <div id="pdf-status">Gerando PDF…<br><span style="font-family:var(--mono);font-size:13px;color:#aaa;font-weight:400;text-transform:none;letter-spacing:0">Pode levar de 30s a 2min, dependendo do navegador.</span></div>
-  </div>
-</div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <script>
   // ===== TOGGLES DE FUNDO NOS LOGOS =====
   document.querySelectorAll('.bg-toggle button').forEach(btn => {
@@ -1251,69 +1218,6 @@
     });
   });
 
-  // ===== EXPORT PDF =====
-  const btn = document.getElementById('export-pdf-btn');
-  const overlay = document.getElementById('pdf-overlay');
-  const status = document.getElementById('pdf-status');
-  const labelText = btn.querySelector('.label-text');
-
-  btn.addEventListener('click', async function(){
-    btn.disabled = true;
-    labelText.textContent = 'Gerando…';
-    overlay.classList.add('show');
-
-    // Esconder elementos não-imprimíveis
-    const nav = document.querySelector('nav');
-    const navOriginal = nav ? nav.style.display : '';
-    if (nav) nav.style.display = 'none';
-    btn.style.display = 'none';
-
-    try {
-      // Aguardar fontes carregarem
-      if (document.fonts && document.fonts.ready) {
-        await document.fonts.ready;
-      }
-
-      const opt = {
-        margin: 0,
-        filename: 'brandbook-fred-parreira.pdf',
-        image: { type: 'jpeg', quality: 0.96 },
-        html2canvas: {
-          scale: 1.4,
-          useCORS: true,
-          allowTaint: true,
-          logging: false,
-          letterRendering: true,
-          backgroundColor: '#ffffff',
-          scrollY: 0,
-          windowWidth: document.body.scrollWidth
-        },
-        jsPDF: {
-          unit: 'mm',
-          format: 'a3',
-          orientation: 'portrait',
-          compress: true,
-          hotfixes: ['px_scaling']
-        },
-        pagebreak: { mode: ['css', 'legacy'], avoid: ['.mockup', '.logo-card', '.swatch', '.type-block', '.section-header'] }
-      };
-
-      await html2pdf().set(opt).from(document.body).save();
-
-      status.innerHTML = '✅ PDF gerado!';
-      setTimeout(() => overlay.classList.remove('show'), 600);
-    } catch (err) {
-      console.error('Erro ao gerar PDF:', err);
-      status.innerHTML = '❌ Erro ao gerar PDF.<br><span style="font-family:var(--mono);font-size:13px;color:#aaa;font-weight:400;text-transform:none;letter-spacing:0">Veja o console (F12) e me avise.</span>';
-      setTimeout(() => overlay.classList.remove('show'), 3000);
-    } finally {
-      if (nav) nav.style.display = navOriginal;
-      btn.style.display = '';
-      btn.disabled = false;
-      labelText.textContent = 'Exportar PDF';
-      status.innerHTML = '<div class="spinner"></div>Gerando PDF…<br><span style="font-family:var(--mono);font-size:13px;color:#aaa;font-weight:400;text-transform:none;letter-spacing:0">Pode levar de 30s a 2min.</span>';
-    }
-  });
 </script>
 
 </body>
