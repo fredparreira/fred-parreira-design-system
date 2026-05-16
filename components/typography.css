@@ -1,0 +1,154 @@
+/* =====================================================================
+   Typography Components · Fred Parreira Design System
+
+   Classes utilitarias de tipografia. Sao baseadas na hierarquia
+   canonica da marca: Exo 2 Black/Bold para display, Brix para corpo.
+
+   Uso:
+     <h1 class="fp-display-xl">Titulo grande</h1>
+     <p class="fp-body">Texto normal</p>
+===================================================================== */
+
+/* DISPLAY · Exo 2 ----------------------------------------------------- */
+
+.fp-display-xxl {
+  font-family: var(--fp-font-display);
+  font-weight: var(--fp-weight-black);
+  font-size: clamp(64px, 12vw, 180px);
+  line-height: 0.92;
+  letter-spacing: -2px;
+}
+
+.fp-display-xl {
+  font-family: var(--fp-font-display);
+  font-weight: var(--fp-weight-black);
+  font-size: clamp(48px, 8vw, 96px);
+  line-height: 0.95;
+  letter-spacing: -2px;
+}
+
+.fp-display-lg {
+  font-family: var(--fp-font-display);
+  font-weight: var(--fp-weight-black);
+  font-size: clamp(40px, 6vw, 72px);
+  line-height: 1;
+  letter-spacing: -1.5px;
+}
+
+.fp-display-md {
+  font-family: var(--fp-font-display);
+  font-weight: var(--fp-weight-bold);
+  font-size: clamp(28px, 4vw, 48px);
+  line-height: 1.05;
+  letter-spacing: -0.5px;
+}
+
+.fp-display-sm {
+  font-family: var(--fp-font-display);
+  font-weight: var(--fp-weight-bold);
+  font-size: clamp(20px, 2.5vw, 28px);
+  line-height: 1.1;
+  letter-spacing: -0.3px;
+}
+
+/* BODY · Brix (com fallback Inter) ----------------------------------- */
+
+.fp-body-lg {
+  font-family: var(--fp-font-body);
+  font-weight: var(--fp-weight-regular);
+  font-size: 22px;
+  line-height: 1.5;
+}
+
+.fp-body {
+  font-family: var(--fp-font-body);
+  font-weight: var(--fp-weight-regular);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.fp-body-sm {
+  font-family: var(--fp-font-body);
+  font-weight: var(--fp-weight-light);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.fp-caption {
+  font-family: var(--fp-font-body);
+  font-weight: var(--fp-weight-light);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--fp-gray);
+}
+
+/* MONO · Courier ----------------------------------------------------- */
+
+.fp-mono {
+  font-family: var(--fp-font-mono);
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--fp-gray);
+}
+
+.fp-mono-sm {
+  font-family: var(--fp-font-mono);
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--fp-gray);
+}
+
+/* QUOTE · Exo 2 Bold italic ------------------------------------------ */
+
+.fp-quote {
+  font-family: var(--fp-font-display);
+  font-weight: var(--fp-weight-bold);
+  font-style: italic;
+  font-size: 24px;
+  line-height: 1.2;
+}
+
+.fp-quote-lg {
+  font-family: var(--fp-font-display);
+  font-weight: var(--fp-weight-bold);
+  font-style: italic;
+  font-size: 36px;
+  line-height: 1.15;
+}
+
+/* NUMERO-GIGANTE · datapoint hero ------------------------------------ */
+
+.fp-bignumber {
+  font-family: var(--fp-font-display);
+  font-weight: var(--fp-weight-black);
+  font-size: 140px;
+  line-height: 0.85;
+  color: var(--fp-primary);
+  text-shadow: -1px -1px 0 var(--fp-dark), 1px -1px 0 var(--fp-dark), -1px 1px 0 var(--fp-dark), 1px 1px 0 var(--fp-dark);
+  letter-spacing: -4px;
+}
+
+/* UTILITARIOS -------------------------------------------------------- */
+
+.fp-highlight {
+  background: var(--fp-primary);
+  color: var(--fp-dark);
+  padding: 0 6px;
+  border-radius: var(--fp-radius-sm);
+  font-style: normal;
+}
+
+.fp-highlight-dark {
+  background: var(--fp-dark);
+  color: var(--fp-primary);
+  padding: 0 6px;
+  border-radius: var(--fp-radius-sm);
+  font-style: normal;
+}
+
+.fp-lime { color: var(--fp-primary); }
+.fp-dark-text { color: var(--fp-dark); }
+.fp-light-text { color: var(--fp-light); }
+.fp-gray-text { color: var(--fp-gray); }

@@ -1,0 +1,158 @@
+/* =====================================================================
+   Buttons · Fred Parreira Design System
+
+   Variantes:
+     .fp-btn-cta       → CTA principal, fundo lime, sombra preta (boldest)
+     .fp-btn-primary   → fundo lime, sem sombra
+     .fp-btn-dark      → fundo preto, texto lime
+     .fp-btn-outline   → outline, sem fundo
+     .fp-btn-ghost     → texto puro com underline lime
+
+   Uso:
+     <button class="fp-btn-cta">BORA COMECAR?</button>
+===================================================================== */
+
+.fp-btn {
+  font-family: var(--fp-font-display);
+  font-weight: var(--fp-weight-bold);
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  padding: 14px 28px;
+  border: none;
+  border-radius: var(--fp-radius-md);
+  cursor: pointer;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.fp-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* CTA · destaque maximo (BORA COMECAR?) ----------------------------- */
+.fp-btn-cta {
+  composes: fp-btn;
+  font-family: var(--fp-font-display);
+  font-weight: var(--fp-weight-black);
+  font-size: 18px;
+  letter-spacing: 0.5px;
+  padding: 14px 28px;
+  background: var(--fp-primary);
+  color: var(--fp-dark);
+  border: none;
+  border-radius: var(--fp-radius-md);
+  cursor: pointer;
+  text-transform: uppercase;
+  box-shadow: 4px 4px 0 var(--fp-dark);
+  text-decoration: none;
+  display: inline-block;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.fp-btn-cta:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--fp-dark);
+}
+
+/* PRIMARY · uso comum (fundo lime) ---------------------------------- */
+.fp-btn-primary {
+  font-family: var(--fp-font-display);
+  font-weight: var(--fp-weight-bold);
+  font-size: 14px;
+  letter-spacing: 0.3px;
+  padding: 12px 24px;
+  background: var(--fp-primary);
+  color: var(--fp-dark);
+  border: none;
+  border-radius: var(--fp-radius-md);
+  cursor: pointer;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.15s;
+}
+
+.fp-btn-primary:hover {
+  background: var(--fp-primary-light);
+}
+
+/* DARK · fundo preto, texto lime ------------------------------------ */
+.fp-btn-dark {
+  font-family: var(--fp-font-display);
+  font-weight: var(--fp-weight-bold);
+  font-size: 14px;
+  letter-spacing: 0.3px;
+  padding: 12px 24px;
+  background: var(--fp-dark);
+  color: var(--fp-primary);
+  border: 1px solid var(--fp-dark);
+  border-radius: var(--fp-radius-md);
+  cursor: pointer;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.15s;
+}
+
+.fp-btn-dark:hover {
+  background: var(--fp-gray);
+}
+
+/* OUTLINE · so contorno --------------------------------------------- */
+.fp-btn-outline {
+  font-family: var(--fp-font-display);
+  font-weight: var(--fp-weight-bold);
+  font-size: 14px;
+  letter-spacing: 0.3px;
+  padding: 12px 24px;
+  background: transparent;
+  color: var(--fp-dark);
+  border: 2px solid var(--fp-dark);
+  border-radius: var(--fp-radius-md);
+  cursor: pointer;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.15s, color 0.15s;
+}
+
+.fp-btn-outline:hover {
+  background: var(--fp-dark);
+  color: var(--fp-primary);
+}
+
+/* GHOST · texto puro com sublinhado lime ---------------------------- */
+.fp-btn-ghost {
+  font-family: var(--fp-font-display);
+  font-weight: var(--fp-weight-bold);
+  font-size: 14px;
+  letter-spacing: 0.3px;
+  padding: 8px 0;
+  background: transparent;
+  color: var(--fp-dark);
+  border: none;
+  border-bottom: 2px solid var(--fp-primary);
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: border-color 0.15s;
+}
+
+.fp-btn-ghost:hover {
+  border-bottom-color: var(--fp-dark);
+}
+
+/* TAMANHOS ----------------------------------------------------------- */
+.fp-btn-sm {
+  padding: 8px 16px;
+  font-size: 12px;
+}
+
+.fp-btn-lg {
+  padding: 18px 36px;
+  font-size: 20px;
+}

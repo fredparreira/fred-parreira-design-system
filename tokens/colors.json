@@ -1,0 +1,89 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "color": {
+    "primary": {
+      "lime": {
+        "$value": "#DCFF00",
+        "$type": "color",
+        "$description": "Eletric Lime - cor primaria da marca. CTAs, numeros-gigantes, pontos de tensao visual maxima.",
+        "rgb": [220, 255, 0]
+      },
+      "lime-light": {
+        "$value": "#E8FF4D",
+        "$type": "color",
+        "$description": "Variacao mais clara do lime - hovers, gradientes sutis"
+      },
+      "lime-dark": {
+        "$value": "#B8D600",
+        "$type": "color",
+        "$description": "Variacao mais escura do lime - estados pressed, sombras"
+      }
+    },
+    "neutral": {
+      "black": {
+        "$value": "#000000",
+        "$type": "color",
+        "$description": "Preto puro - fundo premium, texto sobre fundo claro"
+      },
+      "white": {
+        "$value": "#FFFFFF",
+        "$type": "color",
+        "$description": "Branco puro - fundo principal didatico, texto sobre fundo escuro"
+      },
+      "gray": {
+        "$value": "#595959",
+        "$type": "color",
+        "$description": "Cinza medio - texto secundario, divisores"
+      },
+      "gray-light": {
+        "$value": "#F4F4F4",
+        "$type": "color",
+        "$description": "Cinza claro - fundos sutis, areas de respiro alternativas"
+      },
+      "warm-light": {
+        "$value": "#E7DCC5",
+        "$type": "color",
+        "$description": "Off-white quente - alternativa suave ao branco para cases humanizados"
+      }
+    },
+    "accent": {
+      "tech-blue": {
+        "$value": "#11BBD4",
+        "$type": "color",
+        "$description": "Azul-tech - dados informativos, links secundarios"
+      },
+      "navy": {
+        "$value": "#0F3D63",
+        "$type": "color",
+        "$description": "Azul-marinho - autoridade, fundos premium alternativos"
+      },
+      "neon-green": {
+        "$value": "#00FF84",
+        "$type": "color",
+        "$description": "Verde-fluor - dados positivos, sucesso, crescimento"
+      },
+      "magenta": {
+        "$value": "#FF00E0",
+        "$type": "color",
+        "$description": "Magenta-fluor - alertas pontuais (uso muito restrito)"
+      },
+      "electric-blue": {
+        "$value": "#005CFF",
+        "$type": "color",
+        "$description": "Azul-eletrico - links, CTAs alternativos"
+      }
+    }
+  },
+  "proportionRule": "60% neutros + 30% lime + 10% complementares",
+  "contrastRules": {
+    "approved": [
+      { "combination": "white on black", "ratio": "21:1" },
+      { "combination": "black on lime", "ratio": "16.8:1" },
+      { "combination": "black on white", "ratio": "21:1" }
+    ],
+    "forbidden": [
+      { "combination": "lime on white body text", "ratio": "1.3:1", "exception": "Apenas em destaques 40pt+ Bold/Black" },
+      { "combination": "white on lime", "ratio": "1.2:1" }
+    ]
+  }
+}

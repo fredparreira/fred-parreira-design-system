@@ -1,0 +1,42 @@
+{
+  "name": "fred-parreira-design-system",
+  "version": "1.0.0",
+  "description": "Design System oficial da marca pessoal Fred Parreira. Tokens, componentes CSS, assets visuais e brandbook.",
+  "keywords": [
+    "design-system",
+    "brand",
+    "design-tokens",
+    "css",
+    "fred-parreira"
+  ],
+  "author": {
+    "name": "Fred Parreira",
+    "email": "parreira.frederico@gmail.com",
+    "url": "https://linkedin.com/in/parreirafrederico"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/fredparreira/fred-parreira-design-system#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fredparreira/fred-parreira-design-system.git"
+  },
+  "bugs": {
+    "url": "https://github.com/fredparreira/fred-parreira-design-system/issues"
+  },
+  "main": "components/all.css",
+  "style": "components/all.css",
+  "files": [
+    "tokens",
+    "components",
+    "assets",
+    "docs",
+    "examples",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "preview": "echo 'Abra docs/index.html no navegador'",
+    "validate": "echo 'Sem validacao automatica ainda'"
+  }
+}

@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brandbook · Fred Parreira</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,400;0,500;0,700;0,900;1,500;1,700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --primary:#DCFF00;
+    --primary-light:#E8FF4D;
+    --primary-dark:#B8D600;
+    --dark:#000000;
+    --light:#FFFFFF;
+    --gray:#595959;
+    --gray-light:#F4F4F4;
+    --warm-light:#E7DCC5;
+    --acc-1:#11BBD4;
+    --acc-2:#0F3D63;
+    --acc-3:#00FF84;
+    --acc-4:#E7DCC5;
+    --acc-5:#FF00E0;
+    --acc-6:#005CFF;
+    --display:'Exo 2', system-ui, sans-serif;
+    --body:'Inter', system-ui, sans-serif;
+    --mono:'JetBrains Mono', 'Courier New', monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--body);color:var(--dark);background:var(--light);line-height:1.5;font-weight:400}
+
+  /* NAV */
+  nav{
+    position:sticky;top:0;z-index:100;
+    background:var(--dark);color:var(--light);
+    padding:14px 32px;
+    display:flex;align-items:center;gap:24px;
+    border-bottom:3px solid var(--primary);
+    overflow-x:auto;white-space:nowrap;
+  }
+  nav .brand{font-family:var(--display);font-weight:700;font-size:18px;letter-spacing:0.5px}
+  nav .brand .lime{color:var(--primary)}
+  nav a{color:var(--light);text-decoration:none;font-size:13px;font-weight:500;padding:6px 0;border-bottom:2px solid transparent;transition:border-color .15s,color .15s}
+  nav a:hover{color:var(--primary);border-color:var(--primary)}
+
+  /* HERO */
+  .hero{
+    min-height:90vh;
+    background:var(--dark);color:var(--light);
+    display:flex;flex-direction:column;justify-content:center;
+    padding:80px 8vw;
+    position:relative;overflow:hidden;
+  }
+  .hero::before{
+    content:'';position:absolute;inset:0;
+    background-image:
+      linear-gradient(135deg,transparent 49.5%,var(--primary) 49.5%,var(--primary) 50.5%,transparent 50.5%);
+    background-size:40px 40px;
+    opacity:0.04;pointer-events:none;
+  }
+  .hero .eyebrow{font-family:var(--display);font-weight:500;font-size:14px;letter-spacing:4px;text-transform:uppercase;color:var(--primary);margin-bottom:24px}
+  .hero h1{font-family:var(--display);font-weight:900;font-size:clamp(64px,12vw,180px);line-height:0.92;letter-spacing:-2px;margin-bottom:32px}
+  .hero h1 .lime{color:var(--primary)}
+  .hero .tagline{font-family:var(--display);font-weight:500;font-size:clamp(18px,2.4vw,28px);max-width:720px;color:#bbb;margin-bottom:48px}
+  .hero .meta{display:flex;gap:48px;flex-wrap:wrap;font-family:var(--mono);font-size:12px;color:#888;letter-spacing:1px;text-transform:uppercase}
+  .hero .meta div span{display:block;color:var(--primary);font-size:11px;margin-bottom:4px}
+  .hero .scroll{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:11px;color:#666;letter-spacing:2px;text-transform:uppercase}
+  .hero .scroll::after{content:'';display:block;width:1px;height:32px;background:#444;margin:8px auto 0}
+
+  /* SECTIONS */
+  section{padding:96px 8vw}
+  section.dark{background:var(--dark);color:var(--light)}
+  section.lime{background:var(--primary);color:var(--dark)}
+  section.warm{background:var(--warm-light);color:var(--dark)}
+  .section-header{margin-bottom:64px;max-width:900px}
+  .section-header .num{font-family:var(--mono);font-size:13px;letter-spacing:2px;color:var(--gray);margin-bottom:12px;text-transform:uppercase}
+  section.dark .section-header .num{color:#888}
+  section.lime .section-header .num{color:var(--dark);opacity:0.6}
+  .section-header h2{font-family:var(--display);font-weight:900;font-size:clamp(40px,6vw,72px);line-height:1;letter-spacing:-1.5px;margin-bottom:20px}
+  .section-header p{font-size:18px;color:var(--gray);max-width:680px;line-height:1.55}
+  section.dark .section-header p{color:#bbb}
+  section.lime .section-header p{color:var(--dark);opacity:0.85}
+
+  /* CONCEITO */
+  .keywords{display:flex;flex-wrap:wrap;gap:14px;margin-top:24px}
+  .keywords span{
+    font-family:var(--display);font-weight:600;font-size:18px;
+    padding:10px 22px;border:2px solid var(--dark);border-radius:999px;
+    background:var(--light);color:var(--dark);
+  }
+  section.dark .keywords span{background:transparent;border-color:var(--primary);color:var(--primary)}
+  .quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:48px}
+  .quote{
+    border-left:4px solid var(--primary);
+    padding:24px 28px;
+    background:rgba(220,255,0,0.05);
+  }
+  .quote p{font-family:var(--display);font-style:italic;font-size:22px;font-weight:500;line-height:1.3}
+  section.dark .quote{background:rgba(220,255,0,0.07)}
+
+  /* COLORS */
+  .swatch-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+  .swatch{
+    border-radius:12px;overflow:hidden;
+    box-shadow:0 1px 3px rgba(0,0,0,0.08);
+    border:1px solid #eee;
+    background:var(--light);
+  }
+  .swatch .chip{height:160px;display:flex;align-items:flex-end;padding:20px;font-family:var(--mono);font-size:13px;font-weight:500}
+  .swatch .info{padding:18px 20px}
+  .swatch .info h4{font-family:var(--display);font-weight:700;font-size:18px;margin-bottom:4px}
+  .swatch .info code{font-family:var(--mono);font-size:13px;color:var(--gray);display:block;margin-bottom:10px}
+  .swatch .info p{font-size:13px;color:var(--gray);line-height:1.5}
+  .swatch.dark-text .chip{color:var(--dark)}
+  .swatch.light-text .chip{color:var(--light)}
+
+  .proportion{margin-top:48px;background:var(--light);border:1px solid #eee;border-radius:12px;overflow:hidden;display:flex}
+  section.dark .proportion{background:#0a0a0a;border-color:#222}
+  .proportion .bar{height:60px;display:flex;align-items:center;padding:0 18px;font-family:var(--mono);font-size:12px;font-weight:600}
+  .proportion .b-neutral{background:#222;color:var(--light);flex:6}
+  .proportion .b-primary{background:var(--primary);color:var(--dark);flex:3}
+  .proportion .b-comp{background:var(--acc-1);color:var(--light);flex:1}
+
+  /* TYPOGRAPHY */
+  .type-block{margin-bottom:64px}
+  .type-block .label{font-family:var(--mono);font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--gray);margin-bottom:12px}
+  .type-block h3{font-family:var(--display);font-weight:900;font-size:clamp(32px,5vw,56px);line-height:1;margin-bottom:8px}
+  .type-block .meta{font-family:var(--mono);font-size:13px;color:var(--gray);margin-bottom:24px}
+  .type-sample{padding:32px;border-radius:12px;background:var(--gray-light);margin-bottom:16px}
+  section.dark .type-sample{background:#0a0a0a}
+  .display-xl{font-family:var(--display);font-weight:900;font-size:96px;line-height:0.95;letter-spacing:-2px}
+  .display-l{font-family:var(--display);font-weight:900;font-size:64px;line-height:1;letter-spacing:-1px}
+  .display-m{font-family:var(--display);font-weight:700;font-size:40px;line-height:1.05;letter-spacing:-0.5px}
+  .body-l{font-family:var(--body);font-weight:400;font-size:22px;line-height:1.5}
+  .body-m{font-family:var(--body);font-weight:400;font-size:16px;line-height:1.6}
+  .caption{font-family:var(--body);font-weight:300;font-size:13px;line-height:1.5;color:var(--gray)}
+  .mono-sample{font-family:var(--mono);font-size:14px;color:var(--primary);background:var(--dark);padding:24px;border-radius:8px}
+
+  .hierarchy{background:var(--light);border:1px solid #eee;border-radius:12px;padding:32px;margin-top:24px}
+  section.dark .hierarchy{background:#0a0a0a;border-color:#222}
+  .hierarchy table{width:100%;border-collapse:collapse}
+  .hierarchy td{padding:12px 16px;border-bottom:1px solid #eee;font-size:14px}
+  section.dark .hierarchy td{border-color:#222}
+  .hierarchy td:first-child{font-family:var(--display);font-weight:700;width:40%}
+  .hierarchy td:last-child{font-family:var(--mono);font-size:12px;color:var(--gray);text-align:right}
+  .hierarchy tr:last-child td{border-bottom:none}
+
+  /* LOGOS */
+  .logo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+  .logo-card{
+    border-radius:12px;overflow:hidden;
+    border:1px solid #eee;
+  }
+  section.dark .logo-card{border-color:#222}
+  .logo-card .canvas{aspect-ratio:1;display:flex;align-items:center;justify-content:center;padding:40px}
+  .logo-card .canvas svg{width:60%;height:60%}
+  .logo-card.h .canvas{aspect-ratio:16/7}
+  .logo-card.h .canvas svg{width:75%;height:auto}
+  .logo-card.bg-light .canvas{background:var(--light)}
+  .logo-card.bg-dark .canvas{background:var(--dark)}
+  .logo-card.bg-lime .canvas{background:var(--primary)}
+  .logo-card.bg-grey .canvas{background:#666666}
+  .logo-card .canvas img{display:block;max-height:80%;object-fit:contain}
+
+  /* Background toggles per logo card */
+  .bg-toggle{display:flex;gap:8px;justify-content:center;align-items:center;padding:10px;background:rgba(0,0,0,0.6);border-top:1px solid rgba(255,255,255,0.08)}
+  .bg-toggle .lbl{font-family:var(--mono);font-size:9px;color:#888;letter-spacing:1px;text-transform:uppercase;margin-right:auto}
+  .bg-toggle button{width:18px;height:18px;border-radius:50%;border:2px solid rgba(255,255,255,0.25);cursor:pointer;padding:0;transition:transform .15s,border-color .15s}
+  .bg-toggle button:hover{transform:scale(1.15)}
+  .bg-toggle button.active{border-color:var(--primary);transform:scale(1.2);box-shadow:0 0 0 2px rgba(220,255,0,0.25)}
+  .bg-toggle .bg-w{background:#FFFFFF}
+  .bg-toggle .bg-b{background:#000000}
+  .bg-toggle .bg-g{background:#666666}
+  .bg-toggle .bg-l{background:#DCFF00}
+  .bg-toggle .bg-warm{background:#E7DCC5}
+  .bg-toggle button.best{position:relative}
+  .bg-toggle button.best::after{content:'★';position:absolute;top:-9px;right:-9px;font-size:9px;background:var(--primary);color:var(--dark);width:14px;height:14px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;box-shadow:0 0 0 2px rgba(0,0,0,0.85)}
+  .bg-best-label{padding:9px 14px;background:rgba(220,255,0,0.08);border-top:1px solid rgba(220,255,0,0.15);font-family:var(--mono);font-size:10px;color:#bbb;letter-spacing:0.3px;text-align:center;line-height:1.45}
+  .bg-best-label strong{color:var(--primary);font-weight:900;letter-spacing:1.5px}
+  .bg-best-label .also{color:#888;font-size:9px;display:block;margin-top:2px;letter-spacing:0.5px}
+  .logo-card .footer{padding:14px 18px;font-family:var(--mono);font-size:12px;display:flex;justify-content:space-between;color:var(--gray);background:var(--gray-light)}
+  section.dark .logo-card .footer{background:#0a0a0a;color:#888}
+  .logo-card .footer code{color:var(--dark)}
+  section.dark .logo-card .footer code{color:#bbb}
+  .logo-rules{margin-top:48px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  @media(max-width:720px){.logo-rules{grid-template-columns:1fr}}
+  .rule-card{padding:24px;border-radius:12px;border:1px solid #eee}
+  section.dark .rule-card{border-color:#222}
+  .rule-card.do{border-left:4px solid var(--acc-3)}
+  .rule-card.dont{border-left:4px solid var(--acc-5)}
+  .rule-card h4{font-family:var(--display);font-weight:700;font-size:18px;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+  .rule-card ul{list-style:none}
+  .rule-card li{font-size:14px;padding:6px 0;color:var(--gray);line-height:1.5}
+  section.dark .rule-card li{color:#bbb}
+
+  /* APLICAÇÕES */
+  .fp-mark{display:inline-block;height:22px;width:auto;vertical-align:middle}
+  .fp-mark.sm{height:16px}
+  .fp-mark.md{height:32px}
+  .fp-mark.lg{height:56px}
+  .fp-mark.xl{height:96px}
+  .fp-mark.xxl{height:160px}
+  .mockup-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:32px}
+  .mockup-grid.square-grid{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+  .mockup-grid.deck-grid{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+  .apps-line{margin-top:80px}
+  .apps-line h3{font-family:var(--display);font-weight:900;font-size:36px;letter-spacing:-0.5px;margin-bottom:8px;line-height:1}
+  .apps-line .desc{color:var(--gray);max-width:600px;margin-bottom:28px;font-size:15px}
+  .mockup{
+    aspect-ratio:1080/1350;
+    border-radius:12px;overflow:hidden;
+    padding:48px 44px;
+    display:flex;flex-direction:column;justify-content:space-between;
+    position:relative;
+    box-shadow:0 4px 16px rgba(0,0,0,0.08);
+  }
+  .mockup.square{aspect-ratio:1;padding:36px 32px}
+  .mockup.deck{aspect-ratio:16/9;padding:28px 36px}
+  .mockup .label{position:absolute;top:14px;left:14px;font-family:var(--mono);font-size:9px;background:rgba(0,0,0,0.6);color:var(--primary);padding:3px 8px;border-radius:4px;letter-spacing:1px;text-transform:uppercase;z-index:5}
+
+  .m-capa{background:var(--dark);color:var(--light)}
+  .m-capa .top .num{font-family:var(--mono);font-size:11px;color:var(--primary);letter-spacing:2px;text-transform:uppercase}
+  .m-capa .title{font-family:var(--display);font-weight:900;font-size:38px;line-height:1;letter-spacing:-0.5px}
+  .m-capa .title .lime{color:var(--primary)}
+  .m-capa .footer{font-family:var(--mono);font-size:10px;color:#666;letter-spacing:1px;text-transform:uppercase;display:flex;justify-content:space-between;align-items:center}
+
+  .m-numero{background:var(--light);color:var(--dark);text-align:left}
+  .m-numero .num{font-family:var(--display);font-weight:900;font-size:140px;line-height:0.85;color:var(--primary);text-shadow:-1px -1px 0 var(--dark),1px -1px 0 var(--dark),-1px 1px 0 var(--dark),1px 1px 0 var(--dark);letter-spacing:-4px}
+  .m-numero .label{font-family:var(--display);font-weight:700;font-size:18px;line-height:1.3;margin-top:12px;position:static}
+  .m-numero .footer{font-family:var(--mono);font-size:10px;color:var(--gray);letter-spacing:1px;text-transform:uppercase;display:flex;justify-content:space-between;align-items:center}
+
+  .m-manifesto{background:var(--primary);color:var(--dark)}
+  .m-manifesto .quote{font-family:var(--display);font-weight:900;font-size:36px;line-height:1.05;letter-spacing:-0.5px;border:none;padding:0;background:transparent}
+  .m-manifesto .quote em{font-style:normal;background:var(--dark);color:var(--primary);padding:2px 8px;border-radius:4px}
+  .m-manifesto .footer{font-family:var(--mono);font-size:10px;letter-spacing:1px;text-transform:uppercase;display:flex;justify-content:space-between;align-items:center;opacity:0.7}
+
+  .m-cta{background:var(--dark);color:var(--light);text-align:center;justify-content:center;align-items:center}
+  .m-cta .pre{font-family:var(--mono);font-size:12px;color:#888;letter-spacing:2px;text-transform:uppercase;margin-bottom:16px}
+  .m-cta .big{font-family:var(--display);font-weight:900;font-size:54px;line-height:1;color:var(--primary);letter-spacing:-1px;margin-bottom:24px}
+  .m-cta .sub{font-family:var(--body);font-size:14px;color:#bbb}
+
+  /* LinkedIn applications */
+  .m-li-banner{background:var(--dark);color:var(--light);padding:24px}
+  .m-li-banner .pattern{position:absolute;inset:0;background-image:radial-gradient(circle at 12% 50%, rgba(220,255,0,0.1) 0, transparent 50%),repeating-linear-gradient(135deg, rgba(220,255,0,0.05) 0 1px, transparent 1px 8px);pointer-events:none}
+  .m-li-banner .lockup{display:flex;align-items:center;gap:14px;justify-content:center;height:100%;flex-direction:column}
+  .m-li-banner .lockup .row{display:flex;align-items:center;gap:14px}
+  .m-li-banner .fp-block{width:54px;height:64px;background:var(--primary);border-radius:4px;display:flex;align-items:center;justify-content:center}
+  .m-li-banner .fp-block svg{width:80%;height:80%}
+  .m-li-banner .name{font-family:var(--display);font-weight:900;font-size:24px;line-height:1}
+  .m-li-banner .tag{font-family:var(--body);font-size:11px;color:#bbb;letter-spacing:1px;margin-top:8px}
+
+  .m-li-quote{background:var(--light);color:var(--dark);justify-content:space-between;text-align:left}
+  .m-li-quote .top{font-family:var(--mono);font-size:10px;color:var(--gray);letter-spacing:2px;text-transform:uppercase}
+  .m-li-quote .quote{font-family:var(--display);font-weight:900;font-size:30px;line-height:1.05;letter-spacing:-0.5px}
+  .m-li-quote .quote em{font-style:normal;background:var(--primary);padding:0 6px;border-radius:3px}
+  .m-li-quote .footer{font-family:var(--mono);font-size:9px;color:var(--gray);display:flex;justify-content:space-between;letter-spacing:1px;text-transform:uppercase}
+
+  .m-li-num{background:var(--dark);color:var(--light);justify-content:center;align-items:center;text-align:center}
+  .m-li-num .big{font-family:var(--display);font-weight:900;font-size:90px;line-height:1;color:var(--primary);letter-spacing:-2px}
+  .m-li-num .lbl{font-family:var(--display);font-weight:700;font-size:14px;line-height:1.3;margin-top:8px;max-width:80%}
+  .m-li-num .src{font-family:var(--mono);font-size:9px;color:#888;letter-spacing:1px;margin-top:14px}
+
+  .m-li-hook{background:var(--primary);color:var(--dark);justify-content:space-between;text-align:left}
+  .m-li-hook .top{font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;opacity:0.7}
+  .m-li-hook .hook{font-family:var(--display);font-weight:900;font-size:26px;line-height:1.1;letter-spacing:-0.3px}
+  .m-li-hook .footer{font-family:var(--mono);font-size:9px;letter-spacing:1px;text-transform:uppercase;opacity:0.7;display:flex;justify-content:space-between}
+
+  .m-li-marca{background:var(--dark);color:var(--light);justify-content:center;align-items:center;text-align:center}
+
+  /* Apresentações (16:9 deck) */
+  .m-deck-cover{background:var(--dark);color:var(--light);padding:32px 40px;justify-content:space-between}
+  .m-deck-cover .top{display:flex;align-items:center;gap:12px}
+  .m-deck-cover .fp-mini{width:36px;height:48px;background-image:url('logos/marca-fp-lemon.png');background-size:contain;background-repeat:no-repeat;background-position:center}
+  .m-deck-cover .name-stack{font-family:var(--display);font-weight:900;font-size:14px;line-height:1}
+  .m-deck-cover .name-stack .sub{font-family:var(--body);font-weight:400;font-size:9px;color:#888;letter-spacing:1px}
+  .m-deck-cover .title{font-family:var(--display);font-weight:900;font-size:32px;line-height:1.05;letter-spacing:-0.5px}
+  .m-deck-cover .title .lime{color:var(--primary)}
+  .m-deck-cover .footer{font-family:var(--mono);font-size:9px;color:#666;letter-spacing:1px;text-transform:uppercase;display:flex;justify-content:space-between}
+
+  .m-deck-quem{background:var(--light);color:var(--dark);padding:28px 36px;justify-content:space-between}
+  .m-deck-quem .top{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:9px;color:var(--gray);letter-spacing:2px;text-transform:uppercase}
+  .m-deck-quem .top::before{content:'';width:24px;height:2px;background:var(--primary)}
+  .m-deck-quem h4{font-family:var(--display);font-weight:900;font-size:22px;line-height:1.05;margin-top:6px}
+  .m-deck-quem .pillars{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+  .m-deck-quem .pillars span{font-family:var(--body);font-size:10px;background:var(--dark);color:var(--light);padding:4px 8px;border-radius:3px}
+
+  .m-deck-acordos{background:var(--dark);color:var(--light);padding:28px 36px;justify-content:space-between}
+  .m-deck-acordos .badge{display:inline-block;background:var(--primary);color:var(--dark);font-family:var(--mono);font-size:9px;font-weight:600;padding:3px 8px;border-radius:3px;letter-spacing:2px;text-transform:uppercase}
+  .m-deck-acordos h4{font-family:var(--display);font-weight:900;font-size:24px;margin-top:8px}
+  .m-deck-acordos ul{list-style:none;font-family:var(--body);font-size:11px;color:#ddd;line-height:1.6;margin-top:6px}
+  .m-deck-acordos ul li::before{content:'→ ';color:var(--primary);font-weight:600}
+
+  .m-deck-fw{background:var(--light);color:var(--dark);padding:24px 32px;justify-content:space-between}
+  .m-deck-fw .top{font-family:var(--mono);font-size:9px;color:var(--gray);letter-spacing:2px;text-transform:uppercase}
+  .m-deck-fw h4{font-family:var(--display);font-weight:900;font-size:18px;margin:6px 0}
+  .m-deck-fw .pipeline{display:flex;align-items:center;gap:6px;flex:1;margin:8px 0}
+  .m-deck-fw .step{flex:1;background:#f0f0f0;color:var(--dark);font-family:var(--display);font-weight:700;font-size:9px;padding:8px 4px;text-align:center;border-radius:3px;border:1px solid #ddd}
+  .m-deck-fw .step.active{background:var(--primary);border-color:var(--primary)}
+  .m-deck-fw .arrow{color:var(--gray);font-size:10px}
+  .m-deck-fw .footer{font-family:var(--mono);font-size:9px;color:var(--gray);letter-spacing:1px;text-transform:uppercase;display:flex;justify-content:space-between}
+
+  /* CTAs E EXPRESSÕES */
+  .cta-grid{display:flex;flex-wrap:wrap;gap:14px;margin-top:8px}
+  .cta-pill{
+    background:var(--primary);color:var(--dark);
+    font-family:var(--display);font-weight:900;font-size:18px;letter-spacing:0.5px;
+    padding:14px 28px;border-radius:6px;text-transform:uppercase;
+    box-shadow:4px 4px 0 var(--dark);
+  }
+  section.dark .cta-pill{box-shadow:4px 4px 0 var(--primary-dark)}
+
+  /* CHECKLIST */
+  .checklist{
+    background:var(--light);border:1px solid #eee;border-radius:12px;padding:40px;
+  }
+  section.dark .checklist{background:#0a0a0a;border-color:#222}
+  .checklist ol{counter-reset:c;list-style:none}
+  .checklist li{
+    counter-increment:c;
+    padding:14px 0 14px 56px;position:relative;
+    font-size:16px;line-height:1.5;
+    border-bottom:1px solid #eee;
+  }
+  section.dark .checklist li{border-color:#222}
+  .checklist li:last-child{border-bottom:none}
+  .checklist li::before{
+    content:counter(c,decimal-leading-zero);
+    position:absolute;left:0;top:14px;
+    font-family:var(--mono);font-size:14px;font-weight:600;
+    color:var(--primary);
+    background:var(--dark);
+    padding:4px 10px;border-radius:4px;
+  }
+
+  /* FOOTER */
+  footer{background:var(--dark);color:#666;padding:48px 8vw;font-family:var(--mono);font-size:12px;border-top:3px solid var(--primary)}
+
+  /* PDF EXPORT BUTTON */
+  .pdf-btn{
+    position:fixed;bottom:24px;right:24px;
+    background:var(--primary);color:var(--dark);
+    font-family:var(--display);font-weight:900;font-size:13px;
+    text-transform:uppercase;letter-spacing:0.5px;
+    padding:14px 22px;border:none;border-radius:8px;
+    cursor:pointer;
+    box-shadow:0 6px 24px rgba(0,0,0,0.3),0 0 0 2px rgba(0,0,0,0.4);
+    z-index:1000;
+    display:flex;align-items:center;gap:8px;
+    transition:transform 0.15s,box-shadow 0.15s;
+  }
+  .pdf-btn:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(0,0,0,0.4),0 0 0 2px rgba(0,0,0,0.5)}
+  .pdf-btn:disabled{opacity:0.7;cursor:wait;transform:none}
+  .pdf-btn .icon{font-size:16px}
+  @media print{.pdf-btn,nav{display:none !important}}
+  .pdf-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:999;display:none;align-items:center;justify-content:center;color:var(--light);font-family:var(--display);font-weight:700;font-size:20px;text-align:center;padding:40px}
+  .pdf-overlay.show{display:flex}
+  .pdf-overlay .spinner{display:block;width:48px;height:48px;border:4px solid rgba(220,255,0,0.2);border-top-color:var(--primary);border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 20px}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  footer a{color:var(--primary);text-decoration:none}
+  footer .row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px}
+
+  @media(max-width:720px){
+    section{padding:64px 6vw}
+    .hero{padding:64px 6vw}
+    nav{padding:12px 16px;gap:14px}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="brand">FP <span class="lime">·</span> brandbook</div>
+  <a href="#conceito">Conceito</a>
+  <a href="#cores">Cores</a>
+  <a href="#tipografia">Tipografia</a>
+  <a href="#logos">Logos</a>
+  <a href="#aplicacoes">Aplicações</a>
+  <a href="#regras">Regras</a>
+  <a href="#checklist">Checklist</a>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="eyebrow">Identidade Visual · v1.0</div>
+  <h1>fred<br><span class="lime">parreira</span></h1>
+  <p class="tagline">"Uma marca que nasce para conectar, culturas, tempos, mundos e propósitos."</p>
+  <div class="meta">
+    <div><span>Skill</span>idvisual-fred-parreira</div>
+    <div><span>Cor primária</span>#DCFF00 · Eletric Lime</div>
+    <div><span>Tipografia</span>Exo 2 · Brix</div>
+    <div><span>Conceito</span>Conectar</div>
+  </div>
+  <div class="scroll">scroll</div>
+</header>
+
+<!-- CONCEITO -->
+<section id="conceito">
+  <div class="section-header">
+    <div class="num">01 · Conceito</div>
+    <h2>Tech-mineira:<br>autoridade leve.</h2>
+    <p>A marca <strong>Fred Parreira</strong> nasce para <strong>conectar</strong>. É uma identidade que une profundidade acadêmica (Mestrado em Inovação) com agilidade de mercado (CEO, mentor, host). Minimalista no visual, energética na cor, provocativa no tom. Jamais corporativa fria, jamais hype superficial.</p>
+  </div>
+  <div class="keywords">
+    <span>Profundidade</span>
+    <span>Conexão</span>
+    <span>Empatia</span>
+    <span>Provoca Diálogo</span>
+    <span>Energia</span>
+    <span>Inovação</span>
+    <span>Estratégia</span>
+    <span>Simplificação</span>
+  </div>
+  <div class="quotes">
+    <div class="quote"><p>"Uma marca que nasce para conectar."</p></div>
+    <div class="quote"><p>"Inovar não é sobre tecnologia. É sobre gente."</p></div>
+    <div class="quote"><p>"Foco. Processo. Fluxo. Progresso. Resiliência. Repetição. Proposta."</p></div>
+  </div>
+</section>
+
+<!-- CORES -->
+<section id="cores" class="dark">
+  <div class="section-header">
+    <div class="num">02 · Cores</div>
+    <h2>Eletric Lime<br>+ Black puro.</h2>
+    <p>A paleta primária resolve 90% das peças. As complementares só entram quando o conteúdo exige distinção (gráficos, infográficos, dados). Minimalismo vence.</p>
+  </div>
+
+  <h3 style="font-family:var(--display);font-weight:700;font-size:24px;margin-bottom:24px;color:#888">Primárias</h3>
+  <div class="swatch-grid">
+    <div class="swatch dark-text">
+      <div class="chip" style="background:#DCFF00">#DCFF00</div>
+      <div class="info" style="background:#0a0a0a;color:var(--light)">
+        <h4>Eletric Lime</h4>
+        <code>--brand-primary · rgb(220,255,0)</code>
+        <p>Cor de destaque, CTAs, números-gigantes, pontos de tensão visual máxima. É a cor que "marca" o Fred.</p>
+      </div>
+    </div>
+    <div class="swatch light-text">
+      <div class="chip" style="background:#000000">#000000</div>
+      <div class="info" style="background:#0a0a0a;color:var(--light)">
+        <h4>Black</h4>
+        <code>--brand-dark · rgb(0,0,0)</code>
+        <p>Fundo principal premium, texto sobre fundo claro, slides de impacto. Preto puro, jamais cinza-escuro.</p>
+      </div>
+    </div>
+    <div class="swatch dark-text">
+      <div class="chip" style="background:#FFFFFF;border-bottom:1px solid #eee">#FFFFFF</div>
+      <div class="info" style="background:#0a0a0a;color:var(--light)">
+        <h4>White</h4>
+        <code>--brand-light · rgb(255,255,255)</code>
+        <p>Fundo claro padrão, texto sobre fundo escuro, respiro visual. Branco puro.</p>
+      </div>
+    </div>
+    <div class="swatch light-text">
+      <div class="chip" style="background:#595959">#595959</div>
+      <div class="info" style="background:#0a0a0a;color:var(--light)">
+        <h4>Gray</h4>
+        <code>--brand-gray · rgb(89,89,89)</code>
+        <p>Texto secundário, legendas, divisores, elementos sutis em fundo claro.</p>
+      </div>
+    </div>
+  </div>
+
+  <h3 style="font-family:var(--display);font-weight:700;font-size:24px;margin:64px 0 24px;color:#888">Complementares</h3>
+  <div class="swatch-grid">
+    <div class="swatch light-text">
+      <div class="chip" style="background:#11BBD4">#11BBD4</div>
+      <div class="info" style="background:#0a0a0a;color:var(--light)">
+        <h4>Tech Blue</h4>
+        <code>--brand-accent-1</code>
+        <p>Dados informativos, links secundários.</p>
+      </div>
+    </div>
+    <div class="swatch light-text">
+      <div class="chip" style="background:#0F3D63">#0F3D63</div>
+      <div class="info" style="background:#0a0a0a;color:var(--light)">
+        <h4>Navy</h4>
+        <code>--brand-accent-2</code>
+        <p>Autoridade, fundos premium alternativos.</p>
+      </div>
+    </div>
+    <div class="swatch dark-text">
+      <div class="chip" style="background:#00FF84">#00FF84</div>
+      <div class="info" style="background:#0a0a0a;color:var(--light)">
+        <h4>Neon Green</h4>
+        <code>--brand-accent-3</code>
+        <p>Dados positivos, sucesso, crescimento.</p>
+      </div>
+    </div>
+    <div class="swatch dark-text">
+      <div class="chip" style="background:#E7DCC5">#E7DCC5</div>
+      <div class="info" style="background:#0a0a0a;color:var(--light)">
+        <h4>Warm Off-White</h4>
+        <code>--brand-accent-4</code>
+        <p>Cases humanizados, fundos suaves alternativos.</p>
+      </div>
+    </div>
+    <div class="swatch dark-text">
+      <div class="chip" style="background:#FF00E0">#FF00E0</div>
+      <div class="info" style="background:#0a0a0a;color:var(--light)">
+        <h4>Magenta Flúor</h4>
+        <code>--brand-accent-5</code>
+        <p>Alertas/destaques pontuais. Uso muito restrito.</p>
+      </div>
+    </div>
+    <div class="swatch light-text">
+      <div class="chip" style="background:#005CFF">#005CFF</div>
+      <div class="info" style="background:#0a0a0a;color:var(--light)">
+        <h4>Electric Blue</h4>
+        <code>--brand-accent-6</code>
+        <p>Links, CTAs alternativos quando o lime não couber.</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:48px">
+    <h3 style="font-family:var(--display);font-weight:700;font-size:18px;margin-bottom:14px;color:#888">Proporção sugerida em peças padrão</h3>
+    <div class="proportion">
+      <div class="bar b-neutral">60% NEUTROS</div>
+      <div class="bar b-primary">30% LIME</div>
+      <div class="bar b-comp">10% COMP</div>
+    </div>
+  </div>
+</section>
+
+<!-- TIPOGRAFIA -->
+<section id="tipografia">
+  <div class="section-header">
+    <div class="num">03 · Tipografia</div>
+    <h2>Exo 2 em display.<br>Brix em corpo.</h2>
+    <p>Sans-serif geométrica moderna (Exo 2, do Google Fonts, gratuita e fácil de aplicar em qualquer canal) para títulos e capas. Sans humanista (Brix) para corpo legível. Mono (Courier New) como decoração tech. Substitui a antiga Anxler do mini-book original com aplicação muito mais consistente entre web, deck, mobile e impressão.</p>
+  </div>
+
+  <div class="type-block">
+    <div class="label">Display · Exo 2</div>
+    <h3>Geométrica. Forte. Provoca.</h3>
+    <div class="meta">Pesos: Black 900 (títulos maiores) · Bold 700 (subtítulos) · uso em capas, headlines, números-gigantes</div>
+    <div class="type-sample">
+      <div class="display-xl">inovar</div>
+      <div class="display-l" style="margin-top:12px">não é sobre tecnologia.</div>
+      <div class="display-m" style="margin-top:12px">É sobre gente.</div>
+    </div>
+  </div>
+
+  <div class="type-block">
+    <div class="label">Corpo · Brix / Inter</div>
+    <h3 style="font-family:var(--body);font-size:32px;font-weight:600;letter-spacing:0">Humana. Legível. Atemporal.</h3>
+    <div class="meta">Pesos: Light 300 · Regular 400 · uso em parágrafos, cases, legendas</div>
+    <div class="type-sample">
+      <p class="body-l">Atuo no ponto onde estratégia de produto, IA generativa e inovação corporativa se cruzam para destravar resultado de negócio.</p>
+      <p class="body-m" style="margin-top:18px">Conecto a visão de board ao roadmap técnico, transformo dados brutos em inteligência de decisão e simplifico jornadas tradicionais em produtos digitais que escalam, geram ROI real e colocam a empatia no centro.</p>
+      <p class="caption" style="margin-top:18px">Legenda em peso light, ideal para rodapés, créditos e contextos secundários.</p>
+    </div>
+  </div>
+
+  <div class="type-block">
+    <div class="label">Mono · Courier New / JetBrains Mono</div>
+    <h3 style="font-family:var(--mono);font-weight:500;font-size:28px;letter-spacing:0">$ tech-decorativa</h3>
+    <div class="meta">Decoração estilo "código" · números de slide · ASCII art</div>
+    <div class="mono-sample">
+&gt; brand.connect("pessoas", "ecossistema")<br>
+&gt; copiloto.criativo = ia.augment(humano)<br>
+&gt; return resultado_real
+    </div>
+  </div>
+
+  <div class="hierarchy">
+    <h3 style="font-family:var(--display);font-weight:700;font-size:20px;margin-bottom:18px">Hierarquia padrão · slide 1080×1350</h3>
+    <table>
+      <tr><td>Título do slide</td><td>Exo 2 Black 900 · 56–72pt</td></tr>
+      <tr><td>Subtítulo</td><td>Exo 2 Bold 700 · 32–40pt</td></tr>
+      <tr><td>Corpo</td><td>Brix Regular · 22–26pt</td></tr>
+      <tr><td>Citação destacada</td><td>Exo 2 Bold itálico · 28–34pt</td></tr>
+      <tr><td>Legenda / rodapé</td><td>Brix Light · 16–18pt</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- LOGOS -->
+<section id="logos" class="dark">
+  <div class="section-header">
+    <div class="num">04 · Logos</div>
+    <h2>FP, sempre.</h2>
+    <p>Marca Fred Parreira em três famílias: símbolo (FP), assinatura (wordmark) e marca completa (lockup). Sete variações cobrem todos os contextos. Use sempre o arquivo original, jamais recrie em código ou outras ferramentas.</p>
+  </div>
+
+  <div style="background:rgba(220,255,0,0.06);border-left:4px solid var(--primary);padding:18px 24px;margin-bottom:32px;font-size:14px;color:#bbb">
+    <strong style="color:var(--primary);font-family:var(--display);font-weight:700">Combinações oficiais (aprovadas):</strong> cada logo abaixo está aplicado sobre o fundo <em>recomendado</em> ★, e os botõezinhos no rodapé mostram apenas as <strong>combinações que funcionam</strong>. Combinações ausentes do toggle são <em>proibidas</em>: jamais usar.
+  </div>
+
+  <h3 style="font-family:var(--display);font-weight:700;font-size:24px;margin-bottom:20px;color:#888">Símbolo · FP</h3>
+  <div class="logo-grid">
+    <div class="logo-card" data-default="b">
+      <div class="canvas" style="background:#000"><img src="logos/marca-fp-lemon.png" alt="FP lemon" style="width:60%;height:auto"></div>
+      <div class="footer"><span>fp lemon</span><code>marca-fp-lemon.png</code></div>
+      <div class="bg-best-label">★ Aplicar sobre <strong>PRETO</strong><span class="also">também combina: branco · cinza</span></div>
+      <div class="bg-toggle"><span class="lbl">testar:</span><button class="bg-b best active" data-bg="#000000" title="Preto · ★ MELHOR"></button><button class="bg-w" data-bg="#FFFFFF" title="Branco · também combina"></button><button class="bg-g" data-bg="#666666" title="Cinza · também combina"></button></div>
+    </div>
+    <div class="logo-card" data-default="w">
+      <div class="canvas" style="background:#FFF"><img src="logos/marca-fp-preto.png" alt="FP preto" style="width:60%;height:auto"></div>
+      <div class="footer"><span>fp preto</span><code>marca-fp-preto.png</code></div>
+      <div class="bg-best-label">★ Aplicar sobre <strong>BRANCO</strong><span class="also">também combina: lemon · off-white</span></div>
+      <div class="bg-toggle"><span class="lbl">testar:</span><button class="bg-w best active" data-bg="#FFFFFF" title="Branco · ★ MELHOR"></button><button class="bg-l" data-bg="#DCFF00" title="Lemon · também combina"></button><button class="bg-warm" data-bg="#E7DCC5" title="Off-white · também combina"></button></div>
+    </div>
+  </div>
+
+  <h3 style="font-family:var(--display);font-weight:700;font-size:24px;margin:48px 0 20px;color:#888">Assinatura · Wordmark</h3>
+  <div class="logo-grid">
+    <div class="logo-card">
+      <div class="canvas" style="background:#000"><img src="logos/assinatura-lemon.png" alt="Assinatura lemon" style="width:75%;height:auto"></div>
+      <div class="footer"><span>wordmark lemon</span><code>assinatura-lemon.png</code></div>
+      <div class="bg-best-label">★ Aplicar sobre <strong>PRETO</strong><span class="also">também combina: cinza</span></div>
+      <div class="bg-toggle"><span class="lbl">testar:</span><button class="bg-b best active" data-bg="#000000" title="Preto · ★ MELHOR"></button><button class="bg-g" data-bg="#666666" title="Cinza · também combina"></button></div>
+    </div>
+    <div class="logo-card">
+      <div class="canvas" style="background:#FFF"><img src="logos/assinatura-preta.png" alt="Assinatura preta" style="width:75%;height:auto"></div>
+      <div class="footer"><span>wordmark preta</span><code>assinatura-preta.png</code></div>
+      <div class="bg-best-label">★ Aplicar sobre <strong>BRANCO</strong><span class="also">também combina: lemon (muito bom) · off-white</span></div>
+      <div class="bg-toggle"><span class="lbl">testar:</span><button class="bg-w best active" data-bg="#FFFFFF" title="Branco · ★ MELHOR"></button><button class="bg-l" data-bg="#DCFF00" title="Lemon · muito bom"></button><button class="bg-warm" data-bg="#E7DCC5" title="Off-white · também combina"></button></div>
+    </div>
+  </div>
+
+  <h3 style="font-family:var(--display);font-weight:700;font-size:24px;margin:48px 0 20px;color:#888">Marca Completa · Lockup horizontal</h3>
+  <div class="logo-grid" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr))">
+    <div class="logo-card h">
+      <div class="canvas" style="background:#000"><img src="logos/marca-completa-lemon-branca.png" alt="Marca completa lemon e branca em fundo preto" style="width:90%;height:auto"></div>
+      <div class="footer"><span>lemon + branca</span><code>marca-completa-lemon-branca.png</code></div>
+      <div class="bg-best-label">★ Aplicar sobre <strong>PRETO</strong><span class="also">também combina: cinza</span></div>
+      <div class="bg-toggle"><span class="lbl">testar:</span><button class="bg-b best active" data-bg="#000000" title="Preto · ★ MELHOR"></button><button class="bg-g" data-bg="#666666" title="Cinza · também combina"></button></div>
+    </div>
+    <div class="logo-card h">
+      <div class="canvas" style="background:#FFF"><img src="logos/marca-completa-lemon-preta.png" alt="Marca completa lemon e preta em fundo branco" style="width:90%;height:auto"></div>
+      <div class="footer"><span>lemon + preta</span><code>marca-completa-lemon-preta.png</code></div>
+      <div class="bg-best-label">★ Aplicar sobre <strong>BRANCO</strong><span class="also">também combina: off-white</span></div>
+      <div class="bg-toggle"><span class="lbl">testar:</span><button class="bg-w best active" data-bg="#FFFFFF" title="Branco · ★ MELHOR"></button><button class="bg-warm" data-bg="#E7DCC5" title="Off-white · também combina"></button></div>
+    </div>
+    <div class="logo-card h">
+      <div class="canvas" style="background:#FFF"><img src="logos/marca-completa-preta-lemon.png" alt="Marca completa preta e lemon em fundo branco" style="width:90%;height:auto"></div>
+      <div class="footer"><span>preta + lemon</span><code>marca-completa-preta-lemon.png</code></div>
+      <div class="bg-best-label">★ Aplicar sobre <strong>BRANCO</strong><span class="also">também combina: lemon · off-white</span></div>
+      <div class="bg-toggle"><span class="lbl">testar:</span><button class="bg-w best active" data-bg="#FFFFFF" title="Branco · ★ MELHOR"></button><button class="bg-l" data-bg="#DCFF00" title="Lemon · também combina"></button><button class="bg-warm" data-bg="#E7DCC5" title="Off-white · também combina"></button></div>
+    </div>
+  </div>
+
+  <h3 style="font-family:var(--display);font-weight:700;font-size:24px;margin:48px 0 20px;color:#888">Assets gráficos · Objetos Inteligentes</h3>
+  <div class="logo-grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
+    <div class="logo-card">
+      <div class="canvas" style="background:#000"><img src="logos/balao-marca.png" alt="Balão da Marca" style="width:55%;height:auto"></div>
+      <div class="footer"><span>balão da marca</span><code>balao-marca.png</code></div>
+      <div class="bg-toggle"><span class="lbl">fundo:</span><button class="bg-w" data-bg="#FFFFFF"></button><button class="bg-b active" data-bg="#000000"></button><button class="bg-g" data-bg="#666666"></button><button class="bg-l" data-bg="#DCFF00"></button><button class="bg-warm" data-bg="#E7DCC5"></button></div>
+    </div>
+    <div class="logo-card">
+      <div class="canvas" style="background:#000"><img src="logos/obj-lemon.png" alt="Objeto Inteligente lemon" style="width:75%;height:auto"></div>
+      <div class="footer"><span>objeto · lemon</span><code>obj-lemon.png</code></div>
+      <div class="bg-toggle"><span class="lbl">fundo:</span><button class="bg-w" data-bg="#FFFFFF"></button><button class="bg-b active" data-bg="#000000"></button><button class="bg-g" data-bg="#666666"></button><button class="bg-l" data-bg="#DCFF00"></button><button class="bg-warm" data-bg="#E7DCC5"></button></div>
+    </div>
+    <div class="logo-card">
+      <div class="canvas" style="background:#000"><img src="logos/obj-branco.png" alt="Objeto Inteligente branco" style="width:75%;height:auto"></div>
+      <div class="footer"><span>objeto · branco</span><code>obj-branco.png</code></div>
+      <div class="bg-toggle"><span class="lbl">fundo:</span><button class="bg-w" data-bg="#FFFFFF"></button><button class="bg-b active" data-bg="#000000"></button><button class="bg-g" data-bg="#666666"></button><button class="bg-l" data-bg="#DCFF00"></button><button class="bg-warm" data-bg="#E7DCC5"></button></div>
+    </div>
+    <div class="logo-card">
+      <div class="canvas" style="background:#000"><img src="logos/obj-2-branco.png" alt="Objeto Inteligente 2 branco" style="width:75%;height:auto"></div>
+      <div class="footer"><span>objeto 2 · branco</span><code>obj-2-branco.png</code></div>
+      <div class="bg-toggle"><span class="lbl">fundo:</span><button class="bg-w" data-bg="#FFFFFF"></button><button class="bg-b active" data-bg="#000000"></button><button class="bg-g" data-bg="#666666"></button><button class="bg-l" data-bg="#DCFF00"></button><button class="bg-warm" data-bg="#E7DCC5"></button></div>
+    </div>
+    <div class="logo-card" style="grid-column:span 2">
+      <div class="canvas" style="background:#000"><img src="logos/obj-3-lemon.png" alt="Objeto Inteligente 3 lemon" style="width:90%;height:auto"></div>
+      <div class="footer"><span>objeto 3 · lemon (wide)</span><code>obj-3-lemon.png</code></div>
+      <div class="bg-toggle"><span class="lbl">fundo:</span><button class="bg-w" data-bg="#FFFFFF"></button><button class="bg-b active" data-bg="#000000"></button><button class="bg-g" data-bg="#666666"></button><button class="bg-l" data-bg="#DCFF00"></button><button class="bg-warm" data-bg="#E7DCC5"></button></div>
+    </div>
+  </div>
+
+  <div class="logo-rules">
+    <div class="rule-card do">
+      <h4>✅ Sempre fazer</h4>
+      <ul>
+        <li>Usar a versão correta para cada fundo (claro / escuro / primária)</li>
+        <li>Manter altura da letra "F" como margem livre ao redor</li>
+        <li>Aplicar o SVG original, com proporção preservada</li>
+        <li>Usar somente as cores da paleta oficial</li>
+      </ul>
+    </div>
+    <div class="rule-card dont">
+      <h4>❌ Nunca fazer</h4>
+      <ul>
+        <li>Aplicar em cores fora da paleta (vermelho, dourado, etc.)</li>
+        <li>Distorcer proporções (esticar, achatar, inclinar)</li>
+        <li>Adicionar sombra, gradiente ou brilho</li>
+        <li>Usar versão clara em fundo claro ou escura em fundo escuro</li>
+        <li>Recriar o logo em código ou ferramentas externas</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- APLICAÇÕES -->
+<section id="aplicacoes">
+  <div class="section-header">
+    <div class="num">05 · Aplicações</div>
+    <h2>A marca<br>em ação.</h2>
+    <p>Como os logos, assinaturas e objetos inteligentes se compõem em peças reais. Cada asset da pasta <code style="font-family:var(--mono);font-size:14px;color:var(--dark);background:var(--gray-light);padding:2px 6px;border-radius:3px">logos/</code> tem pelo menos uma aplicação aqui — capa, número-gigante, manifesto, CTA, banner, deck, etc.</p>
+  </div>
+
+  <!-- LINHA 1 — CARROSSEL (1080×1350) -->
+  <div class="apps-line" style="margin-top:0">
+    <h3>Carrossel</h3>
+    <p class="desc">Posts em série para LinkedIn e Instagram. Formato 1080×1350 (4:5). 4 composições estruturam tudo: capa, número-gigante, manifesto e CTA. Os Objetos Inteligentes aparecem como decoração sutil em cada peça.</p>
+    <div class="mockup-grid">
+      <div class="mockup m-capa">
+        <div class="label">capa · obj-lemon</div>
+        <img src="logos/obj-lemon.png" alt="" style="position:absolute;right:-50px;top:120px;width:240px;opacity:0.55;pointer-events:none">
+        <div class="top" style="position:relative;z-index:2"><div class="num">// carrossel · 01</div></div>
+        <div style="position:relative;z-index:2">
+          <div class="title">simplificar<br>o complexo é<br>o que <span class="lime">gera ROI.</span></div>
+        </div>
+        <div class="footer" style="position:relative;z-index:2"><span>@parreirafrederico</span><img src="logos/marca-fp-lemon.png" class="fp-mark sm" alt="FP"></div>
+      </div>
+
+      <div class="mockup m-numero">
+        <div class="label">número · balão</div>
+        <img src="logos/balao-marca.png" alt="" style="position:absolute;right:-60px;top:30px;width:200px;opacity:0.65;pointer-events:none">
+        <div></div>
+        <div style="position:relative;z-index:2">
+          <div class="num">+R$20M</div>
+          <div class="label" style="position:static;background:none;color:var(--dark);padding:0">captados em fomento P&D · Portugal 2030 + FAPEMIG</div>
+        </div>
+        <div class="footer" style="position:relative;z-index:2"><span>// case · iCrop</span><img src="logos/marca-fp-lemon.png" class="fp-mark sm" alt="FP"></div>
+      </div>
+
+      <div class="mockup m-manifesto">
+        <div class="label">manifesto · obj-branco</div>
+        <img src="logos/obj-branco.png" alt="" style="position:absolute;left:-40px;bottom:-40px;width:240px;opacity:0.45;pointer-events:none">
+        <div></div>
+        <div class="quote" style="position:relative;z-index:2">inovar não é sobre <em>tecnologia</em>.<br>é sobre <em>gente</em>.</div>
+        <div class="footer" style="position:relative;z-index:2"><span>// frase-tese</span><img src="logos/marca-fp-lemon.png" class="fp-mark sm" alt="FP"></div>
+      </div>
+
+      <div class="mockup m-cta">
+        <div class="label">cta · obj-2-branco</div>
+        <img src="logos/obj-2-branco.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.18;pointer-events:none">
+        <div style="position:relative;z-index:2">
+          <div class="pre">// chegou no fim?</div>
+          <div class="big">VAMOS<br>CONVERSAR?</div>
+          <div class="sub">@parreirafrederico no LinkedIn</div>
+        </div>
+      </div>
+
+      <!-- 5: Citação cliente · usa balao + assinatura-lemon -->
+      <div class="mockup" style="background:var(--light);color:var(--dark);padding:48px 40px;justify-content:space-between;overflow:hidden">
+        <div class="label">citação · balão</div>
+        <img src="logos/balao-marca.png" alt="" style="position:absolute;right:-40px;top:-30px;width:200px;opacity:0.45;pointer-events:none">
+        <div style="position:relative;z-index:2;font-family:var(--display);font-weight:900;font-size:64px;line-height:0.9;color:var(--primary);text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000">"</div>
+        <div style="position:relative;z-index:2;font-family:var(--display);font-style:italic;font-weight:700;font-size:24px;line-height:1.2">o Fred destravou nosso roadmap em 6 semanas. saímos do <em style="background:var(--primary);font-style:normal;padding:0 4px;border-radius:2px">"eu acho"</em> para evidência.</div>
+        <div style="position:relative;z-index:2">
+          <img src="logos/assinatura-preta.png" alt="" style="height:24px;width:auto;display:block;margin-bottom:8px;opacity:0.85">
+          <div style="font-family:var(--mono);font-size:10px;color:var(--gray);letter-spacing:1px;text-transform:uppercase">// CPO · INNYX educação</div>
+        </div>
+      </div>
+
+      <!-- 6: Slide evento · fundo lime + balao -->
+      <div class="mockup" style="background:var(--primary);color:var(--dark);padding:48px 44px;justify-content:space-between;overflow:hidden">
+        <div class="label">evento · balão</div>
+        <img src="logos/balao-marca.png" alt="" style="position:absolute;right:-60px;bottom:-50px;width:280px;opacity:0.55;pointer-events:none;filter:brightness(0.4)">
+        <div style="position:relative;z-index:2;font-family:var(--mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;opacity:0.8">// 22.05.2026 · São Paulo</div>
+        <div style="position:relative;z-index:2;font-family:var(--display);font-weight:900;font-size:48px;line-height:0.95;letter-spacing:-1px">RIO<br>INNOVATION<br>WEEK 2026</div>
+        <div style="position:relative;z-index:2;display:flex;align-items:end;justify-content:space-between">
+          <div>
+            <div style="font-family:var(--display);font-weight:700;font-size:14px">Fred Parreira</div>
+            <div style="font-family:var(--mono);font-size:10px;opacity:0.7;letter-spacing:1px;text-transform:uppercase">copiloto criativo · IA + DT</div>
+          </div>
+          <img src="logos/marca-fp-preto.png" class="fp-mark md" alt="FP">
+        </div>
+      </div>
+
+      <!-- 7: Slide PARE/COMECE · usa obj-2-branco -->
+      <div class="mockup" style="background:var(--light);color:var(--dark);padding:0;justify-content:stretch;flex-direction:column;overflow:hidden">
+        <div class="label">pare/comece · obj-2</div>
+        <div style="flex:1;background:var(--dark);color:var(--light);padding:32px 28px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden">
+          <img src="logos/obj-2-branco.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.12;pointer-events:none">
+          <div style="position:relative;z-index:2;font-family:var(--mono);font-size:11px;letter-spacing:2px;color:#FF6B6B">→ PARE</div>
+          <div style="position:relative;z-index:2;font-family:var(--display);font-weight:900;font-size:30px;line-height:1.05">de tratar IA como<br>solução final.</div>
+        </div>
+        <div style="flex:1;background:var(--primary);color:var(--dark);padding:32px 28px;display:flex;flex-direction:column;justify-content:space-between">
+          <div style="font-family:var(--mono);font-size:11px;letter-spacing:2px">→ COMECE</div>
+          <div style="font-family:var(--display);font-weight:900;font-size:30px;line-height:1.05">a usar como<br><em style="background:var(--dark);color:var(--primary);padding:0 6px;border-radius:3px;font-style:normal">copiloto</em>.</div>
+        </div>
+      </div>
+
+      <!-- 8: Slide marca-final · marca-completa-lemon-branca -->
+      <div class="mockup" style="background:var(--dark);color:var(--light);padding:32px;justify-content:space-between;align-items:center;text-align:center;overflow:hidden">
+        <div class="label">marca-final · obj-3-lemon</div>
+        <img src="logos/obj-3-lemon.png" alt="" style="position:absolute;left:-30px;bottom:0;width:130%;opacity:0.55;pointer-events:none">
+        <div style="position:relative;z-index:2;font-family:var(--mono);font-size:11px;color:#888;letter-spacing:2px;text-transform:uppercase">// fim · obrigado por chegar até aqui</div>
+        <img src="logos/marca-completa-lemon-branca.png" alt="Marca completa" style="position:relative;z-index:2;width:75%;height:auto">
+        <div style="position:relative;z-index:2;font-family:var(--display);font-weight:700;font-size:14px;color:var(--primary)">@parreirafrederico · LinkedIn</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LINHA 2 — LINKEDIN -->
+  <div class="apps-line">
+    <h3>LinkedIn</h3>
+    <p class="desc">Banner real de perfil (1600×480) usando a peça pronta da designer, post quadrado, número-gigante e hook. 4 aplicações que constroem autoridade no canal "Mestre Prático".</p>
+
+    <!-- Banner LinkedIn em destaque (full width 4:1.2) -->
+    <div style="margin-bottom:28px;border-radius:12px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,0.08);position:relative">
+      <div style="position:absolute;top:14px;left:14px;font-family:var(--mono);font-size:9px;background:rgba(0,0,0,0.7);color:var(--primary);padding:3px 8px;border-radius:4px;letter-spacing:1px;text-transform:uppercase;z-index:5">banner LinkedIn · 1600×480 · capa-linkedin.jpg</div>
+      <img src="logos/capa-linkedin.jpg" alt="Capa LinkedIn Fred Parreira" style="width:100%;display:block">
+    </div>
+
+    <div class="mockup-grid square-grid">
+
+      <div class="mockup square m-li-quote">
+        <div class="label">post quote · obj-3-lemon</div>
+        <img src="logos/obj-3-lemon.png" alt="" style="position:absolute;left:-30px;bottom:0;width:120%;opacity:0.45;pointer-events:none">
+        <div class="top" style="position:relative;z-index:2">// frase-tese</div>
+        <div class="quote" style="position:relative;z-index:2">contra <em>dados</em>, não há argumentos.</div>
+        <div class="footer" style="position:relative;z-index:2"><span>@parreirafrederico</span><img src="logos/marca-fp-lemon.png" class="fp-mark sm" alt="FP"></div>
+      </div>
+
+      <div class="mockup square m-li-num">
+        <div class="label">post número</div>
+        <div></div>
+        <div>
+          <div class="big">+80</div>
+          <div class="lbl">episódios do<br>UberHub Podcast</div>
+        </div>
+        <div class="src">// 2024 → 2026</div>
+      </div>
+
+      <div class="mockup square m-li-hook">
+        <div class="label">hook lime</div>
+        <div class="top">// post · 02</div>
+        <div class="hook">a IA jamais vai substituir o PM.<br><span style="background:#1A1A1A;color:#DCFF00;padding:2px 6px;border-radius:3px">o PM que não usa IA</span><br>já ficou para trás.</div>
+        <div class="footer"><span>swipe →</span><img src="logos/marca-fp-lemon.png" class="fp-mark sm" alt="FP"></div>
+      </div>
+
+      <div class="mockup square m-li-marca">
+        <div class="label">post marca</div>
+        <div style="display:flex;align-items:center;justify-content:center;height:100%;flex:1">
+          <img src="logos/marca-completa-lemon-branca.png" alt="Marca completa lemon e branca" style="width:90%;height:auto">
+        </div>
+        <div class="src" style="font-family:var(--mono);font-size:9px;color:#888;text-align:center;letter-spacing:1px">// post de marca · lockup full width</div>
+      </div>
+
+      <!-- 5: Post evento · foto + obj-2-branco + assinatura-lemon -->
+      <div class="mockup square" style="background:var(--dark);color:var(--light);padding:0;justify-content:flex-end;overflow:hidden">
+        <div class="label">evento · foto + assinatura</div>
+        <img src="logos/foto-fred.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.42;pointer-events:none">
+        <img src="logos/obj-2-branco.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.18;pointer-events:none">
+        <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.95) 100%);pointer-events:none"></div>
+        <div style="position:relative;z-index:3;padding:24px 26px">
+          <div style="font-family:var(--mono);font-size:10px;color:var(--primary);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px">// PALESTRA · 22.05.2026</div>
+          <div style="font-family:var(--display);font-weight:900;font-size:32px;line-height:1;color:var(--primary);margin-bottom:14px">copiloto<br>criativo</div>
+          <img src="logos/assinatura-lemon.png" alt="Fred Parreira" style="height:22px;width:auto">
+        </div>
+      </div>
+
+      <!-- 6: Post citação cliente · fundo lime + balao + fp -->
+      <div class="mockup square" style="background:var(--primary);color:var(--dark);padding:24px 26px;justify-content:space-between;overflow:hidden">
+        <div class="label">citação · balão</div>
+        <img src="logos/balao-marca.png" alt="" style="position:absolute;right:-50px;bottom:-50px;width:200px;opacity:0.45;pointer-events:none;filter:brightness(0.5)">
+        <div style="position:relative;z-index:2;font-family:var(--display);font-weight:900;font-size:80px;line-height:0.7;color:rgba(0,0,0,0.55)">"</div>
+        <div style="position:relative;z-index:2;font-family:var(--display);font-style:italic;font-weight:700;font-size:18px;line-height:1.2">trabalhar com o Fred é um misto de masterclass com sessão de terapia executiva.</div>
+        <div style="position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between">
+          <div style="font-family:var(--mono);font-size:9px;letter-spacing:1px;text-transform:uppercase;opacity:0.7">// founder · scale-up brasil</div>
+          <img src="logos/marca-fp-preto.png" class="fp-mark sm" alt="FP">
+        </div>
+      </div>
+
+      <!-- 7: Post framework 4 pilares · obj-branco + assinatura-preta -->
+      <div class="mockup square" style="background:var(--light);color:var(--dark);padding:24px 26px;justify-content:space-between;overflow:hidden">
+        <div class="label">framework · obj-branco</div>
+        <img src="logos/obj-branco.png" alt="" style="position:absolute;right:-30px;bottom:-30px;width:160px;opacity:0.18;pointer-events:none;filter:invert(1)">
+        <div style="position:relative;z-index:2;font-family:var(--mono);font-size:9px;color:var(--gray);letter-spacing:2px;text-transform:uppercase">// os 4 pilares · Fred Parreira</div>
+        <div style="position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:6px">
+          <div style="background:var(--dark);color:var(--light);padding:8px 10px;border-radius:4px"><div style="font-family:var(--mono);font-size:9px;color:var(--primary)">01</div><div style="font-family:var(--display);font-weight:700;font-size:13px;line-height:1.1">Product Strategy</div></div>
+          <div style="background:var(--primary);color:var(--dark);padding:8px 10px;border-radius:4px"><div style="font-family:var(--mono);font-size:9px;color:var(--dark)">02</div><div style="font-family:var(--display);font-weight:700;font-size:13px;line-height:1.1">IA Aplicada</div></div>
+          <div style="background:var(--primary);color:var(--dark);padding:8px 10px;border-radius:4px"><div style="font-family:var(--mono);font-size:9px;color:var(--dark)">03</div><div style="font-family:var(--display);font-weight:700;font-size:13px;line-height:1.1">Facilitação</div></div>
+          <div style="background:var(--dark);color:var(--light);padding:8px 10px;border-radius:4px"><div style="font-family:var(--mono);font-size:9px;color:var(--primary)">04</div><div style="font-family:var(--display);font-weight:700;font-size:13px;line-height:1.1">Autoridade</div></div>
+        </div>
+        <img src="logos/assinatura-preta.png" alt="Fred Parreira" style="position:relative;z-index:2;height:18px;width:auto">
+      </div>
+
+      <!-- 8: Post case headline · número + obj-3-lemon + assinatura-lemon -->
+      <div class="mockup square" style="background:var(--dark);color:var(--light);padding:24px 26px;justify-content:space-between;overflow:hidden">
+        <div class="label">case · obj-3-lemon</div>
+        <img src="logos/obj-3-lemon.png" alt="" style="position:absolute;left:-20px;top:30%;width:130%;opacity:0.4;pointer-events:none">
+        <div style="position:relative;z-index:2;font-family:var(--mono);font-size:9px;color:#888;letter-spacing:2px;text-transform:uppercase">// case VLI logística</div>
+        <div style="position:relative;z-index:2">
+          <div style="font-family:var(--display);font-weight:900;font-size:90px;line-height:0.85;color:var(--primary);letter-spacing:-3px">96%</div>
+          <div style="font-family:var(--display);font-weight:700;font-size:14px;line-height:1.2;margin-top:6px">CSAT entre 50 mil caminhoneiros e transportadoras</div>
+        </div>
+        <img src="logos/assinatura-lemon.png" alt="Fred Parreira" style="position:relative;z-index:2;height:20px;width:auto">
+      </div>
+
+    </div>
+  </div>
+
+  <!-- LINHA 3 — APRESENTAÇÕES -->
+  <div class="apps-line">
+    <h3>Apresentações</h3>
+    <p class="desc">Slides 16:9 para palestras, workshops e decks executivos. 4 composições típicas: capa com foto, "Quem é o Fred?" humanizado, Acordos e slide de framework.</p>
+    <div class="mockup-grid deck-grid">
+
+      <div class="mockup deck m-deck-cover" style="overflow:hidden">
+        <div class="label">capa deck · foto-fred</div>
+        <img src="logos/foto-fred.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.32;pointer-events:none">
+        <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.4) 0%,rgba(0,0,0,0.85) 100%);pointer-events:none"></div>
+        <div class="top" style="position:relative;z-index:3">
+          <div class="fp-mini"></div>
+          <div class="name-stack">FRED PARREIRA<div class="sub">consultor · professor · estrategista</div></div>
+        </div>
+        <div class="title" style="position:relative;z-index:3">copiloto<br><span class="lime">criativo:</span><br>IA + design thinking</div>
+        <div class="footer" style="position:relative;z-index:3"><span>// rio innovation week 2026</span><span>01 / 24</span></div>
+      </div>
+
+      <div class="mockup deck m-deck-quem" style="overflow:hidden;display:flex;flex-direction:row;gap:18px;padding:24px 28px;align-items:stretch">
+        <div class="label">quem é o fred · foto-fred</div>
+        <div style="flex:0 0 38%;border-radius:8px;overflow:hidden;background:var(--gray-light)">
+          <img src="logos/foto-fred.jpg" alt="Foto Fred Parreira" style="width:100%;height:100%;object-fit:cover">
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;justify-content:space-between">
+          <div class="top">quem é o fred?</div>
+          <div>
+            <h4 style="font-size:18px">CEO da Neway InsurTech.<br>M.Sc. em Inovação. Mineiro.</h4>
+            <div class="pillars">
+              <span>basquete</span><span>corrida</span><span>café ☕</span><span>Uberlândia/MG</span>
+            </div>
+          </div>
+          <div style="font-family:var(--mono);font-size:9px;color:var(--gray);letter-spacing:1px">// 02 / 24</div>
+        </div>
+      </div>
+
+      <div class="mockup deck m-deck-acordos">
+        <div class="label">acordos</div>
+        <div>
+          <div class="badge">acordos · importante</div>
+          <h4>antes da gente começar:</h4>
+        </div>
+        <ul>
+          <li>foco total · sem celular na mesa</li>
+          <li>pergunta interrompendo é bem-vinda</li>
+          <li>jamais existem perguntas ruins</li>
+          <li>vamos sair daqui com 1 ação concreta</li>
+        </ul>
+        <div style="font-family:var(--mono);font-size:9px;color:#666;letter-spacing:1px">// 03 / 24</div>
+      </div>
+
+      <div class="mockup deck m-deck-fw">
+        <div class="label">framework</div>
+        <div class="top">// design thinking aumentado</div>
+        <h4>Discovery em 5 etapas</h4>
+        <div class="pipeline">
+          <div class="step">imersão</div>
+          <span class="arrow">→</span>
+          <div class="step">síntese</div>
+          <span class="arrow">→</span>
+          <div class="step active">ideação</div>
+          <span class="arrow">→</span>
+          <div class="step">protótipo</div>
+          <span class="arrow">→</span>
+          <div class="step">validação</div>
+        </div>
+        <div class="footer"><span>// etapa ativa: ideação</span><span>04 / 24</span></div>
+      </div>
+
+      <!-- 5: Slide transição/seção · assinatura-preta gigante + obj-2-branco -->
+      <div class="mockup deck" style="background:var(--primary);color:var(--dark);padding:32px 40px;justify-content:center;align-items:center;text-align:center;overflow:hidden">
+        <div class="label">transição · obj-2 + assinatura</div>
+        <img src="logos/obj-2-branco.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.18;pointer-events:none;filter:invert(1)">
+        <div style="position:relative;z-index:2;font-family:var(--mono);font-size:11px;letter-spacing:3px;text-transform:uppercase;margin-bottom:14px">// PARTE 02 DE 04</div>
+        <img src="logos/assinatura-preta.png" alt="Fred Parreira" style="position:relative;z-index:2;width:60%;height:auto;margin-bottom:20px">
+        <div style="position:relative;z-index:2;font-family:var(--display);font-weight:900;font-size:42px;line-height:0.95;letter-spacing:-1px">como a IA<br>destrava o<br><em style="background:var(--dark);color:var(--primary);padding:0 8px;border-radius:3px;font-style:normal">discovery</em></div>
+      </div>
+
+      <!-- 6: Slide manifesto · obj-3-lemon waves -->
+      <div class="mockup deck" style="background:var(--dark);color:var(--light);padding:32px 40px;justify-content:space-between;overflow:hidden">
+        <div class="label">manifesto · obj-3-lemon</div>
+        <img src="logos/obj-3-lemon.png" alt="" style="position:absolute;left:-20px;bottom:0;width:130%;opacity:0.5;pointer-events:none">
+        <div style="position:relative;z-index:2;font-family:var(--mono);font-size:11px;letter-spacing:2px;color:#888;text-transform:uppercase">// frase-tese · slide manifesto</div>
+        <div style="position:relative;z-index:2;font-family:var(--display);font-weight:900;font-size:44px;line-height:1;letter-spacing:-1px">inovar não é<br>sobre <em style="background:var(--primary);color:var(--dark);padding:0 8px;border-radius:3px;font-style:normal">tecnologia</em>.<br>é sobre <em style="color:var(--primary);font-style:normal">gente</em>.</div>
+        <div style="position:relative;z-index:2;font-family:var(--mono);font-size:9px;color:#666;letter-spacing:1px;text-transform:uppercase;display:flex;justify-content:space-between"><span>// 18 / 24</span><img src="logos/marca-fp-lemon.png" class="fp-mark sm" alt="FP"></div>
+      </div>
+
+      <!-- 7: Slide próximos passos · marca-completa-preta-lemon + foto -->
+      <div class="mockup deck" style="background:var(--light);color:var(--dark);padding:28px 36px;justify-content:space-between;overflow:hidden">
+        <div class="label">próximos passos · marca completa</div>
+        <div style="position:absolute;right:-20px;top:-20px;width:120px;height:120px;border-radius:50%;overflow:hidden;border:3px solid var(--primary);transform:rotate(8deg)"><img src="logos/foto-fred.jpg" alt="Foto Fred" style="width:100%;height:100%;object-fit:cover"></div>
+        <div style="font-family:var(--mono);font-size:11px;color:var(--gray);letter-spacing:2px;text-transform:uppercase">// próximos passos</div>
+        <div>
+          <div style="font-family:var(--display);font-weight:900;font-size:24px;line-height:1.05;margin-bottom:14px">3 ações<br>antes de sair daqui:</div>
+          <ul style="list-style:none;font-family:var(--body);font-size:13px;line-height:1.6;color:var(--gray)">
+            <li style="padding:4px 0"><strong style="color:var(--dark)">→ 01.</strong> escolher 1 problema real</li>
+            <li style="padding:4px 0"><strong style="color:var(--dark)">→ 02.</strong> validar com 5 entrevistas</li>
+            <li style="padding:4px 0"><strong style="color:var(--dark)">→ 03.</strong> me mandar resultado em 7 dias</li>
+          </ul>
+        </div>
+        <div style="display:flex;align-items:end;justify-content:space-between">
+          <img src="logos/marca-completa-preta-lemon.png" alt="" style="height:38px;width:auto">
+          <div style="font-family:var(--mono);font-size:9px;color:var(--gray);letter-spacing:1px">// 23 / 24</div>
+        </div>
+      </div>
+
+      <!-- 8: Slide obrigado · fp grande + balao + tagline -->
+      <div class="mockup deck" style="background:var(--dark);color:var(--light);padding:32px 40px;justify-content:center;align-items:center;text-align:center;overflow:hidden">
+        <div class="label">obrigado · fp xxl + balão</div>
+        <img src="logos/balao-marca.png" alt="" style="position:absolute;right:-80px;top:-30px;width:280px;opacity:0.3;pointer-events:none">
+        <img src="logos/marca-fp-lemon.png" alt="FP" style="position:relative;z-index:2;width:auto;height:130px;margin-bottom:20px">
+        <div style="position:relative;z-index:2;font-family:var(--display);font-weight:900;font-size:42px;line-height:1;letter-spacing:-1px;color:var(--primary)">obrigado!</div>
+        <div style="position:relative;z-index:2;font-family:var(--display);font-weight:500;font-size:15px;line-height:1.4;margin-top:14px;color:#bbb;max-width:80%">"inovar não é sobre tecnologia, é sobre gente"</div>
+        <div style="position:relative;z-index:2;font-family:var(--mono);font-size:10px;color:#888;letter-spacing:2px;margin-top:18px;text-transform:uppercase">// @parreirafrederico · 24 / 24</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- LINHA 4 — INSTAGRAM (1080x1080 quadrado) -->
+  <div class="apps-line">
+    <h3>Instagram</h3>
+    <p class="desc">Posts quadrados 1080×1080 para Instagram. 8 composições típicas que combinam Símbolo, Assinatura, Marca Completa e Objetos Inteligentes em fundos diversos. O canal "Conector Energético" pede tom mais visual e menos institucional.</p>
+    <div class="mockup-grid square-grid">
+
+      <!-- 1: Quote frase-tese · lime + balão -->
+      <div class="mockup square" style="background:var(--primary);color:var(--dark);padding:30px 32px;justify-content:space-between;overflow:hidden">
+        <div class="label">ig · quote + balão</div>
+        <img src="logos/balao-marca.png" alt="" style="position:absolute;right:-50px;bottom:-50px;width:220px;opacity:0.3;pointer-events:none;filter:brightness(0.4)">
+        <div style="position:relative;z-index:2;font-family:var(--mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;opacity:0.7">// frase-tese</div>
+        <div style="position:relative;z-index:2;font-family:var(--display);font-weight:900;font-size:42px;line-height:1;letter-spacing:-1px">se apaixone pelo<br><em style="background:var(--dark);color:var(--primary);padding:0 8px;border-radius:3px;font-style:normal">problema</em>.<br>jamais pela<br>solução.</div>
+        <div style="position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between"><img src="logos/marca-fp-preto.png" class="fp-mark sm" alt="FP"><div style="font-family:var(--mono);font-size:9px;letter-spacing:1px">@parreirafrederico</div></div>
+      </div>
+
+      <!-- 2: Estatística · preto + obj-3-lemon -->
+      <div class="mockup square" style="background:var(--dark);color:var(--light);padding:30px 32px;justify-content:space-between;text-align:center;align-items:center;overflow:hidden">
+        <div class="label">ig · estatística + obj-3</div>
+        <img src="logos/obj-3-lemon.png" alt="" style="position:absolute;left:-30px;top:25%;width:130%;opacity:0.4;pointer-events:none">
+        <div style="position:relative;z-index:2;font-family:var(--mono);font-size:9px;color:#888;letter-spacing:2px;text-transform:uppercase">// número da semana</div>
+        <div style="position:relative;z-index:2">
+          <div style="font-family:var(--display);font-weight:900;font-size:140px;line-height:0.85;color:var(--primary);letter-spacing:-5px;text-shadow:-2px -2px 0 #000,2px -2px 0 #000,-2px 2px 0 #000,2px 2px 0 #000">300+</div>
+          <div style="font-family:var(--display);font-weight:700;font-size:18px;line-height:1.2;margin-top:10px">alunos formados em<br>Product Management</div>
+        </div>
+        <img src="logos/assinatura-lemon.png" alt="Fred Parreira" style="position:relative;z-index:2;height:18px;width:auto">
+      </div>
+
+      <!-- 3: Mini-bio · branco + foto + assinatura-preta -->
+      <div class="mockup square" style="background:var(--light);color:var(--dark);padding:0;overflow:hidden;flex-direction:row">
+        <div class="label">ig · mini-bio + foto</div>
+        <div style="flex:0 0 50%;background:var(--gray-light);overflow:hidden"><img src="logos/foto-fred.jpg" alt="Foto Fred" style="width:100%;height:100%;object-fit:cover"></div>
+        <div style="flex:1;padding:24px 22px;display:flex;flex-direction:column;justify-content:space-between">
+          <div style="font-family:var(--mono);font-size:9px;color:var(--gray);letter-spacing:2px;text-transform:uppercase">// quem é o fred</div>
+          <div>
+            <img src="logos/assinatura-preta.png" alt="Fred Parreira" style="width:100%;height:auto;max-width:160px;margin-bottom:14px">
+            <div style="font-family:var(--display);font-weight:700;font-size:13px;line-height:1.3;color:var(--gray)">CEO Neway InsurTech<br>M.Sc. em Inovação<br>Host UberHub Podcast</div>
+          </div>
+          <div style="font-family:var(--mono);font-size:9px;color:var(--gray);letter-spacing:1px">@parreirafrederico</div>
+        </div>
+      </div>
+
+      <!-- 4: Anúncio palestra · preto + obj-lemon + assinatura-lemon -->
+      <div class="mockup square" style="background:var(--dark);color:var(--light);padding:28px 30px;justify-content:space-between;overflow:hidden">
+        <div class="label">ig · palestra + obj-lemon</div>
+        <img src="logos/obj-lemon.png" alt="" style="position:absolute;right:-30px;top:0;width:240px;opacity:0.55;pointer-events:none">
+        <div style="position:relative;z-index:2">
+          <div style="font-family:var(--mono);font-size:10px;color:var(--primary);letter-spacing:3px;text-transform:uppercase;margin-bottom:8px">// 22 maio · São Paulo</div>
+          <div style="background:var(--primary);color:var(--dark);display:inline-block;padding:4px 10px;border-radius:3px;font-family:var(--display);font-weight:900;font-size:11px;letter-spacing:1px">PALESTRA AO VIVO</div>
+        </div>
+        <div style="position:relative;z-index:2;font-family:var(--display);font-weight:900;font-size:38px;line-height:0.95;letter-spacing:-1px">copiloto<br><span style="color:var(--primary)">criativo:</span><br>IA + design<br>thinking</div>
+        <div style="position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between"><img src="logos/assinatura-lemon.png" alt="Fred Parreira" style="height:22px;width:auto"><img src="logos/marca-fp-lemon.png" class="fp-mark sm" alt="FP"></div>
+      </div>
+
+      <!-- 5: Citação cliente · lime + obj-2-branco -->
+      <div class="mockup square" style="background:var(--primary);color:var(--dark);padding:28px 30px;justify-content:space-between;overflow:hidden">
+        <div class="label">ig · citação + obj-2</div>
+        <img src="logos/obj-2-branco.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.18;pointer-events:none;filter:invert(1)">
+        <div style="position:relative;z-index:2;display:flex;align-items:center;gap:8px">
+          <div style="width:36px;height:36px;border-radius:50%;background:var(--dark);overflow:hidden;flex-shrink:0"><img src="logos/foto-fred.jpg" alt="" style="width:100%;height:100%;object-fit:cover;filter:grayscale(1)"></div>
+          <div style="font-family:var(--mono);font-size:9px;letter-spacing:1px;text-transform:uppercase;opacity:0.8">// CTO · scale-up SP</div>
+        </div>
+        <div style="position:relative;z-index:2;font-family:var(--display);font-style:italic;font-weight:700;font-size:22px;line-height:1.15">"trabalhar com o Fred é um misto de masterclass com sessão de terapia executiva. simplifica o que parecia impossível."</div>
+        <img src="logos/marca-fp-preto.png" class="fp-mark md" alt="FP" style="position:relative;z-index:2">
+      </div>
+
+      <!-- 6: Carrossel teaser · preto + obj-3-lemon + marca completa -->
+      <div class="mockup square" style="background:var(--dark);color:var(--light);padding:0;justify-content:flex-end;overflow:hidden">
+        <div class="label">ig · carrossel teaser</div>
+        <img src="logos/obj-3-lemon.png" alt="" style="position:absolute;left:-20px;top:55%;width:130%;opacity:0.5;pointer-events:none">
+        <div style="position:absolute;top:14px;right:14px;font-family:var(--mono);font-size:9px;color:var(--primary);letter-spacing:2px;text-transform:uppercase;background:rgba(220,255,0,0.15);padding:3px 8px;border-radius:3px;border:1px solid rgba(220,255,0,0.3);z-index:3">→ swipe · 8 slides</div>
+        <div style="position:relative;z-index:2;padding:30px 32px">
+          <div style="font-family:var(--mono);font-size:10px;color:#888;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px">// carrossel</div>
+          <div style="font-family:var(--display);font-weight:900;font-size:38px;line-height:0.95;letter-spacing:-1px;margin-bottom:20px">contra <em style="color:var(--primary);font-style:normal">dados</em>,<br>não há<br>argumentos.</div>
+          <img src="logos/marca-completa-lemon-branca.png" alt="" style="height:30px;width:auto">
+        </div>
+      </div>
+
+      <!-- 7: Manifesto · branco + balão grande -->
+      <div class="mockup square" style="background:var(--light);color:var(--dark);padding:30px 32px;justify-content:space-between;overflow:hidden">
+        <div class="label">ig · manifesto + balão</div>
+        <img src="logos/balao-marca.png" alt="" style="position:absolute;right:-80px;top:-50px;width:300px;opacity:0.85;pointer-events:none">
+        <div style="position:relative;z-index:2;font-family:var(--mono);font-size:9px;color:var(--gray);letter-spacing:2px;text-transform:uppercase">// manifesto</div>
+        <div style="position:relative;z-index:2;font-family:var(--display);font-weight:900;font-size:46px;line-height:0.95;letter-spacing:-1px">simplificar<br>o complexo<br>é o que <em style="background:var(--primary);font-style:normal;padding:0 6px;border-radius:3px">gera</em><br><em style="background:var(--dark);color:var(--primary);font-style:normal;padding:0 8px;border-radius:3px">ROI real</em>.</div>
+        <img src="logos/assinatura-preta.png" alt="Fred Parreira" style="position:relative;z-index:2;height:20px;width:auto">
+      </div>
+
+      <!-- 8: CTA engagement · lime + fp xl -->
+      <div class="mockup square" style="background:var(--primary);color:var(--dark);padding:28px 30px;justify-content:space-between;text-align:center;align-items:center;overflow:hidden">
+        <div class="label">ig · CTA + fp xl</div>
+        <div style="position:absolute;inset:0;background:radial-gradient(circle at 50% 30%,rgba(255,255,255,0.1) 0%,transparent 60%);pointer-events:none"></div>
+        <div style="position:relative;z-index:2;font-family:var(--mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;opacity:0.7">// gostou? me chama!</div>
+        <img src="logos/marca-fp-preto.png" alt="FP" style="position:relative;z-index:2;width:auto;height:140px">
+        <div style="position:relative;z-index:2">
+          <div style="font-family:var(--display);font-weight:900;font-size:32px;line-height:1;letter-spacing:-0.5px">BORA TROCAR<br>UMA IDEIA?</div>
+          <div style="font-family:var(--mono);font-size:11px;letter-spacing:1px;margin-top:10px;opacity:0.7">→ direct ou @parreirafrederico</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div style="margin-top:80px">
+    <h3 style="font-family:var(--display);font-weight:700;font-size:28px;margin-bottom:20px">CTAs e expressões da marca</h3>
+    <p style="color:var(--gray);max-width:600px;margin-bottom:20px">Sempre em Exo 2 Black (900), fundo Eletric Lime ou em destaque visual energético. Reflete o perfil DISC (Dominância e Influência) e o senso de urgência que marca o Fred. Use de forma rotativa para evitar virar slogan repetitivo.</p>
+    <div class="cta-grid">
+      <span class="cta-pill">VAMOS CONVERSAR?</span>
+      <span class="cta-pill">ME CHAMA NO DIRECT</span>
+      <span class="cta-pill">BORA TROCAR UMA IDEIA?</span>
+      <span class="cta-pill">PRÓXIMO PASSO?</span>
+      <span class="cta-pill">BORA SIMPLIFICAR?</span>
+      <span class="cta-pill">DESBLOQUEIE AGORA</span>
+      <span class="cta-pill">CONECTE COMIGO</span>
+      <span class="cta-pill">VOU PRIMEIRO ☕</span>
+    </div>
+  </div>
+</section>
+
+<!-- REGRAS -->
+<section id="regras" class="warm">
+  <div class="section-header">
+    <div class="num">06 · Regras de diagramação</div>
+    <h2>Disciplina<br>que vira marca.</h2>
+    <p>Estas são as regras que separam material on-brand de material genérico. Elas valem em qualquer canal, qualquer formato.</p>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px">
+    <div style="background:var(--light);padding:32px;border-radius:12px">
+      <div style="font-family:var(--mono);font-size:11px;color:var(--gray);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px">Fundos padrão</div>
+      <h4 style="font-family:var(--display);font-weight:700;font-size:22px;margin-bottom:16px">Quatro fundos. Só.</h4>
+      <ul style="list-style:none;font-size:14px;color:var(--gray);line-height:1.8">
+        <li><span style="display:inline-block;width:14px;height:14px;background:#FFFFFF;border:1px solid #ddd;border-radius:3px;vertical-align:middle;margin-right:8px"></span><strong>Branco</strong> <code style="font-family:var(--mono);font-size:11px;color:#999">#FFFFFF</code> · uso principal didático</li>
+        <li><span style="display:inline-block;width:14px;height:14px;background:#000000;border-radius:3px;vertical-align:middle;margin-right:8px"></span><strong>Preto</strong> <code style="font-family:var(--mono);font-size:11px;color:#999">#000000</code> · uso premium, manifesto</li>
+        <li><span style="display:inline-block;width:14px;height:14px;background:#DCFF00;border-radius:3px;vertical-align:middle;margin-right:8px"></span><strong>Eletric Lime</strong> <code style="font-family:var(--mono);font-size:11px;color:#999">#DCFF00</code> · transição, hook</li>
+        <li><span style="display:inline-block;width:14px;height:14px;background:#E7DCC5;border-radius:3px;vertical-align:middle;margin-right:8px"></span><strong>Off-white quente</strong> <code style="font-family:var(--mono);font-size:11px;color:#999">#E7DCC5</code> · cases humanizados</li>
+      </ul>
+    </div>
+    <div style="background:var(--light);padding:32px;border-radius:12px">
+      <div style="font-family:var(--mono);font-size:11px;color:var(--gray);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px">Contraste</div>
+      <h4 style="font-family:var(--display);font-weight:700;font-size:22px;margin-bottom:16px">WCAG AA mínimo.</h4>
+      <ul style="list-style:none;font-size:14px;color:var(--gray);line-height:1.8">
+        <li>✅ Texto branco sobre preto · 21:1</li>
+        <li>✅ Texto preto sobre lime · 16,8:1</li>
+        <li>❌ Texto lime sobre branco em corpo · 1,3:1 ilegível</li>
+        <li>❌ Texto branco sobre lime · contraste insuficiente</li>
+      </ul>
+    </div>
+    <div style="background:var(--light);padding:32px;border-radius:12px">
+      <div style="font-family:var(--mono);font-size:11px;color:var(--gray);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px">Composição</div>
+      <h4 style="font-family:var(--display);font-weight:700;font-size:22px;margin-bottom:16px">Uma ideia por slide.</h4>
+      <ul style="list-style:none;font-size:14px;color:var(--gray);line-height:1.8">
+        <li>📏 Margem mínima · 60px nos 4 lados</li>
+        <li>🎯 Uma ideia central · jamais slide-dump</li>
+        <li>📐 Hierarquia clara · título &gt; sub &gt; corpo &gt; rodapé</li>
+        <li>💨 Espaço em branco é elemento ativo</li>
+      </ul>
+    </div>
+    <div style="background:var(--light);padding:32px;border-radius:12px">
+      <div style="font-family:var(--mono);font-size:11px;color:var(--gray);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px">Linguagem visual</div>
+      <h4 style="font-family:var(--display);font-weight:700;font-size:22px;margin-bottom:16px">Frases curtas. Negrito como cor.</h4>
+      <ul style="list-style:none;font-size:14px;color:var(--gray);line-height:1.8">
+        <li>✂️ Jamais travessão (—) · use vírgula ou dois-pontos</li>
+        <li>🎨 Negrito é cor, jamais grifo · só palavra-chave</li>
+        <li>😀 Emojis só no fim de seções, jamais no meio</li>
+        <li>🤝 "Bora", "Uai" no Instagram, jamais em proposta</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CHECKLIST -->
+<section id="checklist" class="dark">
+  <div class="section-header">
+    <div class="num">07 · Checklist</div>
+    <h2>Antes de publicar.</h2>
+    <p>Oito perguntas que filtram material on-brand de material qualquer. Marque mentalmente todas antes de soltar a peça.</p>
+  </div>
+  <div class="checklist">
+    <ol>
+      <li>As cores estão na paleta? (jamais cor "random" fora dos hex listados)</li>
+      <li>A fonte de display é Exo 2 (Black 900 para títulos / Bold 700 para subtítulos) e a de corpo é Brix (ou Inter como fallback)?</li>
+      <li>O logo está na variação correta para o fundo (claro / escuro / primária)?</li>
+      <li>A margem de segurança do logo foi respeitada (altura da letra "F")?</li>
+      <li>O contraste texto/fundo passa no WCAG AA (mínimo 4,5:1)?</li>
+      <li>Há respiro visual suficiente? Cabe "uma ideia central" no slide?</li>
+      <li>Aplicou as regras de linguagem visual (sem travessão, negrito como cor, emojis só no fim)?</li>
+      <li>Se há CTA, ele usa o registro energético da marca ("BORA…", "vamos", "Bora trocar uma ideia")?</li>
+    </ol>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="row">
+    <div>
+      <div style="color:var(--primary);font-family:var(--display);font-weight:700;font-size:18px;margin-bottom:8px">FP · brandbook</div>
+      <div>versão 1.0 · 2026 · skill idvisual-fred-parreira</div>
+    </div>
+    <div style="text-align:right">
+      <div>fonte de verdade · <a href="_brand-tokens.css">_brand-tokens.css</a></div>
+      <div>spec completa · <a href="SKILL.md">SKILL.md</a></div>
+    </div>
+  </div>
+</footer>
+
+<!-- PDF EXPORT BUTTON & OVERLAY -->
+<button id="export-pdf-btn" class="pdf-btn" type="button" title="Exportar brandbook como PDF">
+  <span class="icon">⬇</span>
+  <span class="label-text">Exportar PDF</span>
+</button>
+<div id="pdf-overlay" class="pdf-overlay">
+  <div>
+    <div class="spinner"></div>
+    <div id="pdf-status">Gerando PDF…<br><span style="font-family:var(--mono);font-size:13px;color:#aaa;font-weight:400;text-transform:none;letter-spacing:0">Pode levar de 30s a 2min, dependendo do navegador.</span></div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script>
+  // ===== TOGGLES DE FUNDO NOS LOGOS =====
+  document.querySelectorAll('.bg-toggle button').forEach(btn => {
+    btn.addEventListener('click', function(){
+      const card = this.closest('.logo-card');
+      if (!card) return;
+      const canvas = card.querySelector('.canvas');
+      if (!canvas) return;
+      canvas.style.background = this.dataset.bg;
+      // toggle active state
+      card.querySelectorAll('.bg-toggle button').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+
+  // ===== EXPORT PDF =====
+  const btn = document.getElementById('export-pdf-btn');
+  const overlay = document.getElementById('pdf-overlay');
+  const status = document.getElementById('pdf-status');
+  const labelText = btn.querySelector('.label-text');
+
+  btn.addEventListener('click', async function(){
+    btn.disabled = true;
+    labelText.textContent = 'Gerando…';
+    overlay.classList.add('show');
+
+    // Esconder elementos não-imprimíveis
+    const nav = document.querySelector('nav');
+    const navOriginal = nav ? nav.style.display : '';
+    if (nav) nav.style.display = 'none';
+    btn.style.display = 'none';
+
+    try {
+      // Aguardar fontes carregarem
+      if (document.fonts && document.fonts.ready) {
+        await document.fonts.ready;
+      }
+
+      const opt = {
+        margin: 0,
+        filename: 'brandbook-fred-parreira.pdf',
+        image: { type: 'jpeg', quality: 0.96 },
+        html2canvas: {
+          scale: 1.4,
+          useCORS: true,
+          allowTaint: true,
+          logging: false,
+          letterRendering: true,
+          backgroundColor: '#ffffff',
+          scrollY: 0,
+          windowWidth: document.body.scrollWidth
+        },
+        jsPDF: {
+          unit: 'mm',
+          format: 'a3',
+          orientation: 'portrait',
+          compress: true,
+          hotfixes: ['px_scaling']
+        },
+        pagebreak: { mode: ['css', 'legacy'], avoid: ['.mockup', '.logo-card', '.swatch', '.type-block', '.section-header'] }
+      };
+
+      await html2pdf().set(opt).from(document.body).save();
+
+      status.innerHTML = '✅ PDF gerado!';
+      setTimeout(() => overlay.classList.remove('show'), 600);
+    } catch (err) {
+      console.error('Erro ao gerar PDF:', err);
+      status.innerHTML = '❌ Erro ao gerar PDF.<br><span style="font-family:var(--mono);font-size:13px;color:#aaa;font-weight:400;text-transform:none;letter-spacing:0">Veja o console (F12) e me avise.</span>';
+      setTimeout(() => overlay.classList.remove('show'), 3000);
+    } finally {
+      if (nav) nav.style.display = navOriginal;
+      btn.style.display = '';
+      btn.disabled = false;
+      labelText.textContent = 'Exportar PDF';
+      status.innerHTML = '<div class="spinner"></div>Gerando PDF…<br><span style="font-family:var(--mono);font-size:13px;color:#aaa;font-weight:400;text-transform:none;letter-spacing:0">Pode levar de 30s a 2min.</span>';
+    }
+  });
+</script>
+
+</body>
+</html>

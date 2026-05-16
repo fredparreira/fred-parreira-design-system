@@ -1,0 +1,36 @@
+/* =====================================================================
+   Fred Parreira Design System · all.css
+
+   Entry point que importa tokens + todos os componentes.
+   Use este arquivo em projetos novos:
+
+     <link rel="stylesheet" href="path/to/fred-parreira-design-system/components/all.css">
+
+   E carrega tudo de uma vez (tokens, tipografia, botoes, cards, badges).
+===================================================================== */
+
+/* Tokens (cores, fontes, spacing, radius, paths) */
+@import url('../tokens/tokens.css');
+
+/* Carrega fonte Exo 2 do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,400;0,500;0,700;0,900;1,500;1,700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Componentes */
+@import url('typography.css');
+@import url('buttons.css');
+@import url('cards.css');
+@import url('badges.css');
+
+/* Reset basico opcional ------------------------------------------------ */
+body {
+  margin: 0;
+  font-family: var(--fp-font-body);
+  font-size: 16px;
+  color: var(--fp-dark);
+  background: var(--fp-light);
+  line-height: 1.5;
+}
+
+* {
+  box-sizing: border-box;
+}

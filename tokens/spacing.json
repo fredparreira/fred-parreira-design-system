@@ -1,0 +1,29 @@
+{
+  "spacing": {
+    "xs": { "$value": "8px", "$type": "dimension" },
+    "sm": { "$value": "16px", "$type": "dimension" },
+    "md": { "$value": "24px", "$type": "dimension" },
+    "lg": { "$value": "40px", "$type": "dimension" },
+    "xl": { "$value": "64px", "$type": "dimension" },
+    "safe-margin": { "$value": "60px", "$type": "dimension", "$description": "Margem minima em pecas 1080x1350" }
+  },
+  "radius": {
+    "sm": { "$value": "4px", "$type": "dimension" },
+    "md": { "$value": "8px", "$type": "dimension" },
+    "lg": { "$value": "16px", "$type": "dimension" },
+    "pill": { "$value": "999px", "$type": "dimension" }
+  },
+  "logos": {
+    "symbol": {
+      "small": "32-48px (favicon, icone, avatar)",
+      "medium": "64-96px (rodape, header de carrossel)",
+      "large": "160-240px (capa, slide de marca)"
+    },
+    "horizontal": {
+      "small": "18-24px de altura (rodape)",
+      "medium": "36-48px de altura (header)",
+      "large": "80-120px de altura (banner)"
+    },
+    "safeMarginRule": "Manter altura da letra F do monograma como margem livre"
+  }
+}

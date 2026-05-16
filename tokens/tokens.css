@@ -1,0 +1,103 @@
+/* =====================================================================
+   Fred Parreira Design System · tokens.css
+   Versao compilada de todos os design tokens em variaveis CSS.
+
+   Esse arquivo e a fonte de verdade para qualquer producao web/HTML.
+   Importe-o no topo do seu CSS:
+
+     @import url('https://cdn.jsdelivr.net/gh/fredparreira/fred-parreira-design-system/tokens/tokens.css');
+
+   Ou copie local.
+
+   Estrutura:
+   1. Cores primarias (4)
+   2. Cores complementares (6)
+   3. Tipografia (3 famílias)
+   4. Pesos canonicos
+   5. Espacamento e radius
+   6. Logos (paths relativos)
+   7. Metadados da marca
+===================================================================== */
+
+:root {
+  /* ----------------------------------------------------------------- */
+  /* 1. CORES PRIMARIAS                                                */
+  /* ----------------------------------------------------------------- */
+  --fp-primary: #DCFF00;        /* Eletric Lime */
+  --fp-primary-light: #E8FF4D;
+  --fp-primary-dark: #B8D600;
+
+  --fp-dark: #000000;            /* Black puro */
+  --fp-light: #FFFFFF;           /* White puro */
+  --fp-gray: #595959;            /* Cinza medio */
+  --fp-gray-light: #F4F4F4;      /* Cinza claro */
+  --fp-warm-light: #E7DCC5;      /* Off-white quente */
+
+  /* ----------------------------------------------------------------- */
+  /* 2. CORES COMPLEMENTARES (uso pontual)                             */
+  /* ----------------------------------------------------------------- */
+  --fp-accent-1: #11BBD4;        /* Tech Blue */
+  --fp-accent-2: #0F3D63;        /* Navy */
+  --fp-accent-3: #00FF84;        /* Neon Green */
+  --fp-accent-4: #E7DCC5;        /* Warm Off-White */
+  --fp-accent-5: #FF00E0;        /* Magenta Fluor (uso restrito) */
+  --fp-accent-6: #005CFF;        /* Electric Blue */
+
+  /* ----------------------------------------------------------------- */
+  /* 3. TIPOGRAFIA                                                     */
+  /* ----------------------------------------------------------------- */
+  --fp-font-display: 'Exo 2', system-ui, -apple-system, sans-serif;
+  --fp-font-body: 'Brix', 'Inter', system-ui, -apple-system, sans-serif;
+  --fp-font-mono: 'Courier New', 'Courier Prime', ui-monospace, monospace;
+
+  /* ----------------------------------------------------------------- */
+  /* 4. PESOS CANONICOS                                                */
+  /* ----------------------------------------------------------------- */
+  --fp-weight-black: 900;        /* Exo 2 Black - titulos maiores */
+  --fp-weight-bold: 700;         /* Exo 2 Bold - subtitulos, CTAs */
+  --fp-weight-medium: 500;       /* Exo 2 Medium - transicoes */
+  --fp-weight-regular: 400;      /* Brix Regular - corpo */
+  --fp-weight-light: 300;        /* Brix Light - legendas */
+
+  /* ----------------------------------------------------------------- */
+  /* 5. ESPACAMENTO E RADIUS                                           */
+  /* ----------------------------------------------------------------- */
+  --fp-space-xs: 8px;
+  --fp-space-sm: 16px;
+  --fp-space-md: 24px;
+  --fp-space-lg: 40px;
+  --fp-space-xl: 64px;
+  --fp-safe-margin: 60px;        /* Margem minima em pecas 1080x1350 */
+
+  --fp-radius-sm: 4px;
+  --fp-radius-md: 8px;
+  --fp-radius-lg: 16px;
+  --fp-radius-pill: 999px;
+
+  /* ----------------------------------------------------------------- */
+  /* 6. LOGOS (paths relativos a este arquivo)                         */
+  /* ----------------------------------------------------------------- */
+  --fp-logo-symbol-lemon: url('../assets/logos/marca-fp-lemon.png');
+  --fp-logo-symbol-preto: url('../assets/logos/marca-fp-preto.png');
+  --fp-logo-wordmark-lemon: url('../assets/logos/assinatura-lemon.png');
+  --fp-logo-wordmark-preta: url('../assets/logos/assinatura-preta.png');
+  --fp-logo-lockup-lemon-branca: url('../assets/logos/marca-completa-lemon-branca.png');
+  --fp-logo-lockup-lemon-preta: url('../assets/logos/marca-completa-lemon-preta.png');
+  --fp-logo-lockup-preta-lemon: url('../assets/logos/marca-completa-preta-lemon.png');
+
+  --fp-asset-balao: url('../assets/logos/balao-marca.png');
+  --fp-asset-obj-lemon: url('../assets/logos/obj-lemon.png');
+  --fp-asset-obj-branco: url('../assets/logos/obj-branco.png');
+  --fp-asset-obj-2-branco: url('../assets/logos/obj-2-branco.png');
+  --fp-asset-obj-3-lemon: url('../assets/logos/obj-3-lemon.png');
+
+  --fp-asset-capa-linkedin: url('../assets/logos/capa-linkedin.jpg');
+  --fp-asset-foto-fred: url('../assets/logos/foto-fred.jpg');
+
+  /* ----------------------------------------------------------------- */
+  /* 7. METADADOS DA MARCA                                             */
+  /* ----------------------------------------------------------------- */
+  --fp-brand-name: 'Fred Parreira';
+  --fp-brand-tagline: 'Inovar nao e sobre tecnologia. E sobre gente.';
+  --fp-brand-concept: 'Uma marca que nasce para conectar.';
+}

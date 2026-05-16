@@ -1,0 +1,160 @@
+/* =====================================================================
+   Cards · Fred Parreira Design System
+
+   Variantes:
+     .fp-card               → card padrao branco
+     .fp-card-dark          → fundo preto, texto branco
+     .fp-card-lime          → fundo lime, texto preto
+     .fp-card-quote         → card de citacao (com aspas grandes)
+     .fp-card-number        → datapoint hero, numero gigante
+     .fp-card-mockup        → emulador de mockup (proporcoes ajustaveis)
+===================================================================== */
+
+.fp-card {
+  background: var(--fp-light);
+  color: var(--fp-dark);
+  padding: var(--fp-space-lg);
+  border-radius: var(--fp-radius-lg);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.fp-card-dark {
+  background: var(--fp-dark);
+  color: var(--fp-light);
+  padding: var(--fp-space-lg);
+  border-radius: var(--fp-radius-lg);
+}
+
+.fp-card-lime {
+  background: var(--fp-primary);
+  color: var(--fp-dark);
+  padding: var(--fp-space-lg);
+  border-radius: var(--fp-radius-lg);
+}
+
+.fp-card-warm {
+  background: var(--fp-warm-light);
+  color: var(--fp-dark);
+  padding: var(--fp-space-lg);
+  border-radius: var(--fp-radius-lg);
+}
+
+/* QUOTE CARD --------------------------------------------------------- */
+.fp-card-quote {
+  background: var(--fp-light);
+  color: var(--fp-dark);
+  padding: var(--fp-space-lg);
+  border-radius: var(--fp-radius-lg);
+  position: relative;
+  border-left: 4px solid var(--fp-primary);
+}
+
+.fp-card-quote::before {
+  content: '"';
+  font-family: var(--fp-font-display);
+  font-weight: var(--fp-weight-black);
+  font-size: 80px;
+  line-height: 0.7;
+  color: var(--fp-primary);
+  text-shadow: -1px -1px 0 var(--fp-dark), 1px -1px 0 var(--fp-dark), -1px 1px 0 var(--fp-dark), 1px 1px 0 var(--fp-dark);
+  position: absolute;
+  top: 16px;
+  right: 24px;
+}
+
+.fp-card-quote .quote-text {
+  font-family: var(--fp-font-display);
+  font-weight: var(--fp-weight-bold);
+  font-style: italic;
+  font-size: 22px;
+  line-height: 1.2;
+  margin-bottom: var(--fp-space-md);
+}
+
+.fp-card-quote .quote-author {
+  font-family: var(--fp-font-mono);
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--fp-gray);
+}
+
+/* NUMBER CARD · datapoint hero -------------------------------------- */
+.fp-card-number {
+  background: var(--fp-light);
+  color: var(--fp-dark);
+  padding: var(--fp-space-lg);
+  border-radius: var(--fp-radius-lg);
+  text-align: center;
+}
+
+.fp-card-number .number {
+  font-family: var(--fp-font-display);
+  font-weight: var(--fp-weight-black);
+  font-size: 96px;
+  line-height: 0.85;
+  color: var(--fp-primary);
+  text-shadow: -2px -2px 0 var(--fp-dark), 2px -2px 0 var(--fp-dark), -2px 2px 0 var(--fp-dark), 2px 2px 0 var(--fp-dark);
+  letter-spacing: -3px;
+  display: block;
+}
+
+.fp-card-number .label {
+  font-family: var(--fp-font-display);
+  font-weight: var(--fp-weight-bold);
+  font-size: 16px;
+  line-height: 1.3;
+  margin-top: var(--fp-space-sm);
+}
+
+.fp-card-number .source {
+  font-family: var(--fp-font-mono);
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: var(--fp-gray);
+  margin-top: var(--fp-space-sm);
+}
+
+/* MOCKUP CARD · proporcoes de plataforma ---------------------------- */
+.fp-mockup-carrossel {
+  aspect-ratio: 1080 / 1350;
+  padding: var(--fp-space-lg);
+  border-radius: var(--fp-radius-lg);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.fp-mockup-square {
+  aspect-ratio: 1;
+  padding: var(--fp-space-lg);
+  border-radius: var(--fp-radius-lg);
+  overflow: hidden;
+  position: relative;
+}
+
+.fp-mockup-deck {
+  aspect-ratio: 16 / 9;
+  padding: var(--fp-space-md) var(--fp-space-lg);
+  border-radius: var(--fp-radius-lg);
+  overflow: hidden;
+  position: relative;
+}
+
+.fp-mockup-story {
+  aspect-ratio: 9 / 16;
+  padding: var(--fp-space-lg);
+  border-radius: var(--fp-radius-lg);
+  overflow: hidden;
+  position: relative;
+}
+
+.fp-mockup-banner-li {
+  aspect-ratio: 1600 / 480;
+  padding: var(--fp-space-md);
+  border-radius: var(--fp-radius-md);
+  overflow: hidden;
+  position: relative;
+}

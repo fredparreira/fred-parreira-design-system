@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Exemplo · Slide de Deck · Fred Parreira DS</title>
+<link rel="stylesheet" href="../components/all.css">
+<style>
+  body { background: #f0f0f0; padding: 40px; min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+  .mockup-frame { width: 720px; }
+</style>
+</head>
+<body>
+  <div class="mockup-frame">
+    <!-- SLIDE 16:9 · CAPA DE DECK -->
+    <div class="fp-mockup-deck fp-card-dark" style="display:flex;flex-direction:column;justify-content:space-between">
+      <img src="../assets/logos/foto-fred.jpg" alt=""
+           style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.32;pointer-events:none">
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.4) 0%,rgba(0,0,0,0.85) 100%);pointer-events:none"></div>
+
+      <div style="position:relative;z-index:2;display:flex;align-items:center;gap:12px">
+        <img src="../assets/logos/marca-fp-lemon.png" alt="FP" style="height:36px">
+        <div>
+          <p class="fp-display-sm fp-light-text" style="font-size:14px;margin:0">FRED PARREIRA</p>
+          <p class="fp-mono-sm" style="opacity:0.7;margin:0">consultor · professor · estrategista</p>
+        </div>
+      </div>
+
+      <div style="position:relative;z-index:2">
+        <h1 class="fp-display-md fp-light-text">
+          copiloto<br>
+          <span class="fp-lime">criativo:</span><br>
+          IA + design thinking
+        </h1>
+      </div>
+
+      <div style="position:relative;z-index:2;display:flex;justify-content:space-between;color:#666">
+        <span class="fp-mono-sm">// rio innovation week 2026</span>
+        <span class="fp-mono-sm">01 / 24</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

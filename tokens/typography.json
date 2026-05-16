@@ -1,0 +1,50 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "typography": {
+    "fontFamily": {
+      "display": {
+        "$value": "'Exo 2', system-ui, -apple-system, sans-serif",
+        "$type": "fontFamily",
+        "$description": "Exo 2 - fonte de display da marca. Titulos, capas, headlines, numeros-gigantes.",
+        "source": "Google Fonts",
+        "url": "https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,400;0,500;0,700;0,900;1,500;1,700&display=swap"
+      },
+      "body": {
+        "$value": "'Brix', 'Inter', system-ui, -apple-system, sans-serif",
+        "$type": "fontFamily",
+        "$description": "Brix (com fallback Inter) - fonte de corpo. Paragrafos, cases descritivos, legendas."
+      },
+      "mono": {
+        "$value": "'Courier New', 'Courier Prime', ui-monospace, monospace",
+        "$type": "fontFamily",
+        "$description": "Courier - decoracao tech. Citacoes, ASCII art, numeros de slide, rotulos curtos."
+      }
+    },
+    "fontWeight": {
+      "display": {
+        "black": { "$value": 900, "$description": "Titulos maiores, capas, numeros-gigantes, manifestos" },
+        "bold": { "$value": 700, "$description": "Subtitulos, CTAs em pills, linhas de apoio" },
+        "medium": { "$value": 500, "$description": "Opcional para transicoes" }
+      },
+      "body": {
+        "regular": { "$value": 400 },
+        "light": { "$value": 300 }
+      }
+    },
+    "hierarchy": {
+      "slide-1080x1350": {
+        "title": { "size": "56-72pt", "family": "display", "weight": 900 },
+        "subtitle": { "size": "32-40pt", "family": "display", "weight": 700 },
+        "body": { "size": "22-26pt", "family": "body", "weight": 400 },
+        "quote": { "size": "28-34pt", "family": "display", "weight": 700, "style": "italic" },
+        "caption": { "size": "16-18pt", "family": "body", "weight": 300 }
+      }
+    },
+    "rules": [
+      "Caixa baixa em titulos provocativos quando tom for conversa",
+      "CAIXA ALTA apenas em CTAs visuais energeticos (BORA COMECAR?)",
+      "Tracking expandido (+10 a +30) em headlines Exo 2 Black",
+      "Numeros-gigantes em Exo 2 Black com unidade em peso Bold menor"
+    ]
+  }
+}

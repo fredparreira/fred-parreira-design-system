@@ -1,0 +1,54 @@
+/* =====================================================================
+   Badges & Pills · Fred Parreira Design System
+===================================================================== */
+
+.fp-badge {
+  font-family: var(--fp-font-display);
+  font-weight: var(--fp-weight-bold);
+  font-size: 11px;
+  letter-spacing: 1px;
+  padding: 4px 10px;
+  border-radius: var(--fp-radius-sm);
+  text-transform: uppercase;
+  display: inline-block;
+}
+
+.fp-badge-lime {
+  background: var(--fp-primary);
+  color: var(--fp-dark);
+}
+
+.fp-badge-dark {
+  background: var(--fp-dark);
+  color: var(--fp-primary);
+}
+
+.fp-badge-outline {
+  background: transparent;
+  border: 1.5px solid currentColor;
+}
+
+/* PILL · CTA suave -------------------------------------------------- */
+.fp-pill {
+  font-family: var(--fp-font-display);
+  font-weight: var(--fp-weight-bold);
+  font-size: 13px;
+  padding: 8px 16px;
+  border-radius: var(--fp-radius-pill);
+  background: var(--fp-light);
+  border: 2px solid var(--fp-dark);
+  color: var(--fp-dark);
+  display: inline-block;
+}
+
+.fp-pill-lime {
+  background: var(--fp-primary);
+  border-color: var(--fp-dark);
+  color: var(--fp-dark);
+}
+
+.fp-pill-dark {
+  background: var(--fp-dark);
+  color: var(--fp-primary);
+  border-color: var(--fp-dark);
+}
