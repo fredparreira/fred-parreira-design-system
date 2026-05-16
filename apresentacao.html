@@ -1,0 +1,1422 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apresentação · Fred Parreira Design System</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
+
+  <!-- Design System -->
+  <link rel="stylesheet" href="components/all.css" />
+
+  <style>
+    /* ================================================================
+       Layout base
+    ================================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--fp-font-body);
+      background: var(--fp-light);
+      color: var(--fp-dark);
+      line-height: 1.6;
+    }
+
+    /* ================================================================
+       Navigation
+    ================================================================ */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--fp-dark);
+      padding: 0 var(--fp-space-xl);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+      border-bottom: 2px solid var(--fp-primary);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .nav-logo img {
+      height: 28px;
+      width: auto;
+    }
+
+    .nav-label {
+      font-family: var(--fp-font-display);
+      font-weight: var(--fp-weight-bold);
+      font-size: 13px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--fp-primary);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: var(--fp-space-lg);
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--fp-font-display);
+      font-size: 12px;
+      font-weight: var(--fp-weight-bold);
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: var(--fp-light);
+      text-decoration: none;
+      opacity: 0.7;
+      transition: opacity 0.15s, color 0.15s;
+    }
+
+    .nav-links a:hover {
+      opacity: 1;
+      color: var(--fp-primary);
+    }
+
+    /* ================================================================
+       Sections
+    ================================================================ */
+    section {
+      padding: var(--fp-space-xl) var(--fp-space-xl);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    section + section {
+      border-top: 1px solid var(--fp-gray-light);
+    }
+
+    .section-full {
+      max-width: 100%;
+      padding: var(--fp-space-xl);
+    }
+
+    .section-tag {
+      font-family: var(--fp-font-display);
+      font-size: 11px;
+      font-weight: var(--fp-weight-bold);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--fp-gray);
+      margin-bottom: var(--fp-space-sm);
+    }
+
+    .section-title {
+      font-family: var(--fp-font-display);
+      font-weight: var(--fp-weight-black);
+      font-size: clamp(28px, 4vw, 48px);
+      line-height: 0.95;
+      letter-spacing: -1.5px;
+      margin-bottom: var(--fp-space-md);
+    }
+
+    .section-desc {
+      font-size: 16px;
+      color: var(--fp-gray);
+      max-width: 560px;
+      margin-bottom: var(--fp-space-lg);
+    }
+
+    /* ================================================================
+       Hero
+    ================================================================ */
+    .hero {
+      background: var(--fp-dark);
+      padding: 100px var(--fp-space-xl);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center top, rgba(220,255,0,0.12) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--fp-font-display);
+      font-size: 12px;
+      font-weight: var(--fp-weight-bold);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--fp-primary);
+      margin-bottom: var(--fp-space-md);
+    }
+
+    .hero-title {
+      font-family: var(--fp-font-display);
+      font-weight: var(--fp-weight-black);
+      font-size: clamp(48px, 8vw, 96px);
+      line-height: 0.9;
+      letter-spacing: -3px;
+      color: var(--fp-light);
+      margin-bottom: var(--fp-space-md);
+    }
+
+    .hero-title span {
+      color: var(--fp-primary);
+    }
+
+    .hero-sub {
+      font-size: 18px;
+      color: rgba(255,255,255,0.6);
+      max-width: 560px;
+      margin: 0 auto var(--fp-space-lg);
+      line-height: 1.5;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: var(--fp-space-sm);
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: var(--fp-space-xl);
+      justify-content: center;
+      margin-top: 60px;
+      flex-wrap: wrap;
+    }
+
+    .hero-stat {
+      text-align: center;
+    }
+
+    .hero-stat-num {
+      font-family: var(--fp-font-display);
+      font-weight: var(--fp-weight-black);
+      font-size: 40px;
+      color: var(--fp-primary);
+      line-height: 1;
+    }
+
+    .hero-stat-label {
+      font-size: 12px;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    /* ================================================================
+       Architecture
+    ================================================================ */
+    .arch-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: var(--fp-space-md);
+    }
+
+    .arch-card {
+      background: var(--fp-gray-light);
+      border-radius: var(--fp-radius-lg);
+      padding: var(--fp-space-md);
+      border-left: 4px solid transparent;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .arch-card:hover {
+      transform: translateY(-3px);
+    }
+
+    .arch-card.lime  { border-left-color: var(--fp-primary); }
+    .arch-card.dark  { border-left-color: var(--fp-dark); }
+    .arch-card.blue  { border-left-color: var(--fp-accent-1); }
+    .arch-card.warm  { border-left-color: var(--fp-warm-light); border-left-color: #c5b48e; }
+
+    .arch-icon {
+      font-size: 28px;
+      margin-bottom: var(--fp-space-sm);
+    }
+
+    .arch-name {
+      font-family: var(--fp-font-display);
+      font-weight: var(--fp-weight-black);
+      font-size: 18px;
+      margin-bottom: 6px;
+    }
+
+    .arch-path {
+      font-family: var(--fp-font-mono);
+      font-size: 12px;
+      color: var(--fp-gray);
+      background: rgba(0,0,0,0.06);
+      padding: 3px 8px;
+      border-radius: var(--fp-radius-sm);
+      display: inline-block;
+      margin-bottom: var(--fp-space-sm);
+    }
+
+    .arch-desc {
+      font-size: 14px;
+      color: var(--fp-gray);
+      line-height: 1.5;
+    }
+
+    .arch-files {
+      margin-top: var(--fp-space-sm);
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .arch-files li {
+      font-family: var(--fp-font-mono);
+      font-size: 11px;
+      color: var(--fp-gray);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .arch-files li::before {
+      content: '—';
+      color: var(--fp-primary);
+      font-weight: bold;
+    }
+
+    /* ================================================================
+       Color palette
+    ================================================================ */
+    .colors-bg {
+      background: var(--fp-dark);
+      border-radius: var(--fp-radius-lg);
+      padding: var(--fp-space-lg);
+    }
+
+    .colors-bg .section-tag { color: rgba(255,255,255,0.4); }
+    .colors-bg .section-title { color: var(--fp-light); }
+    .colors-bg .section-desc { color: rgba(255,255,255,0.5); }
+
+    .palette-group {
+      margin-bottom: var(--fp-space-lg);
+    }
+
+    .palette-group-label {
+      font-family: var(--fp-font-display);
+      font-size: 11px;
+      font-weight: var(--fp-weight-bold);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: var(--fp-space-sm);
+    }
+
+    .palette-swatches {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .swatch {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .swatch-color {
+      width: 80px;
+      height: 80px;
+      border-radius: var(--fp-radius-md);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .swatch-name {
+      font-family: var(--fp-font-display);
+      font-weight: var(--fp-weight-bold);
+      font-size: 11px;
+      color: var(--fp-light);
+    }
+
+    .swatch-hex {
+      font-family: var(--fp-font-mono);
+      font-size: 10px;
+      color: rgba(255,255,255,0.4);
+    }
+
+    .swatch-var {
+      font-family: var(--fp-font-mono);
+      font-size: 9px;
+      color: var(--fp-primary);
+      opacity: 0.7;
+    }
+
+    /* ================================================================
+       Typography scale
+    ================================================================ */
+    .type-row {
+      display: flex;
+      align-items: baseline;
+      gap: var(--fp-space-md);
+      padding: var(--fp-space-md) 0;
+      border-bottom: 1px solid var(--fp-gray-light);
+    }
+
+    .type-meta {
+      min-width: 140px;
+      flex-shrink: 0;
+    }
+
+    .type-class {
+      font-family: var(--fp-font-mono);
+      font-size: 11px;
+      color: var(--fp-gray);
+      background: var(--fp-gray-light);
+      padding: 3px 8px;
+      border-radius: var(--fp-radius-sm);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .type-info {
+      font-size: 11px;
+      color: var(--fp-gray);
+    }
+
+    /* ================================================================
+       Buttons showcase
+    ================================================================ */
+    .btn-showcase {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--fp-space-md);
+      align-items: center;
+    }
+
+    .btn-item {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .btn-class-tag {
+      font-family: var(--fp-font-mono);
+      font-size: 11px;
+      color: var(--fp-gray);
+      background: var(--fp-gray-light);
+      padding: 3px 8px;
+      border-radius: var(--fp-radius-sm);
+    }
+
+    /* ================================================================
+       Badges showcase
+    ================================================================ */
+    .badge-showcase {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--fp-space-md);
+      align-items: center;
+    }
+
+    .badge-item {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    /* ================================================================
+       Spacing
+    ================================================================ */
+    .spacing-grid {
+      display: flex;
+      flex-direction: column;
+      gap: var(--fp-space-sm);
+    }
+
+    .spacing-row {
+      display: flex;
+      align-items: center;
+      gap: var(--fp-space-md);
+    }
+
+    .spacing-bar-wrap {
+      flex: 1;
+    }
+
+    .spacing-bar {
+      height: 24px;
+      background: var(--fp-primary);
+      border-radius: var(--fp-radius-sm);
+    }
+
+    .spacing-label {
+      min-width: 80px;
+      font-family: var(--fp-font-mono);
+      font-size: 12px;
+      color: var(--fp-gray);
+    }
+
+    .spacing-value {
+      min-width: 50px;
+      font-family: var(--fp-font-mono);
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    /* ================================================================
+       Logos
+    ================================================================ */
+    .logos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--fp-space-md);
+    }
+
+    .logo-card {
+      border-radius: var(--fp-radius-lg);
+      overflow: hidden;
+    }
+
+    .logo-card-preview {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--fp-space-lg);
+      min-height: 120px;
+    }
+
+    .logo-card-preview.bg-dark   { background: var(--fp-dark); }
+    .logo-card-preview.bg-light  { background: var(--fp-light); border: 1px solid var(--fp-gray-light); }
+    .logo-card-preview.bg-lime   { background: var(--fp-primary); }
+    .logo-card-preview.bg-warm   { background: var(--fp-warm-light); }
+
+    .logo-card-preview img {
+      max-height: 60px;
+      max-width: 100%;
+      object-fit: contain;
+    }
+
+    .logo-card-info {
+      background: var(--fp-gray-light);
+      padding: var(--fp-space-sm);
+    }
+
+    .logo-card-name {
+      font-family: var(--fp-font-display);
+      font-weight: var(--fp-weight-bold);
+      font-size: 13px;
+      margin-bottom: 2px;
+    }
+
+    .logo-card-file {
+      font-family: var(--fp-font-mono);
+      font-size: 10px;
+      color: var(--fp-gray);
+    }
+
+    /* ================================================================
+       How to use
+    ================================================================ */
+    .use-bg {
+      background: var(--fp-gray-light);
+      border-radius: var(--fp-radius-lg);
+      padding: var(--fp-space-lg);
+    }
+
+    .code-block {
+      background: var(--fp-dark);
+      border-radius: var(--fp-radius-md);
+      padding: var(--fp-space-md);
+      overflow-x: auto;
+      margin-top: var(--fp-space-sm);
+    }
+
+    .code-block pre {
+      font-family: var(--fp-font-mono);
+      font-size: 13px;
+      color: var(--fp-light);
+      white-space: pre;
+      line-height: 1.6;
+    }
+
+    .code-block pre .kw  { color: var(--fp-primary); }
+    .code-block pre .str { color: var(--fp-accent-1); }
+    .code-block pre .cm  { color: rgba(255,255,255,0.3); }
+    .code-block pre .tag { color: #FF8B8B; }
+    .code-block pre .attr{ color: var(--fp-accent-3); }
+
+    .use-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--fp-space-md);
+      margin-top: var(--fp-space-lg);
+    }
+
+    .use-card {
+      background: var(--fp-light);
+      border-radius: var(--fp-radius-md);
+      padding: var(--fp-space-md);
+    }
+
+    .use-card-label {
+      font-family: var(--fp-font-display);
+      font-weight: var(--fp-weight-bold);
+      font-size: 13px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: var(--fp-space-sm);
+    }
+
+    /* ================================================================
+       Cards showcase
+    ================================================================ */
+    .cards-showcase {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: var(--fp-space-md);
+    }
+
+    /* ================================================================
+       Radius demo
+    ================================================================ */
+    .radius-row {
+      display: flex;
+      gap: var(--fp-space-md);
+      flex-wrap: wrap;
+      align-items: flex-end;
+    }
+
+    .radius-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .radius-box {
+      width: 80px;
+      height: 80px;
+      background: var(--fp-primary);
+      border: 2px solid var(--fp-dark);
+    }
+
+    /* ================================================================
+       Footer
+    ================================================================ */
+    .footer {
+      background: var(--fp-dark);
+      padding: var(--fp-space-xl);
+      text-align: center;
+      border-top: 2px solid var(--fp-primary);
+    }
+
+    .footer-title {
+      font-family: var(--fp-font-display);
+      font-weight: var(--fp-weight-black);
+      font-size: 32px;
+      color: var(--fp-light);
+      letter-spacing: -1px;
+      margin-bottom: var(--fp-space-sm);
+    }
+
+    .footer-title span { color: var(--fp-primary); }
+
+    .footer-sub {
+      color: rgba(255,255,255,0.4);
+      font-size: 14px;
+      margin-bottom: var(--fp-space-lg);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: var(--fp-space-md);
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      font-family: var(--fp-font-display);
+      font-size: 12px;
+      font-weight: var(--fp-weight-bold);
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .footer-links a:hover { color: var(--fp-primary); }
+
+    .footer-copy {
+      font-size: 11px;
+      color: rgba(255,255,255,0.2);
+      margin-top: var(--fp-space-lg);
+    }
+
+    /* ================================================================
+       Responsive
+    ================================================================ */
+    @media (max-width: 768px) {
+      .nav { padding: 0 var(--fp-space-md); }
+      .nav-links { display: none; }
+      section { padding: var(--fp-space-lg) var(--fp-space-md); }
+      .hero { padding: 60px var(--fp-space-md); }
+      .hero-stats { gap: var(--fp-space-lg); }
+      .colors-bg { padding: var(--fp-space-md); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ================================================================
+       NAV
+  ================================================================ -->
+  <nav class="nav">
+    <a href="#topo" class="nav-logo">
+      <img src="assets/logos/marca-fp-lemon.png" alt="FP" />
+      <span class="nav-label">Design System</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#arquitetura">Arquitetura</a></li>
+      <li><a href="#cores">Cores</a></li>
+      <li><a href="#tipografia">Tipografia</a></li>
+      <li><a href="#componentes">Componentes</a></li>
+      <li><a href="#assets">Assets</a></li>
+      <li><a href="#como-usar">Como usar</a></li>
+    </ul>
+  </nav>
+
+  <!-- ================================================================
+       HERO
+  ================================================================ -->
+  <div id="topo" class="hero">
+    <p class="hero-eyebrow">Fred Parreira Design System</p>
+    <h1 class="hero-title">Um sistema.<br><span>Toda a marca.</span></h1>
+    <p class="hero-sub">
+      Tokens, componentes e assets organizados para manter a identidade
+      visual consistente em qualquer canal ou formato.
+    </p>
+    <div class="hero-actions">
+      <a href="#como-usar" class="fp-btn-cta">Como usar</a>
+      <a href="docs/index.html" class="fp-btn-dark" style="display:inline-block;padding:14px 28px;font-family:var(--fp-font-display);font-weight:700;font-size:14px;letter-spacing:.3px;text-transform:uppercase;text-decoration:none;border-radius:var(--fp-radius-md);">Ver brandbook</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num">4</div>
+        <div class="hero-stat-label">Camadas</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">11</div>
+        <div class="hero-stat-label">Cores token</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">5</div>
+        <div class="hero-stat-label">Componentes</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">14</div>
+        <div class="hero-stat-label">Assets</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================================
+       ARQUITETURA
+  ================================================================ -->
+  <section id="arquitetura">
+    <p class="section-tag">Estrutura</p>
+    <h2 class="section-title">Como o sistema<br>está organizado</h2>
+    <p class="section-desc">
+      Quatro camadas com responsabilidades distintas — cada arquivo tem um único dono.
+    </p>
+
+    <div class="arch-grid">
+
+      <div class="arch-card lime">
+        <div class="arch-icon">🎨</div>
+        <div class="arch-name">Tokens</div>
+        <span class="arch-path">tokens/</span>
+        <p class="arch-desc">A fonte de verdade da marca. Cores, tipografia e espaçamentos definidos em JSON (W3C) e compilados em variáveis CSS.</p>
+        <ul class="arch-files">
+          <li>colors.json</li>
+          <li>typography.json</li>
+          <li>spacing.json</li>
+          <li>tokens.css</li>
+        </ul>
+      </div>
+
+      <div class="arch-card dark">
+        <div class="arch-icon">🧩</div>
+        <div class="arch-name">Componentes</div>
+        <span class="arch-path">components/</span>
+        <p class="arch-desc">Classes CSS reutilizáveis que consomem os tokens. Botões, cards, badges e tipografia prontos para uso.</p>
+        <ul class="arch-files">
+          <li>all.css (entry point)</li>
+          <li>buttons.css</li>
+          <li>cards.css</li>
+          <li>badges.css</li>
+          <li>typography.css</li>
+        </ul>
+      </div>
+
+      <div class="arch-card blue">
+        <div class="arch-icon">🖼️</div>
+        <div class="arch-name">Assets</div>
+        <span class="arch-path">assets/logos/</span>
+        <p class="arch-desc">14 arquivos de marca — símbolos, assinaturas, lockups completos e elementos decorativos em múltiplos fundos.</p>
+        <ul class="arch-files">
+          <li>marca-fp-*.png</li>
+          <li>assinatura-*.png</li>
+          <li>marca-completa-*.png</li>
+          <li>obj-*.png / balao-marca.png</li>
+          <li>foto-fred.jpg</li>
+        </ul>
+      </div>
+
+      <div class="arch-card warm">
+        <div class="arch-icon">📄</div>
+        <div class="arch-name">Docs &amp; Exemplos</div>
+        <span class="arch-path">docs/ · examples/</span>
+        <p class="arch-desc">Brandbook interativo com guidelines de uso e templates HTML prontos para Instagram, LinkedIn e slides.</p>
+        <ul class="arch-files">
+          <li>docs/index.html</li>
+          <li>examples/carrossel-capa.html</li>
+          <li>examples/post-linkedin.html</li>
+          <li>examples/slide-deck.html</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================================================================
+       CORES
+  ================================================================ -->
+  <section id="cores" style="max-width:100%;background:var(--fp-dark);padding:var(--fp-space-xl);">
+    <div style="max-width:1200px;margin:0 auto;">
+      <p class="section-tag" style="color:rgba(255,255,255,0.35);">Design Tokens · Cores</p>
+      <h2 class="section-title" style="color:var(--fp-light);">Paleta de cores</h2>
+      <p class="section-desc" style="color:rgba(255,255,255,0.45);">
+        Regra de proporção: <strong style="color:var(--fp-primary);">60%</strong> neutros
+        + <strong style="color:var(--fp-primary);">30%</strong> lime
+        + <strong style="color:var(--fp-primary);">10%</strong> complementar.
+      </p>
+
+      <!-- Primárias -->
+      <div class="palette-group">
+        <div class="palette-group-label">Primárias</div>
+        <div class="palette-swatches">
+          <div class="swatch">
+            <div class="swatch-color" style="background:#DCFF00;border-color:rgba(255,255,255,0.2);"></div>
+            <div class="swatch-name">Electric Lime</div>
+            <div class="swatch-hex">#DCFF00</div>
+            <div class="swatch-var">--fp-primary</div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-color" style="background:#000000;"></div>
+            <div class="swatch-name">Black</div>
+            <div class="swatch-hex">#000000</div>
+            <div class="swatch-var">--fp-dark</div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-color" style="background:#FFFFFF;border-color:rgba(255,255,255,0.2);"></div>
+            <div class="swatch-name">White</div>
+            <div class="swatch-hex">#FFFFFF</div>
+            <div class="swatch-var">--fp-light</div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-color" style="background:#595959;"></div>
+            <div class="swatch-name">Gray</div>
+            <div class="swatch-hex">#595959</div>
+            <div class="swatch-var">--fp-gray</div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-color" style="background:#F4F4F4;border-color:rgba(255,255,255,0.15);"></div>
+            <div class="swatch-name">Gray Light</div>
+            <div class="swatch-hex">#F4F4F4</div>
+            <div class="swatch-var">--fp-gray-light</div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-color" style="background:#E7DCC5;border-color:rgba(255,255,255,0.15);"></div>
+            <div class="swatch-name">Warm Light</div>
+            <div class="swatch-hex">#E7DCC5</div>
+            <div class="swatch-var">--fp-warm-light</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Complementares -->
+      <div class="palette-group">
+        <div class="palette-group-label">Complementares (uso pontual — máx 10%)</div>
+        <div class="palette-swatches">
+          <div class="swatch">
+            <div class="swatch-color" style="background:#11BBD4;"></div>
+            <div class="swatch-name">Tech Blue</div>
+            <div class="swatch-hex">#11BBD4</div>
+            <div class="swatch-var">--fp-accent-1</div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-color" style="background:#0F3D63;"></div>
+            <div class="swatch-name">Navy</div>
+            <div class="swatch-hex">#0F3D63</div>
+            <div class="swatch-var">--fp-accent-2</div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-color" style="background:#00FF84;border-color:rgba(255,255,255,0.2);"></div>
+            <div class="swatch-name">Neon Green</div>
+            <div class="swatch-hex">#00FF84</div>
+            <div class="swatch-var">--fp-accent-3</div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-color" style="background:#FF00E0;"></div>
+            <div class="swatch-name">Magenta</div>
+            <div class="swatch-hex">#FF00E0</div>
+            <div class="swatch-var">--fp-accent-5</div>
+          </div>
+          <div class="swatch">
+            <div class="swatch-color" style="background:#005CFF;"></div>
+            <div class="swatch-name">Electric Blue</div>
+            <div class="swatch-hex">#005CFF</div>
+            <div class="swatch-var">--fp-accent-6</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contraste -->
+      <div style="background:rgba(255,255,255,0.05);border-radius:var(--fp-radius-md);padding:var(--fp-space-md);display:flex;gap:var(--fp-space-md);flex-wrap:wrap;align-items:center;">
+        <div style="display:flex;align-items:center;justify-content:center;width:120px;height:60px;background:#DCFF00;border-radius:var(--fp-radius-sm);">
+          <span style="font-family:var(--fp-font-display);font-weight:900;font-size:18px;color:#000;">TEXTO</span>
+        </div>
+        <div>
+          <div style="font-family:var(--fp-font-display);font-weight:700;color:var(--fp-light);font-size:14px;">Contraste certificado W3C</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.4);margin-top:4px;">Black on Lime: <strong style="color:var(--fp-primary);">16.8:1</strong> · White on Black: <strong style="color:var(--fp-primary);">21:1</strong> · Lime on Black: <strong style="color:var(--fp-primary);">16.8:1</strong></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================================================================
+       TIPOGRAFIA
+  ================================================================ -->
+  <section id="tipografia">
+    <p class="section-tag">Design Tokens · Tipografia</p>
+    <h2 class="section-title">Escala tipográfica</h2>
+    <p class="section-desc">
+      Display: <strong>Exo 2</strong> (pesos 300–900) · Body: <strong>Brix / Inter</strong> · Mono: <strong>Courier New</strong>
+    </p>
+
+    <!-- Display scale -->
+    <div class="type-row" style="border-bottom:2px solid var(--fp-dark);margin-bottom:0;">
+      <div class="type-meta">
+        <span class="type-class">.fp-display-xxl</span>
+        <span class="type-info">72px · 900 · −2px</span>
+      </div>
+      <div class="fp-display-xxl" style="flex:1;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;">Fred Parreira</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta">
+        <span class="type-class">.fp-display-xl</span>
+        <span class="type-info">56px · 900 · −2px</span>
+      </div>
+      <div class="fp-display-xl" style="flex:1;overflow:hidden;white-space:nowrap;">Inovar é sobre gente.</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta">
+        <span class="type-class">.fp-display-lg</span>
+        <span class="type-info">40px · 900 · −1.5px</span>
+      </div>
+      <div class="fp-display-lg" style="flex:1;">Design System completo</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta">
+        <span class="type-class">.fp-display-md</span>
+        <span class="type-info">28px · 700 · −1px</span>
+      </div>
+      <div class="fp-display-md" style="flex:1;">Tokens, componentes e assets</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta">
+        <span class="type-class">.fp-display-sm</span>
+        <span class="type-info">20px · 700</span>
+      </div>
+      <div class="fp-display-sm" style="flex:1;">Pronto para qualquer canal</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta">
+        <span class="type-class">.fp-body-lg</span>
+        <span class="type-info">18px · regular</span>
+      </div>
+      <div class="fp-body-lg" style="flex:1;">Corpo de texto grande para leitura fluida</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta">
+        <span class="type-class">.fp-body</span>
+        <span class="type-info">16px · regular</span>
+      </div>
+      <div class="fp-body" style="flex:1;">Texto base para parágrafos e descrições</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta">
+        <span class="type-class">.fp-body-sm</span>
+        <span class="type-info">13px · regular</span>
+      </div>
+      <div class="fp-body-sm" style="flex:1;">Captions, notas e metadados de apoio</div>
+    </div>
+    <div class="type-row" style="border-bottom:none;padding-bottom:0;">
+      <div class="type-meta">
+        <span class="type-class">.fp-mono</span>
+        <span class="type-info">Courier New</span>
+      </div>
+      <div class="fp-mono" style="flex:1;">--fp-primary: #DCFF00;</div>
+    </div>
+
+    <!-- Highlight utilities -->
+    <div style="margin-top:var(--fp-space-lg);display:flex;flex-wrap:wrap;gap:var(--fp-space-md);align-items:center;">
+      <div>
+        <span class="fp-display-md">Destaque <span class="fp-highlight">lime</span> no texto</span>
+      </div>
+      <div style="background:var(--fp-dark);padding:var(--fp-space-sm);border-radius:var(--fp-radius-md);">
+        <span class="fp-display-md" style="color:var(--fp-light);">Destaque <span class="fp-highlight-dark">dark</span></span>
+      </div>
+    </div>
+    <div style="margin-top:var(--fp-space-sm);display:flex;flex-wrap:wrap;gap:8px;">
+      <code class="type-class">.fp-highlight</code>
+      <code class="type-class">.fp-highlight-dark</code>
+      <code class="type-class">.fp-lime</code>
+      <code class="type-class">.fp-dark-text</code>
+      <code class="type-class">.fp-gray-text</code>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       COMPONENTES · BOTÕES
+  ================================================================ -->
+  <section id="componentes" style="background:var(--fp-gray-light);max-width:100%;padding:var(--fp-space-xl);">
+    <div style="max-width:1200px;margin:0 auto;">
+      <p class="section-tag">Componentes</p>
+      <h2 class="section-title">Botões</h2>
+      <p class="section-desc">Cinco variantes para cada contexto de ação — do CTA mais bold ao ghost mais sutil.</p>
+
+      <div class="btn-showcase">
+        <div class="btn-item">
+          <a href="#" class="fp-btn-cta">Bora começar!</a>
+          <code class="btn-class-tag">.fp-btn-cta</code>
+        </div>
+        <div class="btn-item">
+          <a href="#" class="fp-btn-primary">Primário</a>
+          <code class="btn-class-tag">.fp-btn-primary</code>
+        </div>
+        <div class="btn-item">
+          <a href="#" class="fp-btn-dark">Dark</a>
+          <code class="btn-class-tag">.fp-btn-dark</code>
+        </div>
+        <div class="btn-item">
+          <a href="#" class="fp-btn-outline">Outline</a>
+          <code class="btn-class-tag">.fp-btn-outline</code>
+        </div>
+        <div class="btn-item">
+          <a href="#" class="fp-btn-ghost">Ghost</a>
+          <code class="btn-class-tag">.fp-btn-ghost</code>
+        </div>
+      </div>
+
+      <!-- Tamanhos -->
+      <div style="margin-top:var(--fp-space-lg);">
+        <p class="section-tag">Tamanhos</p>
+        <div style="display:flex;gap:var(--fp-space-md);align-items:center;flex-wrap:wrap;">
+          <div class="btn-item">
+            <a href="#" class="fp-btn-primary fp-btn-sm">Pequeno</a>
+            <code class="btn-class-tag">.fp-btn-sm</code>
+          </div>
+          <div class="btn-item">
+            <a href="#" class="fp-btn-primary">Default</a>
+            <code class="btn-class-tag">padrão</code>
+          </div>
+          <div class="btn-item">
+            <a href="#" class="fp-btn-primary fp-btn-lg">Grande</a>
+            <code class="btn-class-tag">.fp-btn-lg</code>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       COMPONENTES · CARDS
+  ================================================================ -->
+  <section style="max-width:1200px;margin:0 auto;padding:var(--fp-space-xl);">
+    <p class="section-tag">Componentes</p>
+    <h2 class="section-title">Cards</h2>
+    <p class="section-desc">Variantes de fundo para diferentes contextos editoriais e visuais.</p>
+
+    <div class="cards-showcase">
+      <div class="fp-card">
+        <p class="fp-body-sm" style="color:var(--fp-gray);margin-bottom:8px;">.fp-card</p>
+        <p class="fp-body">Card padrão com fundo branco. Ideal para conteúdo neutro e leitura limpa.</p>
+      </div>
+      <div class="fp-card fp-card-dark">
+        <p class="fp-body-sm" style="color:rgba(255,255,255,0.4);margin-bottom:8px;">.fp-card-dark</p>
+        <p class="fp-body" style="color:var(--fp-light);">Card escuro. Alto contraste para destacar informações-chave.</p>
+      </div>
+      <div class="fp-card fp-card-lime">
+        <p class="fp-body-sm" style="color:rgba(0,0,0,0.5);margin-bottom:8px;">.fp-card-lime</p>
+        <p class="fp-body">Card lime. Energia máxima da marca para CTAs e destaques.</p>
+      </div>
+      <div class="fp-card fp-card-warm">
+        <p class="fp-body-sm" style="color:rgba(0,0,0,0.4);margin-bottom:8px;">.fp-card-warm</p>
+        <p class="fp-body">Card warm. Toque humano e acolhedor para conteúdo mais pessoal.</p>
+      </div>
+    </div>
+
+    <!-- Tipos especiais -->
+    <div style="margin-top:var(--fp-space-lg);display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:var(--fp-space-md);">
+      <div class="fp-card-quote">
+        <p>.fp-card-quote</p>
+        <p>"Inovação não é sobre tecnologia. É sobre gente."</p>
+        <p>— Fred Parreira</p>
+      </div>
+      <div class="fp-card-number">
+        <p>.fp-card-number</p>
+        <p>87%</p>
+        <p>das empresas ainda não têm design system</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       COMPONENTES · BADGES
+  ================================================================ -->
+  <section style="background:var(--fp-gray-light);max-width:100%;padding:var(--fp-space-xl);">
+    <div style="max-width:1200px;margin:0 auto;">
+      <p class="section-tag">Componentes</p>
+      <h2 class="section-title">Badges &amp; Pills</h2>
+
+      <div class="badge-showcase">
+        <div class="badge-item">
+          <span class="fp-badge fp-badge-lime">Novo</span>
+          <code class="btn-class-tag">.fp-badge-lime</code>
+        </div>
+        <div class="badge-item">
+          <span class="fp-badge fp-badge-dark">Design System</span>
+          <code class="btn-class-tag">.fp-badge-dark</code>
+        </div>
+        <div class="badge-item">
+          <span class="fp-badge fp-badge-outline">v1.0</span>
+          <code class="btn-class-tag">.fp-badge-outline</code>
+        </div>
+        <div style="width:2px;background:var(--fp-gray-light);height:40px;"></div>
+        <div class="badge-item">
+          <span class="fp-pill">Default</span>
+          <code class="btn-class-tag">.fp-pill</code>
+        </div>
+        <div class="badge-item">
+          <span class="fp-pill fp-pill-lime">Lime</span>
+          <code class="btn-class-tag">.fp-pill-lime</code>
+        </div>
+        <div class="badge-item">
+          <span class="fp-pill fp-pill-dark">Dark</span>
+          <code class="btn-class-tag">.fp-pill-dark</code>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       ESPAÇAMENTO & RADIUS
+  ================================================================ -->
+  <section style="max-width:1200px;margin:0 auto;padding:var(--fp-space-xl);">
+    <p class="section-tag">Design Tokens</p>
+    <h2 class="section-title">Espaçamento &amp; Radius</h2>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--fp-space-xl);flex-wrap:wrap;">
+
+      <!-- Spacing -->
+      <div>
+        <h3 class="fp-display-sm" style="margin-bottom:var(--fp-space-md);">Escala de espaços</h3>
+        <div class="spacing-grid">
+          <div class="spacing-row">
+            <span class="spacing-label">--fp-space-xs</span>
+            <div class="spacing-bar-wrap"><div class="spacing-bar" style="width:8px;"></div></div>
+            <span class="spacing-value">8px</span>
+          </div>
+          <div class="spacing-row">
+            <span class="spacing-label">--fp-space-sm</span>
+            <div class="spacing-bar-wrap"><div class="spacing-bar" style="width:16px;"></div></div>
+            <span class="spacing-value">16px</span>
+          </div>
+          <div class="spacing-row">
+            <span class="spacing-label">--fp-space-md</span>
+            <div class="spacing-bar-wrap"><div class="spacing-bar" style="width:24px;"></div></div>
+            <span class="spacing-value">24px</span>
+          </div>
+          <div class="spacing-row">
+            <span class="spacing-label">--fp-space-lg</span>
+            <div class="spacing-bar-wrap"><div class="spacing-bar" style="width:40px;"></div></div>
+            <span class="spacing-value">40px</span>
+          </div>
+          <div class="spacing-row">
+            <span class="spacing-label">--fp-space-xl</span>
+            <div class="spacing-bar-wrap"><div class="spacing-bar" style="width:64px;"></div></div>
+            <span class="spacing-value">64px</span>
+          </div>
+          <div class="spacing-row">
+            <span class="spacing-label">--fp-safe-margin</span>
+            <div class="spacing-bar-wrap"><div class="spacing-bar" style="width:60px;background:var(--fp-accent-1);"></div></div>
+            <span class="spacing-value">60px</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Radius -->
+      <div>
+        <h3 class="fp-display-sm" style="margin-bottom:var(--fp-space-md);">Border radius</h3>
+        <div class="radius-row">
+          <div class="radius-item">
+            <div class="radius-box" style="border-radius:4px;"></div>
+            <code class="type-class">sm · 4px</code>
+          </div>
+          <div class="radius-item">
+            <div class="radius-box" style="border-radius:8px;"></div>
+            <code class="type-class">md · 8px</code>
+          </div>
+          <div class="radius-item">
+            <div class="radius-box" style="border-radius:16px;"></div>
+            <code class="type-class">lg · 16px</code>
+          </div>
+          <div class="radius-item">
+            <div class="radius-box" style="border-radius:999px;width:120px;height:48px;"></div>
+            <code class="type-class">pill · 999px</code>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================================================================
+       ASSETS · LOGOS
+  ================================================================ -->
+  <section id="assets" style="background:var(--fp-gray-light);max-width:100%;padding:var(--fp-space-xl);">
+    <div style="max-width:1200px;margin:0 auto;">
+      <p class="section-tag">Assets</p>
+      <h2 class="section-title">Logos &amp; marca</h2>
+      <p class="section-desc">14 assets oficiais em múltiplas versões de fundo para garantir contraste em qualquer peça.</p>
+
+      <div class="logos-grid">
+
+        <div class="logo-card">
+          <div class="logo-card-preview bg-dark">
+            <img src="assets/logos/marca-fp-lemon.png" alt="Símbolo Lemon" />
+          </div>
+          <div class="logo-card-info">
+            <div class="logo-card-name">Símbolo · Lemon</div>
+            <div class="logo-card-file">marca-fp-lemon.png</div>
+          </div>
+        </div>
+
+        <div class="logo-card">
+          <div class="logo-card-preview bg-light">
+            <img src="assets/logos/marca-fp-preto.png" alt="Símbolo Preto" />
+          </div>
+          <div class="logo-card-info">
+            <div class="logo-card-name">Símbolo · Preto</div>
+            <div class="logo-card-file">marca-fp-preto.png</div>
+          </div>
+        </div>
+
+        <div class="logo-card">
+          <div class="logo-card-preview bg-dark">
+            <img src="assets/logos/assinatura-lemon.png" alt="Assinatura Lemon" />
+          </div>
+          <div class="logo-card-info">
+            <div class="logo-card-name">Assinatura · Lemon</div>
+            <div class="logo-card-file">assinatura-lemon.png</div>
+          </div>
+        </div>
+
+        <div class="logo-card">
+          <div class="logo-card-preview bg-light">
+            <img src="assets/logos/assinatura-preta.png" alt="Assinatura Preta" />
+          </div>
+          <div class="logo-card-info">
+            <div class="logo-card-name">Assinatura · Preta</div>
+            <div class="logo-card-file">assinatura-preta.png</div>
+          </div>
+        </div>
+
+        <div class="logo-card">
+          <div class="logo-card-preview bg-dark">
+            <img src="assets/logos/marca-completa-lemon-branca.png" alt="Lockup Lemon Branca" />
+          </div>
+          <div class="logo-card-info">
+            <div class="logo-card-name">Lockup · Lemon + Branca</div>
+            <div class="logo-card-file">marca-completa-lemon-branca.png</div>
+          </div>
+        </div>
+
+        <div class="logo-card">
+          <div class="logo-card-preview bg-lime">
+            <img src="assets/logos/marca-completa-preta-lemon.png" alt="Lockup Preta Lemon" />
+          </div>
+          <div class="logo-card-info">
+            <div class="logo-card-name">Lockup · Preta + Lemon</div>
+            <div class="logo-card-file">marca-completa-preta-lemon.png</div>
+          </div>
+        </div>
+
+        <div class="logo-card">
+          <div class="logo-card-preview bg-light">
+            <img src="assets/logos/marca-completa-lemon-preta.png" alt="Lockup Lemon Preta" />
+          </div>
+          <div class="logo-card-info">
+            <div class="logo-card-name">Lockup · Lemon + Preta</div>
+            <div class="logo-card-file">marca-completa-lemon-preta.png</div>
+          </div>
+        </div>
+
+        <div class="logo-card">
+          <div class="logo-card-preview bg-dark">
+            <img src="assets/logos/balao-marca.png" alt="Balão Marca" />
+          </div>
+          <div class="logo-card-info">
+            <div class="logo-card-name">Balão Marca</div>
+            <div class="logo-card-file">balao-marca.png</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       COMO USAR
+  ================================================================ -->
+  <section id="como-usar" style="max-width:1200px;margin:0 auto;padding:var(--fp-space-xl);">
+    <p class="section-tag">Integração</p>
+    <h2 class="section-title">Como usar</h2>
+    <p class="section-desc">Três formas de incluir o design system no seu projeto.</p>
+
+    <div class="use-grid">
+
+      <div class="use-card">
+        <div class="use-card-label">1 · CDN (mais rápido)</div>
+        <p class="fp-body-sm" style="color:var(--fp-gray);margin-bottom:var(--fp-space-sm);">Importe direto no HTML via jsDelivr — sem build, sem npm.</p>
+        <div class="code-block">
+<pre><span class="tag">&lt;link</span> <span class="attr">rel</span>=<span class="str">"stylesheet"</span>
+  <span class="attr">href</span>=<span class="str">"https://cdn.jsdelivr.net/gh/
+fredparreira/fred-parreira-design-system/
+components/all.css"</span><span class="tag">&gt;</span></pre>
+        </div>
+      </div>
+
+      <div class="use-card">
+        <div class="use-card-label">2 · Local</div>
+        <p class="fp-body-sm" style="color:var(--fp-gray);margin-bottom:var(--fp-space-sm);">Clone o repositório e referencie o arquivo.</p>
+        <div class="code-block">
+<pre><span class="cm"># Clone</span>
+git clone https://github.com/
+fredparreira/fred-parreira-design-system
+
+<span class="cm"># No HTML</span>
+<span class="tag">&lt;link</span> <span class="attr">rel</span>=<span class="str">"stylesheet"</span>
+  <span class="attr">href</span>=<span class="str">"caminho/components/all.css"</span><span class="tag">&gt;</span></pre>
+        </div>
+      </div>
+
+      <div class="use-card">
+        <div class="use-card-label">3 · Só os tokens</div>
+        <p class="fp-body-sm" style="color:var(--fp-gray);margin-bottom:var(--fp-space-sm);">Use apenas as variáveis CSS no seu próprio sistema.</p>
+        <div class="code-block">
+<pre><span class="cm">/* No seu CSS */</span>
+<span class="kw">@import</span> <span class="str">url('tokens/tokens.css')</span>;
+
+<span class="cm">/* Depois use as variáveis */</span>
+<span class="attr">color</span>: <span class="kw">var(--fp-primary)</span>;
+<span class="attr">font-family</span>: <span class="kw">var(--fp-font-display)</span>;</pre>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- HTML boilerplate -->
+    <div style="margin-top:var(--fp-space-lg);">
+      <h3 class="fp-display-sm" style="margin-bottom:var(--fp-space-sm);">HTML boilerplate</h3>
+      <div class="code-block">
+<pre><span class="tag">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;html</span> <span class="attr">lang</span>=<span class="str">"pt-BR"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;head&gt;</span>
+  <span class="cm">&lt;!-- Fonte display --&gt;</span>
+  <span class="tag">&lt;link</span> <span class="attr">href</span>=<span class="str">"https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;700;900"</span> <span class="attr">rel</span>=<span class="str">"stylesheet"</span><span class="tag">&gt;</span>
+
+  <span class="cm">&lt;!-- Design System completo --&gt;</span>
+  <span class="tag">&lt;link</span> <span class="attr">rel</span>=<span class="str">"stylesheet"</span> <span class="attr">href</span>=<span class="str">"components/all.css"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;/head&gt;</span>
+<span class="tag">&lt;body&gt;</span>
+
+  <span class="tag">&lt;h1</span> <span class="attr">class</span>=<span class="str">"fp-display-xl"</span><span class="tag">&gt;</span>Título em Exo 2<span class="tag">&lt;/h1&gt;</span>
+  <span class="tag">&lt;p</span> <span class="attr">class</span>=<span class="str">"fp-body"</span><span class="tag">&gt;</span>Corpo de texto.<span class="tag">&lt;/p&gt;</span>
+  <span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="str">"#"</span> <span class="attr">class</span>=<span class="str">"fp-btn-cta"</span><span class="tag">&gt;</span>Bora começar!<span class="tag">&lt;/a&gt;</span>
+
+<span class="tag">&lt;/body&gt;</span>
+<span class="tag">&lt;/html&gt;</span></pre>
+      </div>
+    </div>
+
+    <!-- Filosofia -->
+    <div style="margin-top:var(--fp-space-xl);display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:var(--fp-space-md);">
+      <div style="background:var(--fp-dark);border-radius:var(--fp-radius-lg);padding:var(--fp-space-md);">
+        <div style="font-size:24px;margin-bottom:var(--fp-space-sm);">🎯</div>
+        <div class="fp-display-sm" style="color:var(--fp-primary);margin-bottom:8px;">Token-first</div>
+        <p class="fp-body-sm" style="color:rgba(255,255,255,0.5);">Toda decisão visual vive nos tokens. Mudar uma cor propaga para o sistema inteiro.</p>
+      </div>
+      <div style="background:var(--fp-primary);border-radius:var(--fp-radius-lg);padding:var(--fp-space-md);">
+        <div style="font-size:24px;margin-bottom:var(--fp-space-sm);">⚡</div>
+        <div class="fp-display-sm" style="margin-bottom:8px;">Zero JS</div>
+        <p class="fp-body-sm" style="color:rgba(0,0,0,0.6);">CSS puro. Sem dependências, sem bundle, sem build step. Funciona em qualquer ambiente.</p>
+      </div>
+      <div style="background:var(--fp-gray-light);border-radius:var(--fp-radius-lg);padding:var(--fp-space-md);">
+        <div style="font-size:24px;margin-bottom:var(--fp-space-sm);">♿</div>
+        <div class="fp-display-sm" style="margin-bottom:8px;">Acessível</div>
+        <p class="fp-body-sm" style="color:var(--fp-gray);">Todas as combinações de cor certificadas W3C com contraste mínimo de 4.5:1 (AA).</p>
+      </div>
+      <div style="background:var(--fp-warm-light);border-radius:var(--fp-radius-lg);padding:var(--fp-space-md);">
+        <div style="font-size:24px;margin-bottom:var(--fp-space-sm);">🔗</div>
+        <div class="fp-display-sm" style="margin-bottom:8px;">CDN-ready</div>
+        <p class="fp-body-sm" style="color:rgba(0,0,0,0.6);">Publicado no GitHub e disponível via jsDelivr sem configuração adicional.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       FOOTER
+  ================================================================ -->
+  <footer class="footer">
+    <img src="assets/logos/marca-completa-lemon-branca.png" alt="Fred Parreira" style="height:48px;margin-bottom:var(--fp-space-md);" />
+    <h2 class="footer-title">Inovar é sobre <span>gente.</span></h2>
+    <p class="footer-sub">Fred Parreira Design System · Fonte de verdade da marca</p>
+    <div class="footer-links">
+      <a href="docs/index.html">Brandbook</a>
+      <a href="examples/carrossel-capa.html">Carrossel</a>
+      <a href="examples/post-linkedin.html">LinkedIn</a>
+      <a href="examples/slide-deck.html">Slides</a>
+      <a href="https://github.com/fredparreira/fred-parreira-design-system">GitHub</a>
+    </div>
+    <p class="footer-copy">MIT License · fred-parreira-design-system</p>
+  </footer>
+
+</body>
+</html>
