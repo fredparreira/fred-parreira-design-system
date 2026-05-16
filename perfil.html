@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Perfil · Fred Parreira Design System</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="components/all.css" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--fp-font-body); background: var(--fp-light); color: var(--fp-dark); line-height: 1.6; }
+
+    /* NAV */
+    .nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--fp-dark);
+      padding: 0 var(--fp-space-xl);
+      display: flex; align-items: center; justify-content: space-between;
+      height: 60px;
+      border-bottom: 2px solid var(--fp-primary);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo img { height: 28px; width: auto; }
+    .nav-label {
+      font-family: var(--fp-font-display); font-weight: var(--fp-weight-bold);
+      font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--fp-primary);
+    }
+    .nav-links { display: flex; gap: var(--fp-space-lg); list-style: none; }
+    .nav-links a {
+      font-family: var(--fp-font-display); font-size: 12px; font-weight: var(--fp-weight-bold);
+      letter-spacing: 0.8px; text-transform: uppercase; color: var(--fp-light);
+      text-decoration: none; opacity: 0.6; transition: opacity 0.15s, color 0.15s;
+    }
+    .nav-links a:hover, .nav-links a.active { opacity: 1; color: var(--fp-primary); }
+
+    /* HERO */
+    .hero {
+      background: var(--fp-dark);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 80vh;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-content {
+      padding: 80px var(--fp-space-xl);
+      display: flex; flex-direction: column; justify-content: center;
+      position: relative; z-index: 2;
+    }
+    .hero-photo {
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-photo img {
+      width: 100%; height: 100%; object-fit: cover; object-position: top center;
+      opacity: 0.75;
+    }
+    .hero-photo::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to right, var(--fp-dark) 0%, transparent 40%);
+    }
+    .hero-eyebrow {
+      font-family: var(--fp-font-display); font-size: 11px; font-weight: var(--fp-weight-bold);
+      letter-spacing: 3px; text-transform: uppercase; color: var(--fp-primary);
+      margin-bottom: var(--fp-space-md);
+    }
+    .hero-name {
+      font-family: var(--fp-font-display); font-weight: var(--fp-weight-black);
+      font-size: clamp(52px, 7vw, 88px); line-height: 0.92; letter-spacing: -2.5px;
+      color: var(--fp-light); margin-bottom: var(--fp-space-md);
+    }
+    .hero-name span { color: var(--fp-primary); }
+    .hero-role {
+      font-family: var(--fp-font-display); font-weight: var(--fp-weight-medium);
+      font-size: 18px; color: rgba(255,255,255,0.55); margin-bottom: var(--fp-space-lg);
+      line-height: 1.5;
+    }
+    .hero-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .hero-chip {
+      font-family: var(--fp-font-display); font-weight: var(--fp-weight-bold);
+      font-size: 11px; letter-spacing: 1px; text-transform: uppercase;
+      padding: 6px 14px; border-radius: var(--fp-radius-pill);
+      border: 1px solid rgba(220,255,0,0.3); color: var(--fp-primary);
+    }
+
+    /* SECTIONS */
+    section { padding: var(--fp-space-xl); max-width: 1200px; margin: 0 auto; }
+    section + section { border-top: 1px solid var(--fp-gray-light); }
+    .section-full { max-width: 100%; }
+
+    .section-tag {
+      font-family: var(--fp-font-display); font-size: 11px; font-weight: var(--fp-weight-bold);
+      letter-spacing: 2px; text-transform: uppercase; color: var(--fp-gray); margin-bottom: var(--fp-space-sm);
+    }
+    .section-title {
+      font-family: var(--fp-font-display); font-weight: var(--fp-weight-black);
+      font-size: clamp(28px, 4vw, 48px); line-height: 0.95; letter-spacing: -1.5px;
+      margin-bottom: var(--fp-space-md);
+    }
+
+    /* MINI-BIO */
+    .bio-grid {
+      display: grid; grid-template-columns: 2fr 1fr; gap: var(--fp-space-xl);
+      align-items: start;
+    }
+    .bio-text p { font-size: 18px; line-height: 1.7; color: var(--fp-dark); margin-bottom: var(--fp-space-md); }
+    .bio-text p:last-child { margin-bottom: 0; }
+    .bio-text strong { font-weight: var(--fp-weight-bold); }
+    .bio-sidebar { display: flex; flex-direction: column; gap: var(--fp-space-md); }
+    .bio-stat {
+      background: var(--fp-gray-light); border-radius: var(--fp-radius-lg);
+      padding: var(--fp-space-md); border-left: 4px solid var(--fp-primary);
+    }
+    .bio-stat-num {
+      font-family: var(--fp-font-display); font-weight: var(--fp-weight-black);
+      font-size: 36px; color: var(--fp-dark); line-height: 1; margin-bottom: 4px;
+    }
+    .bio-stat-label { font-size: 13px; color: var(--fp-gray); }
+
+    /* FORMAÇÃO */
+    .formation-list { display: flex; flex-direction: column; gap: var(--fp-space-md); }
+    .formation-item {
+      display: flex; gap: var(--fp-space-md); align-items: flex-start;
+      padding: var(--fp-space-md);
+      border-radius: var(--fp-radius-md);
+      border: 1px solid var(--fp-gray-light);
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .formation-item:hover { border-color: var(--fp-primary); transform: translateX(4px); }
+    .formation-icon {
+      font-size: 28px; width: 56px; height: 56px; flex-shrink: 0;
+      background: var(--fp-gray-light); border-radius: var(--fp-radius-md);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .formation-body { flex: 1; }
+    .formation-degree {
+      font-family: var(--fp-font-display); font-weight: var(--fp-weight-bold);
+      font-size: 17px; margin-bottom: 2px;
+    }
+    .formation-school { font-size: 14px; color: var(--fp-gray); margin-bottom: 4px; }
+    .formation-year {
+      font-family: var(--fp-font-mono); font-size: 11px;
+      color: var(--fp-primary); background: var(--fp-dark);
+      padding: 2px 8px; border-radius: var(--fp-radius-sm);
+      display: inline-block;
+    }
+
+    /* TOM DE VOZ */
+    .voice-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: var(--fp-space-md);
+    }
+    .voice-card {
+      background: var(--fp-gray-light); border-radius: var(--fp-radius-lg);
+      padding: var(--fp-space-md); position: relative; overflow: hidden;
+    }
+    .voice-card::before {
+      content: ''; position: absolute; top: 0; left: 0;
+      width: 4px; height: 100%; background: var(--accent-color, var(--fp-primary));
+    }
+    .voice-icon { font-size: 24px; margin-bottom: var(--fp-space-sm); }
+    .voice-title {
+      font-family: var(--fp-font-display); font-weight: var(--fp-weight-black);
+      font-size: 18px; margin-bottom: 8px;
+    }
+    .voice-desc { font-size: 14px; color: var(--fp-gray); line-height: 1.5; margin-bottom: var(--fp-space-sm); }
+    .voice-example {
+      font-family: var(--fp-font-mono); font-size: 12px;
+      background: var(--fp-dark); color: var(--fp-primary);
+      padding: 8px 12px; border-radius: var(--fp-radius-sm); line-height: 1.4;
+    }
+
+    /* DO / DON'T */
+    .voice-rules {
+      display: grid; grid-template-columns: 1fr 1fr; gap: var(--fp-space-md);
+      margin-top: var(--fp-space-lg);
+    }
+    .voice-rule {
+      border-radius: var(--fp-radius-lg); padding: var(--fp-space-md);
+      border: 1px solid var(--fp-gray-light);
+    }
+    .voice-rule.do   { border-left: 4px solid var(--fp-accent-3); }
+    .voice-rule.dont { border-left: 4px solid var(--fp-accent-5); }
+    .voice-rule-title {
+      font-family: var(--fp-font-display); font-weight: var(--fp-weight-bold);
+      font-size: 15px; margin-bottom: var(--fp-space-sm); display: flex; align-items: center; gap: 6px;
+    }
+    .voice-rule ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+    .voice-rule li { font-size: 14px; color: var(--fp-gray); line-height: 1.4; }
+    .voice-rule li::before { content: '— '; }
+
+    /* FRASES */
+    .frases-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--fp-space-md);
+    }
+    .frase-card {
+      border-radius: var(--fp-radius-lg); padding: var(--fp-space-lg);
+      position: relative; overflow: hidden;
+    }
+    .frase-card.dark { background: var(--fp-dark); color: var(--fp-light); }
+    .frase-card.lime { background: var(--fp-primary); color: var(--fp-dark); }
+    .frase-card.warm { background: var(--fp-warm-light); color: var(--fp-dark); }
+    .frase-card.gray { background: var(--fp-gray-light); color: var(--fp-dark); }
+    .frase-mark {
+      font-family: var(--fp-font-display); font-weight: var(--fp-weight-black);
+      font-size: 80px; line-height: 0.8; opacity: 0.15;
+      position: absolute; top: var(--fp-space-sm); left: var(--fp-space-md);
+      color: inherit;
+    }
+    .frase-text {
+      font-family: var(--fp-font-display); font-weight: var(--fp-weight-bold);
+      font-size: 20px; line-height: 1.3; position: relative; z-index: 1;
+      margin-bottom: var(--fp-space-sm);
+    }
+    .frase-context { font-size: 12px; opacity: 0.5; font-style: italic; }
+
+    /* ATUAÇÃO */
+    .atuacao-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--fp-space-md);
+    }
+    .atuacao-card {
+      background: var(--fp-dark); border-radius: var(--fp-radius-lg);
+      padding: var(--fp-space-md); text-align: center;
+      transition: transform 0.2s;
+    }
+    .atuacao-card:hover { transform: translateY(-4px); }
+    .atuacao-icon { font-size: 32px; margin-bottom: var(--fp-space-sm); }
+    .atuacao-title {
+      font-family: var(--fp-font-display); font-weight: var(--fp-weight-black);
+      font-size: 16px; color: var(--fp-primary); margin-bottom: 8px; letter-spacing: -0.5px;
+    }
+    .atuacao-desc { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.5; }
+
+    /* REDES */
+    .redes-grid { display: flex; flex-wrap: wrap; gap: var(--fp-space-md); }
+    .rede-card {
+      display: flex; align-items: center; gap: var(--fp-space-sm);
+      background: var(--fp-gray-light); border-radius: var(--fp-radius-md);
+      padding: var(--fp-space-sm) var(--fp-space-md);
+      text-decoration: none; color: var(--fp-dark);
+      transition: background 0.15s, transform 0.15s;
+    }
+    .rede-card:hover { background: var(--fp-primary); transform: translateY(-2px); }
+    .rede-icon { font-size: 20px; }
+    .rede-handle {
+      font-family: var(--fp-font-display); font-weight: var(--fp-weight-bold);
+      font-size: 14px;
+    }
+    .rede-plat { font-size: 11px; color: var(--fp-gray); }
+    .rede-card:hover .rede-plat { color: var(--fp-dark); }
+
+    /* FOOTER */
+    .footer {
+      background: var(--fp-dark); padding: var(--fp-space-xl); text-align: center;
+      border-top: 2px solid var(--fp-primary);
+    }
+    .footer-links { display: flex; gap: var(--fp-space-md); justify-content: center; flex-wrap: wrap; margin-top: var(--fp-space-md); }
+    .footer-links a {
+      font-family: var(--fp-font-display); font-size: 12px; font-weight: var(--fp-weight-bold);
+      letter-spacing: 0.8px; text-transform: uppercase; color: rgba(255,255,255,0.4);
+      text-decoration: none; transition: color 0.15s;
+    }
+    .footer-links a:hover { color: var(--fp-primary); }
+    .footer-copy { font-size: 11px; color: rgba(255,255,255,0.2); margin-top: var(--fp-space-md); }
+
+    @media (max-width: 768px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-photo { height: 300px; }
+      .hero-photo::after { background: linear-gradient(to top, var(--fp-dark) 0%, transparent 50%); }
+      .hero-content { padding: var(--fp-space-lg) var(--fp-space-md); }
+      .bio-grid { grid-template-columns: 1fr; }
+      .voice-rules { grid-template-columns: 1fr; }
+      .nav { padding: 0 var(--fp-space-md); }
+      .nav-links { display: none; }
+      section { padding: var(--fp-space-lg) var(--fp-space-md); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="apresentacao.html" class="nav-logo">
+    <img src="assets/logos/marca-fp-lemon.png" alt="FP" />
+    <span class="nav-label">Design System</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#bio">Mini-bio</a></li>
+    <li><a href="#formacao">Formação</a></li>
+    <li><a href="#tom-de-voz">Tom de voz</a></li>
+    <li><a href="#frases">Frases</a></li>
+    <li><a href="#atuacao">Atuação</a></li>
+    <li><a href="apresentacao.html">← Design System</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-content">
+    <p class="hero-eyebrow">Perfil · Fred Parreira</p>
+    <h1 class="hero-name">Fred<br><span>Parreira</span></h1>
+    <p class="hero-role">
+      CEO · Mentor · Host · Mestre em Inovação<br>
+      Conectando pessoas, culturas e propósitos.
+    </p>
+    <div class="hero-chips">
+      <span class="hero-chip">Inovação</span>
+      <span class="hero-chip">Estratégia</span>
+      <span class="hero-chip">Liderança</span>
+      <span class="hero-chip">Design Thinking</span>
+      <span class="hero-chip">Mineiridade</span>
+    </div>
+  </div>
+  <div class="hero-photo">
+    <img src="assets/logos/foto-fred.jpg" alt="Fred Parreira" />
+  </div>
+</header>
+
+<!-- MINI-BIO -->
+<section id="bio">
+  <p class="section-tag">Quem é</p>
+  <h2 class="section-title">Mini-bio</h2>
+
+  <div class="bio-grid">
+    <div class="bio-text">
+      <p>
+        <strong>Fred Parreira</strong> é CEO, mentor e host — uma combinação rara de profundidade acadêmica com agilidade de mercado. Mestre em Inovação, lidera com a convicção de que <strong>inovar não é sobre tecnologia, é sobre gente.</strong>
+      </p>
+      <p>
+        Com uma trajetória que une gestão estratégica, educação executiva e comunicação digital, Fred construiu uma marca pessoal reconhecida pela capacidade de <strong>simplificar o complexo</strong> e transformar conhecimento técnico em linguagem acessível — sem perder a profundidade.
+      </p>
+      <p>
+        Natural de Minas Gerais, carrega na identidade a chamada <em>"tech-mineira"</em>: a autoridade de quem estuda sério, combinada com a leveza de quem sabe conversar. Jamais corporativo frio. Jamais hype superficial.
+      </p>
+      <p>
+        Como host e mentor, Fred acredita no <strong>copiloto criativo</strong> — a IA como parceira do pensamento humano, não substituta. Usa design thinking e inteligência artificial como ferramentas para potencializar pessoas e organizações.
+      </p>
+    </div>
+    <div class="bio-sidebar">
+      <div class="bio-stat">
+        <div class="bio-stat-num">15+</div>
+        <div class="bio-stat-label">Anos de experiência em gestão e inovação</div>
+      </div>
+      <div class="bio-stat">
+        <div class="bio-stat-num">MSc</div>
+        <div class="bio-stat-label">Mestre em Inovação e Gestão</div>
+      </div>
+      <div class="bio-stat">
+        <div class="bio-stat-num">3</div>
+        <div class="bio-stat-label">Papéis simultâneos: CEO · Mentor · Host</div>
+      </div>
+      <div class="bio-stat" style="border-left-color:var(--fp-accent-1);">
+        <div class="bio-stat-num" style="font-size:22px;color:var(--fp-gray);">@parreirafrederico</div>
+        <div class="bio-stat-label">LinkedIn e demais redes</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORMAÇÃO -->
+<section id="formacao" style="background:var(--fp-gray-light);max-width:100%;padding:var(--fp-space-xl);">
+  <div style="max-width:1200px;margin:0 auto;">
+    <p class="section-tag">Trajetória acadêmica</p>
+    <h2 class="section-title">Formação</h2>
+
+    <div class="formation-list">
+
+      <div class="formation-item">
+        <div class="formation-icon">🎓</div>
+        <div class="formation-body">
+          <div class="formation-degree">Mestrado em Inovação e Gestão</div>
+          <div class="formation-school">Pós-graduação stricto sensu · Área: Inovação, estratégia e transformação organizacional</div>
+          <span class="formation-year">MSc · Concluído</span>
+        </div>
+      </div>
+
+      <div class="formation-item">
+        <div class="formation-icon">🧠</div>
+        <div class="formation-body">
+          <div class="formation-degree">Design Thinking & Inovação</div>
+          <div class="formation-school">Formação em metodologias ágeis e centradas no usuário · Design Sprint, JTBD, Service Design</div>
+          <span class="formation-year">Extensão · Certificado</span>
+        </div>
+      </div>
+
+      <div class="formation-item">
+        <div class="formation-icon">🤖</div>
+        <div class="formation-body">
+          <div class="formation-degree">Inteligência Artificial Aplicada aos Negócios</div>
+          <div class="formation-school">IA generativa, prompt engineering, automação criativa e copiloto de produtividade</div>
+          <span class="formation-year">Em curso · 2024–2025</span>
+        </div>
+      </div>
+
+      <div class="formation-item">
+        <div class="formation-icon">📡</div>
+        <div class="formation-body">
+          <div class="formation-degree">Comunicação, Branding & Marketing Digital</div>
+          <div class="formation-school">Estratégia de conteúdo, identidade de marca pessoal, LinkedIn e criação de audiências</div>
+          <span class="formation-year">Continuado</span>
+        </div>
+      </div>
+
+      <div class="formation-item">
+        <div class="formation-icon">🎤</div>
+        <div class="formation-body">
+          <div class="formation-degree">Liderança, Facilitação & Educação Executiva</div>
+          <div class="formation-school">Facilitação de workshops, programas de mentoria, trilhas de desenvolvimento de liderança</div>
+          <span class="formation-year">Continuado</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TOM DE VOZ -->
+<section id="tom-de-voz">
+  <p class="section-tag">Identidade verbal</p>
+  <h2 class="section-title">Tom de voz</h2>
+  <p style="font-size:16px;color:var(--fp-gray);max-width:560px;margin-bottom:var(--fp-space-lg);">
+    Como Fred fala, escreve e se posiciona — em qualquer canal ou formato.
+  </p>
+
+  <div class="voice-grid">
+
+    <div class="voice-card" style="--accent-color:var(--fp-primary);">
+      <div class="voice-icon">⚡</div>
+      <div class="voice-title">Direto e provocativo</div>
+      <div class="voice-desc">Frases curtas. Começa pelo impacto. Provoca reflexão sem ser arrogante. O ponto vem antes da justificativa.</div>
+      <div class="voice-example">"Simplificar o complexo é o que gera ROI."</div>
+    </div>
+
+    <div class="voice-card" style="--accent-color:var(--fp-accent-1);">
+      <div class="voice-icon">🤝</div>
+      <div class="voice-title">Humano e acessível</div>
+      <div class="voice-desc">Usa "a gente", "bora", "faz sentido?". Aproxima sem perder autoridade. Mineiridade como traço, não como caricatura.</div>
+      <div class="voice-example">"Bora começar pelo que importa?"</div>
+    </div>
+
+    <div class="voice-card" style="--accent-color:var(--fp-accent-3);">
+      <div class="voice-icon">🎯</div>
+      <div class="voice-title">Estratégico e concreto</div>
+      <div class="voice-desc">Fala de resultado, não de processo vazio. Âncora ideias em exemplos reais. Evita jargão por jargão.</div>
+      <div class="voice-example">"Inovação sem contexto é decoração."</div>
+    </div>
+
+    <div class="voice-card" style="--accent-color:var(--fp-accent-2);">
+      <div class="voice-icon">📚</div>
+      <div class="voice-title">Embasado, nunca pedante</div>
+      <div class="voice-desc">Cita referências quando serve ao argumento. Mestrado no currículo, não na conversa. Profundidade com leveza.</div>
+      <div class="voice-example">"A pesquisa confirma o que você já sentia."</div>
+    </div>
+
+  </div>
+
+  <!-- Do / Don't -->
+  <div class="voice-rules">
+    <div class="voice-rule do">
+      <div class="voice-rule-title">✅ Fred fala assim</div>
+      <ul>
+        <li>Frases com uma ideia central, no máximo duas</li>
+        <li>"Bora", "a gente", "faz sentido?" como conectores</li>
+        <li>Perguntas que abrem reflexão, não retórica vazia</li>
+        <li>Números e dados ancorados em contexto real</li>
+        <li>Humor sutil — ironia inteligente, nunca sarcasmo fácil</li>
+        <li>Termina com um convite à ação ou ao pensamento</li>
+      </ul>
+    </div>
+    <div class="voice-rule dont">
+      <div class="voice-rule-title">❌ Fred não fala assim</div>
+      <ul>
+        <li>"Neste cenário VUCA em que vivemos..."</li>
+        <li>Buzzwords sem definição: "sinergia", "disruptivo", "holístico"</li>
+        <li>Listas de 10 dicas genéricas sem posicionamento</li>
+        <li>Tom professoral, distante ou condescendente</li>
+        <li>Excesso de hashtags ou emojis performáticos</li>
+        <li>Humildade falsa: "modestamente, conquistei..."</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FRASES ICÔNICAS -->
+<section id="frases" style="background:var(--fp-dark);max-width:100%;padding:var(--fp-space-xl);">
+  <div style="max-width:1200px;margin:0 auto;">
+    <p class="section-tag" style="color:rgba(255,255,255,0.35);">Identidade verbal</p>
+    <h2 class="section-title" style="color:var(--fp-light);">Frases icônicas</h2>
+    <p style="font-size:16px;color:rgba(255,255,255,0.45);max-width:560px;margin-bottom:var(--fp-space-lg);">
+      Expressões que sintetizam o pensamento e o posicionamento da marca.
+    </p>
+
+    <div class="frases-grid">
+
+      <div class="frase-card dark">
+        <div class="frase-mark">"</div>
+        <div class="frase-text">Inovar não é sobre tecnologia.<br>É sobre <span style="color:var(--fp-primary);">gente.</span></div>
+        <div class="frase-context">Frase-tese · posicionamento central da marca</div>
+      </div>
+
+      <div class="frase-card lime">
+        <div class="frase-mark">"</div>
+        <div class="frase-text">Simplificar o complexo é o que gera ROI.</div>
+        <div class="frase-context">LinkedIn · conteúdo de estratégia</div>
+      </div>
+
+      <div class="frase-card warm">
+        <div class="frase-mark">"</div>
+        <div class="frase-text">Uma marca que nasce para conectar.</div>
+        <div class="frase-context">Conceito central da identidade visual</div>
+      </div>
+
+      <div class="frase-card gray">
+        <div class="frase-mark">"</div>
+        <div class="frase-text">Foco. Processo. Fluxo. Progresso. Resiliência. Repetição. Proposta.</div>
+        <div class="frase-context">Manifesto · trilha de performance</div>
+      </div>
+
+      <div class="frase-card dark">
+        <div class="frase-mark">"</div>
+        <div class="frase-text">A IA é copiloto.<br><span style="color:var(--fp-primary);">Você</span> ainda pilota.</div>
+        <div class="frase-context">Posicionamento sobre inteligência artificial</div>
+      </div>
+
+      <div class="frase-card lime">
+        <div class="frase-mark">"</div>
+        <div class="frase-text">Autoridade sem empatia não convence. Empatia sem autoridade não move.</div>
+        <div class="frase-context">Tom de liderança · formação de audiência</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ATUAÇÃO -->
+<section id="atuacao">
+  <p class="section-tag">O que Fred faz</p>
+  <h2 class="section-title">Áreas de atuação</h2>
+
+  <div class="atuacao-grid">
+
+    <div class="atuacao-card">
+      <div class="atuacao-icon">🏢</div>
+      <div class="atuacao-title">CEO & Gestão</div>
+      <div class="atuacao-desc">Liderança estratégica de negócios com foco em crescimento sustentável e cultura de inovação.</div>
+    </div>
+
+    <div class="atuacao-card">
+      <div class="atuacao-icon">🎤</div>
+      <div class="atuacao-title">Mentor</div>
+      <div class="atuacao-desc">Acompanha líderes e empreendedores em processos de clareza estratégica e desenvolvimento de marca pessoal.</div>
+    </div>
+
+    <div class="atuacao-card">
+      <div class="atuacao-icon">🎙️</div>
+      <div class="atuacao-title">Host & Criador</div>
+      <div class="atuacao-desc">Produção de conteúdo para LinkedIn, podcasts e eventos — formatos que educam e engajam simultaneamente.</div>
+    </div>
+
+    <div class="atuacao-card">
+      <div class="atuacao-icon">🔬</div>
+      <div class="atuacao-title">Pesquisa & Inovação</div>
+      <div class="atuacao-desc">Aplicação de metodologias de inovação — Design Thinking, JTBD e IA — em contextos empresariais reais.</div>
+    </div>
+
+    <div class="atuacao-card">
+      <div class="atuacao-icon">🎓</div>
+      <div class="atuacao-title">Educação Executiva</div>
+      <div class="atuacao-desc">Facilitação de programas de capacitação e trilhas de desenvolvimento para equipes e lideranças.</div>
+    </div>
+
+  </div>
+
+  <!-- Redes -->
+  <div style="margin-top:var(--fp-space-xl);">
+    <p class="section-tag">Onde encontrar</p>
+    <h2 class="section-title" style="font-size:clamp(22px,3vw,32px);margin-bottom:var(--fp-space-md);">Redes & contato</h2>
+    <div class="redes-grid">
+      <a href="#" class="rede-card">
+        <div class="rede-icon">💼</div>
+        <div>
+          <div class="rede-handle">@parreirafrederico</div>
+          <div class="rede-plat">LinkedIn</div>
+        </div>
+      </a>
+      <a href="#" class="rede-card">
+        <div class="rede-icon">📸</div>
+        <div>
+          <div class="rede-handle">@parreirafrederico</div>
+          <div class="rede-plat">Instagram</div>
+        </div>
+      </a>
+      <a href="#" class="rede-card">
+        <div class="rede-icon">🎬</div>
+        <div>
+          <div class="rede-handle">@parreirafrederico</div>
+          <div class="rede-plat">YouTube / Podcast</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <img src="assets/logos/marca-completa-lemon-branca.png" alt="Fred Parreira" style="height:44px;margin-bottom:var(--fp-space-md);" />
+  <div class="footer-links">
+    <a href="apresentacao.html">Design System</a>
+    <a href="docs/index.html">Brandbook</a>
+    <a href="apresentacao.html#como-usar">Como usar</a>
+  </div>
+  <p class="footer-copy">Fred Parreira Design System · MIT License</p>
+</footer>
+
+</body>
+</html>
