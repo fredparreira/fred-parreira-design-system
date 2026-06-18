@@ -172,7 +172,8 @@
 👤 Fred Parreira
 🚀 CEO Neway Insurtech | Workshops de IA e Inovação
 🎓 Mestre em Inovação (IA + Design Thinking pra resolver problemas)
-🔗 LinkedIn: linkedin.com/in/parreirafrederico
+🔗 LN: linkedin.com/in/parreirafrederico
+🌍 IG: instagram.com/fredparreira.me
 
 Bora trocar uma ideia? ☕</textarea>
         <div class="qr-hint">Quem escanear abre o WhatsApp já com este texto pronto pra te enviar. Textos longos deixam o QR denso e mais difícil de ler de tela.</div>
@@ -302,6 +303,17 @@ e me mande um oi no WhatsApp</textarea>
       corner(cardX-off, cardY+cardSize+off, 1, -1);
       corner(cardX+cardSize+off, cardY+cardSize+off, -1, -1);
     }
+    function drawWatermark(cardX,cardY,cardSize){
+      // texto vertical na lateral direita do card, fora do QR
+      ctx.save();
+      ctx.translate(cardX+cardSize+40, cardY+cardSize/2);
+      ctx.rotate(Math.PI/2);
+      ctx.font='700 22px "Exo 2", Arial, sans-serif';
+      ctx.fillStyle="rgba(165,165,165,0.55)";
+      ctx.textAlign="center"; ctx.textBaseline="middle";
+      ctx.fillText("feito por @fredparreira.me", 0, 0);
+      ctx.restore();
+    }
     function render(){
       ctx.fillStyle=BLACK; ctx.fillRect(0,0,W,H);
       ctx.fillStyle=LIME; ctx.fillRect(0,0,W,14); ctx.fillRect(0,H-14,W,14);
@@ -326,6 +338,7 @@ e me mande um oi no WhatsApp</textarea>
       for(const l of instr){ ctext(iy, l, 40, "700", WHITE); iy+=lh; }
       const ok=drawQR(buildLink(), cardX, cardY, card);
       drawCorners(cardX,cardY,card);
+      drawWatermark(cardX,cardY,card);
       ctext(cardY+card+30, val("qr-legenda"), 31, "400", GRAY);
       $("qr-linkout").textContent=buildLink();
       $("qr-status").textContent = ok ? "Pré-visualização atualizada ✓" : "Carregando biblioteca de QR...";

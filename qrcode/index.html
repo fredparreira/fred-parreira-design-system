@@ -62,7 +62,8 @@
 👤 Fred Parreira
 🚀 CEO Neway Insurtech | Workshops de IA e Inovação
 🎓 Mestre em Inovação (IA + Design Thinking pra resolver problemas)
-🔗 LinkedIn: linkedin.com/in/parreirafrederico
+🔗 LN: linkedin.com/in/parreirafrederico
+🌍 IG: instagram.com/fredparreira.me
 
 Bora trocar uma ideia? ☕</textarea>
       <div class="hint">Quem escanear abre o WhatsApp já com este texto pronto pra te enviar. Pode usar emojis e quebras de linha. Dica: textos muito longos deixam o QR denso e mais difícil de escanear de tela.</div>
@@ -182,6 +183,17 @@ function drawCorners(cardX,cardY,cardSize){
   corner(cardX+cardSize+off, cardY+cardSize+off, -1, -1);
 }
 
+function drawWatermark(cardX,cardY,cardSize){
+  ctx.save();
+  ctx.translate(cardX+cardSize+40, cardY+cardSize/2);
+  ctx.rotate(Math.PI/2);
+  ctx.font='700 22px "Exo 2", Arial, sans-serif';
+  ctx.fillStyle="rgba(165,165,165,0.55)";
+  ctx.textAlign="center"; ctx.textBaseline="middle";
+  ctx.fillText("feito por @fredparreira.me", 0, 0);
+  ctx.restore();
+}
+
 function render(){
   // fundo
   ctx.fillStyle=BLACK; ctx.fillRect(0,0,W,H);
@@ -214,6 +226,7 @@ function render(){
 
   const ok=drawQR(buildLink(), cardX, cardY, card);
   drawCorners(cardX,cardY,card);
+  drawWatermark(cardX,cardY,card);
   ctext(cardY+card+30, val("legenda"), 31, "400", GRAY);
 
   $("linkout").textContent=buildLink();
