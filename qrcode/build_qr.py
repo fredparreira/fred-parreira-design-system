@@ -127,12 +127,12 @@ corner(cx + card + off, cy + card + off, -1, -1)
 
 # marca dagua vertical na lateral direita do card (fora do QR)
 WATERMARK = "feito por @fredparreira.me"
-wf = fb(22)
+wf = fb(44)
 wbb = d.textbbox((0, 0), WATERMARK, font=wf)
 wm = Image.new("RGBA", (wbb[2] - wbb[0] + 8, wbb[3] - wbb[1] + 8), (0, 0, 0, 0))
 ImageDraw.Draw(wm).text((4 - wbb[0], 4 - wbb[1]), WATERMARK, font=wf, fill=(165, 165, 165, 140))
 wm = wm.rotate(-90, expand=True)
-img.paste(wm, (cx + card + 28, cy + (card - wm.height) // 2), wm)
+img.paste(wm, (cx + card + 32, cy + (card - wm.height) // 2), wm)
 
 # legenda
 ctext(cy + card + 30, LEGENDA, fr(31), GRAY)

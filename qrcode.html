@@ -306,9 +306,9 @@ e me mande um oi no WhatsApp</textarea>
     function drawWatermark(cardX,cardY,cardSize){
       // texto vertical na lateral direita do card, fora do QR
       ctx.save();
-      ctx.translate(cardX+cardSize+40, cardY+cardSize/2);
+      ctx.translate(cardX+cardSize+54, cardY+cardSize/2);
       ctx.rotate(Math.PI/2);
-      ctx.font='700 22px "Exo 2", Arial, sans-serif';
+      ctx.font='700 44px "Exo 2", Arial, sans-serif';
       ctx.fillStyle="rgba(165,165,165,0.55)";
       ctx.textAlign="center"; ctx.textBaseline="middle";
       ctx.fillText("feito por @fredparreira.me", 0, 0);
