@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gerador de QR WhatsApp — Fred Parreira</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700;800;900&display=swap" rel="stylesheet">
+<!-- Biblioteca de QR (com fallback de CDN) -->
+<script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"></script>
+<script>window.qrcode || document.write('<script src="https://unpkg.com/qrcode-generator@1.4.4/qrcode.js"><\/script>');</script>
+<style>
+  :root{ --lime:#DCFF00; --black:#000; --gray:#A5A5A5; --panel:#111; --line:#262626; }
+  *{ box-sizing:border-box; }
+  body{ margin:0; background:#000; color:#fff; font-family:"Exo 2",Arial,sans-serif; }
+  header{ padding:22px 26px; border-bottom:2px solid var(--lime); }
+  header h1{ margin:0; font-weight:900; font-size:22px; letter-spacing:.5px; }
+  header h1 span{ color:var(--lime); }
+  header p{ margin:6px 0 0; color:var(--gray); font-size:13px; }
+  .wrap{ display:flex; gap:28px; padding:26px; flex-wrap:wrap; align-items:flex-start; }
+  .form{ flex:1 1 360px; min-width:320px; }
+  .preview{ flex:0 0 auto; width:300px; }
+  .field{ margin-bottom:16px; }
+  label{ display:block; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.6px; color:var(--gray); margin-bottom:6px; }
+  input,textarea{ width:100%; background:var(--panel); border:1px solid var(--line); color:#fff;
+    border-radius:10px; padding:11px 13px; font-family:inherit; font-size:14px; resize:vertical; }
+  input:focus,textarea:focus{ outline:none; border-color:var(--lime); }
+  textarea{ min-height:64px; line-height:1.45; }
+  .msg{ min-height:150px; }
+  .hint{ font-size:11px; color:#666; margin-top:5px; line-height:1.4; }
+  canvas{ width:100%; height:auto; border-radius:14px; display:block; background:#000; box-shadow:0 8px 30px rgba(0,0,0,.6); }
+  .actions{ position:sticky; top:14px; }
+  button{ width:100%; margin-top:14px; background:var(--lime); color:#000; border:none; border-radius:12px;
+    padding:15px; font-family:inherit; font-weight:900; font-size:16px; cursor:pointer; letter-spacing:.4px; }
+  button:hover{ filter:brightness(1.05); }
+  .ghost{ background:#1a1a1a; color:var(--lime); border:1px solid var(--line); font-weight:700; }
+  .status{ font-size:12px; color:var(--gray); margin-top:10px; min-height:16px; text-align:center; }
+  .link-out{ word-break:break-all; font-size:11px; color:#777; background:var(--panel); border:1px solid var(--line);
+    border-radius:8px; padding:9px; margin-top:10px; max-height:70px; overflow:auto; }
+  .grid2{ display:flex; gap:12px; } .grid2 .field{ flex:1; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Gerador de QR <span>WhatsApp</span></h1>
+  <p>Edite os campos, veja o preview e exporte o wallpaper 1080×1920 pronto pro evento.</p>
+</header>
+
+<div class="wrap">
+  <div class="form">
+    <div class="field">
+      <label>Número do WhatsApp (com DDI + DDD, só números)</label>
+      <input id="numero" value="5534991775536">
+      <div class="hint">Ex.: 5534991775536 — sem espaços, parênteses ou traços.</div>
+    </div>
+
+    <div class="field">
+      <label>Mensagem que vai dentro do QR</label>
+      <textarea id="mensagem" class="msg">Oi Fred! Te conheci no evento. Seguem seus dados pra eu salvar:
+
+👤 Fred Parreira
+🚀 CEO Neway Insurtech | Workshops de IA e Inovação
+🎓 Mestre em Inovação (IA + Design Thinking pra resolver problemas)
+🔗 LinkedIn: linkedin.com/in/parreirafrederico
+
+Bora trocar uma ideia? ☕</textarea>
+      <div class="hint">Quem escanear abre o WhatsApp já com este texto pronto pra te enviar. Pode usar emojis e quebras de linha. Dica: textos muito longos deixam o QR denso e mais difícil de escanear de tela.</div>
+    </div>
+
+    <div class="field">
+      <label>Título (chamada)</label>
+      <input id="titulo" value="BORA CONECTAR?">
+    </div>
+    <div class="grid2">
+      <div class="field">
+        <label>Nome</label>
+        <input id="nome" value="FRED PARREIRA">
+      </div>
+      <div class="field">
+        <label>Botão / @ (pílula lime)</label>
+        <input id="pill" value="in/parreirafrederico">
+      </div>
+    </div>
+    <div class="field">
+      <label>Cargo / descrição (uma linha por linha)</label>
+      <textarea id="cargo">CEO Neway Insurtech
+Workshops de IA e Inovação</textarea>
+    </div>
+    <div class="field">
+      <label>Instrução acima do QR (uma linha por linha)</label>
+      <textarea id="instrucao">Aponte a câmera do seu celular
+e me mande um oi no WhatsApp</textarea>
+    </div>
+    <div class="field">
+      <label>Legenda abaixo do QR</label>
+      <input id="legenda" value="Você já recebe meus dados na conversa">
+    </div>
+
+    <div class="link-out" id="linkout"></div>
+  </div>
+
+  <div class="preview">
+    <div class="actions">
+      <canvas id="canvas" width="1080" height="1920"></canvas>
+      <button id="btn">⬇ Exportar PNG (1080×1920)</button>
+      <button id="btnlink" class="ghost">Copiar link wa.me</button>
+      <div class="status" id="status"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const W=1080, H=1920;
+const LIME="#DCFF00", WHITE="#FFFFFF", GRAY="#A5A5A5", BLACK="#000000";
+const canvas=document.getElementById("canvas");
+const ctx=canvas.getContext("2d");
+const $=id=>document.getElementById(id);
+
+function val(id){ return $(id).value; }
+function lines(id){ return val(id).split("\n").map(s=>s.trim()).filter(s=>s.length); }
+
+function buildLink(){
+  const num=val("numero").replace(/\D/g,"");
+  return "https://wa.me/"+num+"?text="+encodeURIComponent(val("mensagem"));
+}
+
+function roundRect(x,y,w,h,r){
+  ctx.beginPath();
+  ctx.moveTo(x+r,y);
+  ctx.arcTo(x+w,y,x+w,y+h,r);
+  ctx.arcTo(x+w,y+h,x,y+h,r);
+  ctx.arcTo(x,y+h,x,y,r);
+  ctx.arcTo(x,y,x+w,y,r);
+  ctx.closePath();
+}
+
+function ctext(y,text,size,weight,color){
+  ctx.font=weight+" "+size+'px "Exo 2", Arial, sans-serif';
+  ctx.fillStyle=color; ctx.textAlign="center"; ctx.textBaseline="top";
+  ctx.fillText(text, W/2, y);
+}
+
+function drawQR(link, cardX, cardY, cardSize){
+  roundRect(cardX, cardY, cardSize, cardSize, 46); ctx.fillStyle=WHITE; ctx.fill();
+  if(!window.qrcode){ return false; }
+  const qr=qrcode(0,"M");
+  qr.addData(link);
+  try{ qr.make(); }catch(e){ return false; }
+  const count=qr.getModuleCount();
+  const quiet=4;
+  const inner=cardSize-80;
+  const total=count+quiet*2;
+  const ms=inner/total;
+  const ox=cardX+40+quiet*ms;
+  const oy=cardY+40+quiet*ms;
+  ctx.fillStyle=BLACK;
+  for(let r=0;r<count;r++){
+    for(let c=0;c<count;c++){
+      if(qr.isDark(r,c)){
+        ctx.fillRect(Math.floor(ox+c*ms), Math.floor(oy+r*ms), Math.ceil(ms), Math.ceil(ms));
+      }
+    }
+  }
+  return true;
+}
+
+function drawCorners(cardX,cardY,cardSize){
+  const t=66, th=12, off=24;
+  ctx.fillStyle=LIME;
+  function corner(px,py,hx,hy){
+    let x0=Math.min(px,px+hx*t), x1=Math.max(px,px+hx*t);
+    let y0=Math.min(py,py+hy*th), y1=Math.max(py,py+hy*th);
+    ctx.fillRect(x0,y0,x1-x0,y1-y0);
+    x0=Math.min(px,px+hx*th); x1=Math.max(px,px+hx*th);
+    y0=Math.min(py,py+hy*t); y1=Math.max(py,py+hy*t);
+    ctx.fillRect(x0,y0,x1-x0,y1-y0);
+  }
+  corner(cardX-off, cardY-off, 1, 1);
+  corner(cardX+cardSize+off, cardY-off, -1, 1);
+  corner(cardX-off, cardY+cardSize+off, 1, -1);
+  corner(cardX+cardSize+off, cardY+cardSize+off, -1, -1);
+}
+
+function render(){
+  // fundo
+  ctx.fillStyle=BLACK; ctx.fillRect(0,0,W,H);
+  // barras lime
+  ctx.fillStyle=LIME; ctx.fillRect(0,0,W,14); ctx.fillRect(0,H-14,W,14);
+
+  // ---- TOPO: identidade ----
+  let y=140;
+  ctext(y, val("titulo"), 84, "900", LIME); y+=84+18;
+  ctext(y, val("nome"), 58, "800", WHITE); y+=58+4;
+  for(const l of lines("cargo")){ ctext(y, l, 36, "400", GRAY); y+=46; }
+  y+=12;
+  // pílula
+  const pillText=val("pill");
+  if(pillText){
+    ctx.font='800 34px "Exo 2", Arial, sans-serif';
+    const tw=ctx.measureText(pillText).width;
+    const pw=tw+110, ph=72, px=(W-pw)/2;
+    roundRect(px,y,pw,ph,36); ctx.fillStyle=LIME; ctx.fill();
+    ctx.fillStyle=BLACK; ctx.textBaseline="middle"; ctx.textAlign="center";
+    ctx.fillText(pillText, W/2, y+ph/2+2);
+  }
+
+  // ---- TERÇO INFERIOR: QR ----
+  const card=506, cardX=(W-card)/2, cardY=1179;
+  const instr=lines("instrucao");
+  const lh=52, blockH=instr.length*lh;
+  let iy=cardY-30-blockH;
+  for(const l of instr){ ctext(iy, l, 40, "700", WHITE); iy+=lh; }
+
+  const ok=drawQR(buildLink(), cardX, cardY, card);
+  drawCorners(cardX,cardY,card);
+  ctext(cardY+card+30, val("legenda"), 31, "400", GRAY);
+
+  $("linkout").textContent=buildLink();
+  $("status").textContent = ok ? "Pré-visualização atualizada ✓" : "Carregando biblioteca de QR...";
+  return ok;
+}
+
+function exportPNG(){
+  if(!render()){ $("status").textContent="QR ainda não carregou. Verifique a conexão e tente de novo."; return; }
+  canvas.toBlob(function(blob){
+    const a=document.createElement("a");
+    a.href=URL.createObjectURL(blob);
+    const slug=(val("nome")||"qrcode").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+    a.download="qr-whatsapp-"+slug+"-1080x1920.png";
+    a.click();
+    setTimeout(()=>URL.revokeObjectURL(a.href), 4000);
+    $("status").textContent="Imagem exportada ✓";
+  }, "image/png");
+}
+
+// eventos
+document.querySelectorAll("input,textarea").forEach(el=>el.addEventListener("input", render));
+$("btn").addEventListener("click", exportPNG);
+$("btnlink").addEventListener("click", ()=>{
+  navigator.clipboard.writeText(buildLink()).then(()=> $("status").textContent="Link copiado ✓");
+});
+
+// primeira render (espera fontes + lib)
+function boot(){ render(); }
+if(document.fonts && document.fonts.ready){ document.fonts.ready.then(boot); }
+window.addEventListener("load", boot);
+let tries=0;
+const iv=setInterval(()=>{ if(window.qrcode || tries++>40){ clearInterval(iv); render(); } }, 150);
+boot();
+</script>
+</body>
+</html>

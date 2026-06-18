@@ -32,3 +32,6 @@ build/
 *.tmp
 *.bak
 *.log
+
+# Claude Code (config local de tooling)
+.claude/
