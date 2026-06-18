@@ -74,10 +74,26 @@ img = Image.new("RGB", (W, H), BLACK)
 d = ImageDraw.Draw(img)
 
 def ctext(y, txt, font, color, ls=0):
+    return ctextx(W / 2, y, txt, font, color, ls)
+
+def ctextx(cx, y, txt, font, color, ls=0):
     bb = d.textbbox((0, 0), txt, font=font)
     w = bb[2] - bb[0]
-    d.text(((W - w) / 2, y), txt, font=font, fill=color)
+    d.text((cx - w / 2, y), txt, font=font, fill=color)
     return y + (bb[3] - bb[1]) + ls
+
+def _tw(txt, font):
+    bb = d.textbbox((0, 0), txt, font=font)
+    return bb[2] - bb[0]
+
+# logo FP (desenhada a esquerda do nome/pilula)
+LOGO_CANDIDATES = ["../assets/logos/marca-fp-lemon.png", "assets/logos/marca-fp-lemon.png", "marca-fp-lemon.png"]
+logo_img = None
+for _p in LOGO_CANDIDATES:
+    try:
+        logo_img = Image.open(_p).convert("RGBA"); break
+    except Exception:
+        continue
 
 # barras lime topo/rodape
 d.rectangle([0, 0, W, 14], fill=LIME)
@@ -86,16 +102,35 @@ d.rectangle([0, H - 14, W, H], fill=LIME)
 # --- TOPO: identidade ---
 y = 150
 y = ctext(y, TITULO, fb(84), LIME, ls=42)
-y = ctext(y, NOME, fb(58), WHITE, ls=14)
+
+# --- LOCKUP: logo FP a esquerda + nome / cargo / pilula ---
+nome_f, cargo_f, pf = fb(58), fr(36), fb(34)
+colw = _tw(NOME, nome_f)
 for linha in CARGO:
-    y = ctext(y, linha, fr(36), GRAY, ls=8)
+    colw = max(colw, _tw(linha, cargo_f))
+pillw = _tw(PILL, pf) + 110
+colw = max(colw, pillw)
+logo_h = 150
+logo_w = int(logo_h * logo_img.width / logo_img.height) if logo_img else 0
+gap = 44
+groupw = colw + (logo_w + gap if logo_img else 0)
+groupx = (W - groupw) // 2
+colcx = groupx + (logo_w + gap if logo_img else 0) + colw / 2
+
+block_top = y
+y = ctextx(colcx, y, NOME, nome_f, WHITE, ls=14)
+for linha in CARGO:
+    y = ctextx(colcx, y, linha, cargo_f, GRAY, ls=8)
 y += 24
-# pilula LinkedIn
-pf = fb(34)
-bb = d.textbbox((0, 0), PILL, font=pf); pw = bb[2] - bb[0]
-px0 = (W - (pw + 110)) // 2
-d.rounded_rectangle([px0, y, px0 + pw + 110, y + 72], radius=36, fill=LIME)
+# pilula
+px0 = int(colcx - pillw / 2)
+d.rounded_rectangle([px0, y, px0 + pillw, y + 72], radius=36, fill=LIME)
 d.text((px0 + 55, y + 16), PILL, font=pf, fill=BLACK)
+y += 72
+if logo_img:
+    lr = logo_img.resize((logo_w, logo_h), Image.LANCZOS)
+    ly = int((block_top + y) / 2 - logo_h / 2)
+    img.paste(lr, (groupx, ly), lr)
 
 # --- TERCO INFERIOR: QR ---
 card = 506

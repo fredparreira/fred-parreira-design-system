@@ -121,6 +121,11 @@ const $=id=>document.getElementById(id);
 function val(id){ return $(id).value; }
 function lines(id){ return val(id).split("\n").map(s=>s.trim()).filter(s=>s.length); }
 
+// logo FP (desenhada à esquerda do nome/pílula); re-render quando carregar
+const fpLogo=new Image();
+fpLogo.onload=()=>render();
+fpLogo.src="../assets/logos/marca-fp-lemon.png";
+
 function buildLink(){
   const num=val("numero").replace(/\D/g,"");
   return "https://wa.me/"+num+"?text="+encodeURIComponent(val("mensagem"));
@@ -136,10 +141,11 @@ function roundRect(x,y,w,h,r){
   ctx.closePath();
 }
 
-function ctext(y,text,size,weight,color){
+function ctext(y,text,size,weight,color){ ctextX(W/2,y,text,size,weight,color); }
+function ctextX(cx,y,text,size,weight,color){
   ctx.font=weight+" "+size+'px "Exo 2", Arial, sans-serif';
   ctx.fillStyle=color; ctx.textAlign="center"; ctx.textBaseline="top";
-  ctx.fillText(text, W/2, y);
+  ctx.fillText(text, cx, y);
 }
 
 function drawQR(link, cardX, cardY, cardSize){
@@ -203,18 +209,39 @@ function render(){
   // ---- TOPO: identidade ----
   let y=140;
   ctext(y, val("titulo"), 84, "900", LIME); y+=84+18;
-  ctext(y, val("nome"), 58, "800", WHITE); y+=58+4;
-  for(const l of lines("cargo")){ ctext(y, l, 36, "400", GRAY); y+=46; }
-  y+=12;
-  // pílula
+
+  // ---- LOCKUP: logo FP à esquerda + nome / cargo / pílula ----
+  const nome=val("nome");
+  const cargoLines=lines("cargo");
   const pillText=val("pill");
+  ctx.font='800 58px "Exo 2", Arial, sans-serif';
+  let colW=ctx.measureText(nome).width;
+  ctx.font='400 36px "Exo 2", Arial, sans-serif';
+  for(const l of cargoLines){ colW=Math.max(colW, ctx.measureText(l).width); }
+  let pillW=0;
+  if(pillText){ ctx.font='800 34px "Exo 2", Arial, sans-serif'; pillW=ctx.measureText(pillText).width+110; colW=Math.max(colW, pillW); }
+  const logoOK=fpLogo.complete && fpLogo.naturalWidth>0;
+  const logoH=150, gap=44;
+  const logoW=logoOK ? logoH*(fpLogo.naturalWidth/fpLogo.naturalHeight) : 0;
+  const groupW=colW + (logoOK ? logoW+gap : 0);
+  const groupX=(W-groupW)/2;
+  const colCx=groupX + (logoOK ? logoW+gap : 0) + colW/2;
+
+  const blockTop=y;
+  ctextX(colCx, y, nome, 58, "800", WHITE); y+=58+4;
+  for(const l of cargoLines){ ctextX(colCx, y, l, 36, "400", GRAY); y+=46; }
+  y+=12;
   if(pillText){
-    ctx.font='800 34px "Exo 2", Arial, sans-serif';
-    const tw=ctx.measureText(pillText).width;
-    const pw=tw+110, ph=72, px=(W-pw)/2;
+    const pw=pillW, ph=72, px=colCx-pw/2;
     roundRect(px,y,pw,ph,36); ctx.fillStyle=LIME; ctx.fill();
+    ctx.font='800 34px "Exo 2", Arial, sans-serif';
     ctx.fillStyle=BLACK; ctx.textBaseline="middle"; ctx.textAlign="center";
-    ctx.fillText(pillText, W/2, y+ph/2+2);
+    ctx.fillText(pillText, colCx, y+ph/2+2);
+    y+=ph;
+  }
+  if(logoOK){
+    const ly=(blockTop+y)/2 - logoH/2;
+    ctx.drawImage(fpLogo, groupX, ly, logoW, logoH);
   }
 
   // ---- TERÇO INFERIOR: QR ----
